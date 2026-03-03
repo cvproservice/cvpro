@@ -3,7 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CV Pro | خدمات السيرة الذاتية الاحترافية</title>
+<title>CV Pro | خدمات السيرة الذاتية الاحترافية - ATS</title>
+<meta name="description" content="🎯 خدمة CV Pro | نصمم لك سيرة ذاتية احترافية متوافقة مع نظام ATS تجتاز فلاتر التوظيف الآلية وتوصل لأصحاب العمل. خدماتنا: CV من الصفر، تحسين CV، Cover Letter، LinkedIn، تحضير إنترفيو. تواصل الآن على واتساب 01068204700 ✅"
+<meta name="keywords" content="سيرة ذاتية, CV احترافي, ATS, كتابة سيرة ذاتية, سيرة ذاتية مصر, CV مصر, سيرة ذاتية بالعربي, سيرة ذاتية بالانجليزي, تحسين CV, انترفيو, مقابلة عمل, وظيفة, توظيف, CV pro, cover letter, LinkedIn">
+<meta name="author" content="CV Pro Egypt">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="CV Pro | خدمات السيرة الذاتية الاحترافية">
+<meta property="og:description" content="احصل على سيرة ذاتية احترافية متوافقة مع نظام ATS وزد فرصك في الحصول على وظيفتك المثالية">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cvproservice.github.io/cvpro">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CV Pro | خدمات السيرة الذاتية الاحترافية">
+<meta name="twitter:description" content="احصل على سيرة ذاتية احترافية متوافقة مع نظام ATS">
+<link rel="canonical" href="https://cvproservice.github.io/cvpro">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "CV Pro Egypt",
+  "description": "خدمة إنشاء سيرة ذاتية احترافية متوافقة مع نظام ATS",
+  "url": "https://cvproservice.github.io/cvpro",
+  "telephone": "+201068204700",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "EG"
+  },
+  "sameAs": ["https://wa.me/201068204700"]
+}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -413,6 +440,16 @@
   }
   .phone-show strong { color: var(--gold); }
 
+  /* PAYMENT */
+  .payment-section { padding: 100px 5%; text-align: center; background: var(--dark); }
+  .payment-cards { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-top: 60px; }
+  .payment-card { background: var(--dark3); border: 1px solid rgba(201,168,76,0.15); border-radius: 20px; padding: 40px 35px; width: 280px; transition: all 0.3s; }
+  .payment-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-5px); }
+  .payment-icon { font-size: 3rem; margin-bottom: 15px; display: block; }
+  .payment-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; }
+  .payment-card p { color: var(--gray); font-size: 0.95rem; margin-bottom: 20px; }
+  .payment-num { background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3); border-radius: 10px; padding: 12px 20px; color: var(--gold); font-weight: 700; font-size: 1rem; direction: ltr; display: inline-block; }
+
   /* FOOTER */
   footer {
     background: var(--dark);
@@ -466,6 +503,55 @@
 </style>
 </head>
 <body>
+
+<!-- BIRTHDAY BANNER -->
+<div id="birthday-banner" style="
+  background: linear-gradient(135deg, #C9A84C, #E8C97A, #C9A84C);
+  color: #0A0A0F;
+  text-align: center;
+  padding: 14px 20px;
+  font-family: 'Cairo', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  position: relative;
+  z-index: 999;
+  animation: shimmer 2s infinite;
+">
+  🎂 اليوم عيد ميلاد صاحب الموقع! كل سنة وأنت بخير وتحقق كل أحلامك 🎉🎊
+  <button onclick="document.getElementById('birthday-banner').style.display='none'" style="
+    background: rgba(0,0,0,0.2);
+    border: none;
+    color: #0A0A0F;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-right: 15px;
+    border-radius: 50%;
+    width: 28px; height: 28px;
+    font-weight: 900;
+    vertical-align: middle;
+  ">✕</button>
+</div>
+
+<style>
+@keyframes shimmer {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+</style>
+
+<script>
+// بانر يتشال تلقائي بعد 24 ساعة
+(function() {
+  const banner = document.getElementById('birthday-banner');
+  const shownAt = localStorage.getItem('bdayBannerShown');
+  const now = Date.now();
+  if (shownAt && (now - parseInt(shownAt)) > 24 * 60 * 60 * 1000) {
+    banner.style.display = 'none';
+  } else if (!shownAt) {
+    localStorage.setItem('bdayBannerShown', now.toString());
+  }
+})();
+</script>
 
 <!-- NAV -->
 <nav>
@@ -686,6 +772,51 @@
       ابدأ الآن على واتساب
     </a>
     <span class="phone-show">📞 <strong>+20 106 820 4700</strong></span>
+  </div>
+</section>
+
+<!-- HASHTAGS -->
+<section style="padding: 50px 5%; text-align:center; background: var(--dark2);">
+  <span class="section-label">✦ ابحث عنا</span>
+  <h2 class="section-title" style="margin-bottom:30px;">كلماتنا المفتاحية</h2>
+  <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center; max-width:900px; margin:0 auto;">
+    <span style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold);padding:8px 18px;border-radius:50px;font-size:0.9rem;font-weight:600;">#سيرة_ذاتية</span>
+    <span style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold);padding:8px 18px;border-radius:50px;font-size:0.9rem;font-weight:600;">#CV_احترافي</span>
+    <span style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold);padding:8px 18px;border-radius:50px;font-size:0.9rem;font-weight:600;">#ATS</span>
+    <span style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold);padding:8px 18px;border-radius:50px;font-size:0.9rem;font-weight:600;">#وظيفة</span>
+    <span style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold);padding:8px 18px;border-radius:50px;font-size:0.9rem;font-weight:600;">#توظيف_مصر</span>
+    <span style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold);padding:8px 18px;border-radius:50px;font-size:0.9rem;font-weight:600;">#CV_مصر</span>
+    <span style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold);padding:8px 18px;border-radius:50px;font-size:0.9rem;font-weight:600;">#انترفيو</span>
+    <span style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold);padding:8px 18px;border-radius:50px;font-size:0.9rem;font-weight:600;">#مقابلة_عمل</span>
+    <span style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold);padding:8px 18px;border-radius:50px;font-size:0.9rem;font-weight:600;">#LinkedIn</span>
+    <span style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold);padding:8px 18px;border-radius:50px;font-size:0.9rem;font-weight:600;">#Cover_Letter</span>
+    <span style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold);padding:8px 18px;border-radius:50px;font-size:0.9rem;font-weight:600;">#فرصة_عمل</span>
+    <span style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold);padding:8px 18px;border-radius:50px;font-size:0.9rem;font-weight:600;">#Human_Resources</span>
+    <span style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold);padding:8px 18px;border-radius:50px;font-size:0.9rem;font-weight:600;">#HR</span>
+    <span style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold);padding:8px 18px;border-radius:50px;font-size:0.9rem;font-weight:600;">#تطوير_مهني</span>
+    <span style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold);padding:8px 18px;border-radius:50px;font-size:0.9rem;font-weight:600;">#Job_Hunting</span>
+    <span style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold);padding:8px 18px;border-radius:50px;font-size:0.9rem;font-weight:600;">#Resume</span>
+  </div>
+</section>
+
+<!-- PAYMENT -->
+<section class="payment-section">
+  <span class="section-label">✦ طرق الدفع</span>
+  <h2 class="section-title">ادفع بسهولة وأمان</h2>
+  <p class="section-desc" style="margin: 0 auto;">بعد الاتفاق على الخدمة، تقدر تدفع بأي طريقة مناسبة ليك</p>
+  <div class="payment-cards reveal">
+    <div class="payment-card">
+      <span class="payment-icon">📱</span>
+      <h3>فودافون كاش</h3>
+      <p>حوّل المبلغ على رقم فودافون كاش مباشرة</p>
+      <div class="payment-num">01068204700</div>
+    </div>
+    <div class="payment-card">
+      <span class="payment-icon">💳</span>
+      <h3>إنستاباي</h3>
+      <p>ادفع بسهولة عن طريق تطبيق إنستاباي</p>
+      <div class="payment-num">toxickhaled1@instapay</div>
+    </div>
   </div>
 </section>
 
