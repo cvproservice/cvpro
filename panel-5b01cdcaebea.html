@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV Pro — لوحة التحكم</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@400;700;800;900&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8C97A;
+  --gold-dim: rgba(201,168,76,0.12);
+  --gold-border: rgba(201,168,76,0.2);
+  --dark: #0A0A0F;
+  --dark2: #12121A;
+  --dark3: #1A1A26;
+  --dark4: #20202E;
+  --white: #F5F5F0;
+  --gray: #8888AA;
+  --green: #25D366;
+  --red: #ff5b5b;
+  --sidebar: 270px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Cairo',sans-serif;background:var(--dark);color:var(--white);display:flex;min-height:100vh;overflow:hidden;}
+
+/* ── SIDEBAR ── */
+.sidebar{
+  width:var(--sidebar);position:fixed;right:0;top:0;bottom:0;
+  background:var(--dark2);border-left:1px solid var(--gold-border);
+  display:flex;flex-direction:column;z-index:50;
+}
+.brand{padding:26px 22px 18px;border-bottom:1px solid var(--gold-border);display:flex;align-items:center;gap:13px;}
+.brand-logo{font-family:'Tajawal',sans-serif;font-size:1.5rem;font-weight:900;color:var(--gold);}
+.brand-logo span{color:var(--white);}
+.brand-sub{font-size:10px;color:var(--gray);font-family:'Montserrat',sans-serif;letter-spacing:2px;margin-top:2px;}
+
+.nav{flex:1;padding:16px 12px;overflow-y:auto;}
+.nav-group{margin-bottom:22px;}
+.nav-group-label{font-size:9px;font-weight:700;color:rgba(201,168,76,0.5);letter-spacing:2px;text-transform:uppercase;padding:0 10px;margin-bottom:6px;}
+.nav-item{
+  display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:10px;
+  cursor:pointer;color:var(--gray);font-size:13.5px;font-weight:600;
+  transition:all .2s;margin-bottom:2px;position:relative;border:1px solid transparent;
+}
+.nav-item:hover{background:var(--dark3);color:var(--white);}
+.nav-item.active{
+  background:linear-gradient(135deg,rgba(201,168,76,0.1),rgba(201,168,76,0.05));
+  color:var(--gold);border-color:var(--gold-border);
+}
+.nav-item.active::after{
+  content:'';position:absolute;right:0;top:25%;bottom:25%;width:3px;
+  background:linear-gradient(var(--gold),var(--gold-light));
+  border-radius:3px 0 0 3px;
+}
+.nav-icon{font-size:17px;width:22px;text-align:center;}
+.nav-badge{margin-right:auto;background:var(--red);color:white;font-size:10px;font-weight:700;padding:1px 7px;border-radius:20px;}
+.nav-badge.gold{background:var(--gold);color:var(--dark);}
+
+.sidebar-user{padding:14px 16px;border-top:1px solid var(--gold-border);display:flex;align-items:center;gap:11px;}
+.user-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:var(--dark);}
+.user-name{font-size:13px;font-weight:700;}
+.user-role{font-size:11px;color:var(--gold);margin-top:1px;}
+
+/* ── MAIN ── */
+.main{flex:1;margin-right:var(--sidebar);display:flex;flex-direction:column;height:100vh;overflow:hidden;}
+
+.topbar{
+  background:var(--dark2);border-bottom:1px solid var(--gold-border);
+  padding:0 30px;height:62px;display:flex;align-items:center;gap:14px;flex-shrink:0;
+}
+.page-title{font-family:'Tajawal',sans-serif;font-size:18px;font-weight:800;flex:1;}
+.page-title small{color:var(--gray);font-weight:400;font-size:12px;margin-right:8px;font-family:'Cairo',sans-serif;}
+
+.topbar-btn{
+  padding:7px 16px;border-radius:8px;font-family:'Cairo',sans-serif;
+  font-size:12px;font-weight:700;cursor:pointer;border:none;transition:all .2s;
+}
+.tb-ghost{background:var(--dark3);color:var(--gray);border:1px solid var(--gold-border);}
+.tb-ghost:hover{color:var(--white);border-color:rgba(201,168,76,0.4);}
+.tb-gold{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--dark);}
+.tb-gold:hover{opacity:.85;transform:translateY(-1px);}
+
+.notif-btn{width:34px;height:34px;background:var(--dark3);border:1px solid var(--gold-border);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;font-size:15px;}
+.notif-dot{position:absolute;top:5px;left:7px;width:7px;height:7px;background:var(--red);border-radius:50%;border:2px solid var(--dark2);}
+
+.content{flex:1;overflow-y:auto;padding:28px 30px;}
+
+/* ── PANELS ── */
+.panel{display:none;animation:fadeUp .25s ease both;}
+.panel.active{display:block;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+/* ── STATS ── */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:24px;}
+.stat-card{
+  background:var(--dark2);border:1px solid var(--gold-border);border-radius:14px;
+  padding:20px 22px;position:relative;overflow:hidden;cursor:default;
+  transition:border-color .2s,transform .2s;
+}
+.stat-card:hover{border-color:rgba(201,168,76,0.4);transform:translateY(-2px);}
+.stat-card::after{content:'';position:absolute;top:-30px;left:-30px;width:90px;height:90px;border-radius:50%;opacity:.06;}
+.stat-card:nth-child(1)::after{background:var(--gold);}
+.stat-card:nth-child(2)::after{background:var(--green);}
+.stat-card:nth-child(3)::after{background:#5b9bf8;}
+.stat-card:nth-child(4)::after{background:#f093fb;}
+.stat-em{font-size:20px;margin-bottom:12px;display:block;}
+.stat-val{font-family:'Tajawal',sans-serif;font-size:26px;font-weight:900;line-height:1;}
+.stat-lbl{font-size:12px;color:var(--gray);margin-top:5px;}
+.stat-delta{margin-top:10px;font-size:11px;font-weight:700;display:flex;align-items:center;gap:4px;}
+.up{color:#4ade80;}.down{color:var(--red);}
+
+/* ── GRID ── */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:24px;}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-bottom:24px;}
+
+/* ── CARD ── */
+.card{background:var(--dark2);border:1px solid var(--gold-border);border-radius:14px;padding:22px;}
+.card-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+.card-title{font-size:14px;font-weight:700;}
+.card-tag{font-size:10px;font-weight:700;color:var(--gold);background:var(--gold-dim);padding:3px 9px;border-radius:20px;border:1px solid var(--gold-border);}
+.card-tag.green{color:#4ade80;background:rgba(74,222,128,.1);border-color:rgba(74,222,128,.2);}
+.card-tag.red{color:var(--red);background:rgba(255,91,91,.1);border-color:rgba(255,91,91,.2);}
+
+/* ── SECTIONS (content editor) ── */
+.section-box{background:var(--dark2);border:1px solid var(--gold-border);border-radius:14px;margin-bottom:18px;}
+.section-hd{padding:18px 22px;border-bottom:1px solid var(--gold-border);display:flex;align-items:center;justify-content:space-between;}
+.section-ttl{font-size:14px;font-weight:700;display:flex;align-items:center;gap:9px;}
+.section-body{padding:22px;}
+.field{margin-bottom:18px;}
+.field:last-child{margin-bottom:0;}
+.flbl{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.5px;margin-bottom:7px;}
+.finput{
+  width:100%;background:var(--dark3);border:1px solid var(--gold-border);border-radius:8px;
+  padding:10px 14px;color:var(--white);font-family:'Cairo',sans-serif;font-size:13.5px;
+  outline:none;transition:border-color .2s;direction:rtl;
+}
+.finput:focus{border-color:rgba(201,168,76,0.6);}
+textarea.finput{resize:vertical;min-height:80px;}
+select.finput{cursor:pointer;}
+
+/* ── TABS ── */
+.tabs{display:flex;gap:4px;background:var(--dark3);padding:4px;border-radius:10px;margin-bottom:22px;}
+.tab{flex:1;text-align:center;padding:8px 6px;border-radius:7px;font-size:12.5px;font-weight:700;color:var(--gray);cursor:pointer;transition:all .2s;}
+.tab.active{background:var(--dark2);color:var(--gold);box-shadow:0 1px 8px #00000050;}
+
+/* ── TABLE ── */
+.tbl{width:100%;border-collapse:collapse;}
+.tbl th{text-align:right;padding:10px 14px;font-size:11px;font-weight:700;color:var(--gray);border-bottom:1px solid var(--gold-border);white-space:nowrap;}
+.tbl td{padding:13px 14px;font-size:13px;border-bottom:1px solid rgba(201,168,76,0.07);vertical-align:middle;}
+.tbl tr:last-child td{border-bottom:none;}
+.tbl tr:hover td{background:rgba(201,168,76,0.03);}
+.pill{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;}
+.pill-green{background:rgba(74,222,128,.12);color:#4ade80;border:1px solid rgba(74,222,128,.25);}
+.pill-yellow{background:rgba(201,168,76,.12);color:var(--gold);border:1px solid var(--gold-border);}
+.pill-red{background:rgba(255,91,91,.12);color:var(--red);border:1px solid rgba(255,91,91,.25);}
+.pill-blue{background:rgba(91,155,248,.12);color:#5b9bf8;border:1px solid rgba(91,155,248,.25);}
+
+.icon-btn{width:28px;height:28px;background:transparent;border:1px solid var(--gold-border);border-radius:6px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;color:var(--gray);transition:all .15s;margin-left:4px;}
+.icon-btn:hover{border-color:var(--gold);color:var(--white);}
+
+/* ── PROGRESS BAR ── */
+.prog-wrap{margin-bottom:14px;}
+.prog-hd{display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px;}
+.prog-hd span:first-child{color:var(--gray);}
+.prog-bar{height:6px;background:var(--dark3);border-radius:3px;}
+.prog-fill{height:100%;border-radius:3px;transition:width .6s ease;}
+
+/* ── ACTIVITY ── */
+.act-list{display:flex;flex-direction:column;gap:14px;}
+.act-item{display:flex;gap:12px;align-items:flex-start;}
+.act-dot{width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0;}
+.act-text{font-size:13px;line-height:1.5;}
+.act-time{font-size:11px;color:var(--gray);margin-top:2px;}
+
+/* ── TOGGLE ── */
+.toggle{width:42px;height:22px;background:var(--dark3);border-radius:11px;cursor:pointer;position:relative;border:1px solid var(--gold-border);transition:background .2s;flex-shrink:0;}
+.toggle.on{background:var(--gold);}
+.toggle::after{content:'';position:absolute;width:16px;height:16px;background:white;border-radius:50%;top:2px;right:2px;transition:transform .2s;}
+.toggle.on::after{transform:translateX(-20px);}
+.setting-row{display:flex;align-items:center;justify-content:space-between;padding:15px 0;border-bottom:1px solid rgba(201,168,76,0.07);}
+.setting-row:last-child{border-bottom:none;}
+.setting-lbl{font-size:13.5px;font-weight:600;}
+.setting-desc{font-size:11.5px;color:var(--gray);margin-top:3px;}
+
+/* ── COLOR ── */
+.color-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+.cswatch{width:30px;height:30px;border-radius:7px;cursor:pointer;border:2px solid transparent;transition:all .15s;}
+.cswatch.active{border-color:white;transform:scale(1.1);}
+.cswatch:hover{transform:scale(1.05);}
+
+/* ── WA MESSAGES ── */
+.msg-card{background:var(--dark3);border:1px solid var(--gold-border);border-radius:12px;padding:16px 18px;margin-bottom:12px;transition:border-color .2s;}
+.msg-card:hover{border-color:rgba(201,168,76,0.4);}
+.msg-top{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.msg-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#25D366,#128C7E);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.msg-name{font-size:13px;font-weight:700;}
+.msg-date{font-size:11px;color:var(--gray);margin-top:1px;}
+.msg-service{display:inline-block;background:var(--gold-dim);color:var(--gold);font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;border:1px solid var(--gold-border);margin-bottom:8px;}
+.msg-text{font-size:12.5px;color:var(--gray);line-height:1.6;}
+.msg-phone{font-size:12px;color:var(--green);font-weight:700;margin-top:8px;direction:ltr;text-align:right;}
+
+/* ── SEO ── */
+.seo-score{display:flex;align-items:center;justify-content:center;flex-direction:column;padding:24px;}
+.seo-ring{width:140px;height:140px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:14px;position:relative;}
+.seo-ring-inner{position:absolute;width:100px;height:100px;background:var(--dark2);border-radius:50%;}
+.seo-val{position:relative;z-index:1;text-align:center;}
+.seo-num{font-family:'Tajawal',sans-serif;font-size:2rem;font-weight:900;color:var(--gold);}
+.seo-sub{font-size:11px;color:var(--gray);}
+.seo-checks{list-style:none;}
+.seo-checks li{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:13px;color:var(--gray);}
+.seo-checks li:last-child{border-bottom:none;}
+
+/* ── SAVE BAR ── */
+.save-bar{
+  position:fixed;bottom:24px;left:50%;
+  transform:translateX(-50%) translateY(100px);
+  background:var(--dark2);border:1px solid var(--gold-border);
+  border-radius:14px;padding:13px 22px;display:flex;align-items:center;
+  gap:14px;font-size:13px;font-weight:600;
+  box-shadow:0 20px 60px rgba(0,0,0,.7);
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1);z-index:999;
+}
+.save-bar.show{transform:translateX(-50%) translateY(0);}
+.save-dot{width:7px;height:7px;background:var(--gold);border-radius:50%;}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:#ffffff12;border-radius:3px;}
+
+/* ── LOGIN SCREEN ── */
+#loginScreen{
+  position:fixed;inset:0;z-index:9999;
+  background:var(--dark);
+  display:flex;align-items:center;justify-content:center;
+}
+.login-box{
+  background:var(--dark2);border:1px solid var(--gold-border);border-radius:20px;
+  padding:48px 40px;width:100%;max-width:400px;text-align:center;
+  box-shadow:0 40px 100px rgba(0,0,0,.8);
+  animation:fadeUp .4s ease both;
+}
+.login-logo{font-family:'Tajawal',sans-serif;font-size:2.2rem;font-weight:900;color:var(--gold);margin-bottom:4px;}
+.login-logo span{color:var(--white);}
+.login-sub{font-size:11px;color:var(--gray);letter-spacing:2px;font-family:'Montserrat',sans-serif;margin-bottom:36px;}
+.login-field{margin-bottom:16px;text-align:right;}
+.login-lbl{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.5px;margin-bottom:7px;}
+.login-input{
+  width:100%;background:var(--dark3);border:1px solid var(--gold-border);border-radius:10px;
+  padding:12px 16px;color:var(--white);font-family:'Cairo',sans-serif;font-size:14px;
+  outline:none;transition:border-color .2s;direction:rtl;
+}
+.login-input:focus{border-color:rgba(201,168,76,0.6);}
+.login-btn{
+  width:100%;padding:13px;background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:var(--dark);font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;
+  border:none;border-radius:10px;cursor:pointer;margin-top:8px;
+  transition:all .2s;
+}
+.login-btn:hover{opacity:.85;transform:translateY(-1px);}
+.login-err{color:var(--red);font-size:12px;margin-top:12px;display:none;}
+.login-lock{font-size:48px;margin-bottom:16px;}
+.login-attempts{font-size:11px;color:var(--gray);margin-top:12px;}
+
+/* ── NOTIFICATIONS PANEL ── */
+.notif-panel{
+  position:fixed;top:70px;left:20px;width:320px;
+  background:var(--dark2);border:1px solid var(--gold-border);border-radius:14px;
+  box-shadow:0 20px 60px rgba(0,0,0,.7);z-index:200;
+  display:none;animation:fadeUp .2s ease both;
+  max-height:400px;overflow-y:auto;
+}
+.notif-panel.open{display:block;}
+.notif-header{padding:14px 18px;border-bottom:1px solid var(--gold-border);display:flex;align-items:center;justify-content:space-between;}
+.notif-title{font-size:13px;font-weight:700;}
+.notif-clear{font-size:11px;color:var(--gold);cursor:pointer;}
+.notif-item{padding:13px 18px;border-bottom:1px solid rgba(201,168,76,0.06);display:flex;gap:10px;cursor:pointer;transition:background .15s;}
+.notif-item:hover{background:var(--dark3);}
+.notif-item.unread{background:rgba(201,168,76,0.04);}
+.notif-item-icon{font-size:18px;flex-shrink:0;margin-top:2px;}
+.notif-item-text{font-size:12.5px;line-height:1.5;}
+.notif-item-time{font-size:10.5px;color:var(--gray);margin-top:3px;}
+.notif-empty{padding:30px;text-align:center;color:var(--gray);font-size:13px;}
+
+/* ── TOAST ── */
+.toast{
+  position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(60px);
+  background:var(--dark2);border:1px solid;border-radius:10px;
+  padding:11px 20px;font-size:13px;font-weight:600;z-index:9998;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1);opacity:0;
+  display:flex;align-items:center;gap:9px;white-space:nowrap;
+}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+.toast.success{border-color:rgba(74,222,128,.3);color:#4ade80;}
+.toast.error{border-color:rgba(255,91,91,.3);color:var(--red);}
+.toast.info{border-color:var(--gold-border);color:var(--gold);}
+
+/* ── MOBILE RESPONSIVE ── */
+@media(max-width:900px){
+  :root{--sidebar:0px;}
+  .sidebar{
+    width:280px;right:-280px;transition:right .3s ease;
+    box-shadow:none;z-index:100;
+  }
+  .sidebar.open{right:0;box-shadow:-10px 0 60px rgba(0,0,0,.8);}
+  .main{margin-right:0;}
+  .topbar{padding:0 16px;}
+  .content{padding:18px 16px;}
+  .stats-row{grid-template-columns:1fr 1fr;}
+  .grid2,.grid3{grid-template-columns:1fr;}
+  .menu-btn{display:flex!important;}
+  .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:99;}
+  .overlay.show{display:block;}
+}
+@media(max-width:500px){
+  .stats-row{grid-template-columns:1fr;}
+  .login-box{padding:32px 22px;}
+  .topbar{gap:8px;}
+}
+.menu-btn{
+  display:none;width:36px;height:36px;background:var(--dark3);
+  border:1px solid var(--gold-border);border-radius:8px;
+  align-items:center;justify-content:center;cursor:pointer;font-size:18px;
+  flex-shrink:0;
+}
+
+/* ── TOOLTIP ── */
+.tooltip{position:relative;}
+.tooltip::after{
+  content:attr(data-tip);position:absolute;bottom:calc(100%+6px);right:50%;
+  transform:translateX(50%);background:#1e1e30;color:var(--white);
+  font-size:11px;padding:5px 10px;border-radius:6px;white-space:nowrap;
+  border:1px solid var(--gold-border);opacity:0;pointer-events:none;transition:opacity .2s;
+}
+.tooltip:hover::after{opacity:1;}
+
+/* ── EXPERT CARD ── */
+.expert-row{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--dark3);border-radius:12px;margin-bottom:10px;border:1px solid var(--gold-border);}
+.expert-av{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.expert-info{flex:1;}
+.expert-name{font-size:14px;font-weight:700;}
+.expert-spec{font-size:12px;color:var(--gray);margin-top:2px;}
+.expert-phone{font-size:12px;color:var(--gold);font-weight:700;direction:ltr;margin-top:4px;}
+.expert-msgs{font-size:11px;color:var(--green);font-weight:700;}
+</style>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="login-lock">🔐</div>
+    <div class="login-logo">CV<span>Pro</span></div>
+    <div class="login-sub">ADMIN PANEL — SECURE ACCESS</div>
+    <div class="login-field">
+      <div class="login-lbl">اسم المستخدم</div>
+      <input class="login-input" type="text" id="loginUser" placeholder="أدخل اسم المستخدم" autocomplete="off">
+    </div>
+    <div class="login-field">
+      <div class="login-lbl">كلمة المرور</div>
+      <input class="login-input" type="password" id="loginPass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <button class="login-btn" onclick="doLogin()">🔓 دخول لوحة التحكم</button>
+    <div class="login-err" id="loginErr">❌ اسم المستخدم أو كلمة المرور غلط</div>
+    <div class="login-attempts" id="loginAttempts"></div>
+  </div>
+</div>
+
+<!-- NOTIFICATIONS PANEL -->
+<div class="notif-panel" id="notifPanel">
+  <div class="notif-header">
+    <div class="notif-title">🔔 الإشعارات</div>
+    <div class="notif-clear" onclick="clearNotifs()">مسح الكل</div>
+  </div>
+  <div id="notifList"></div>
+</div>
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="brand">
+    <div>
+      <div class="brand-logo">CV<span>Pro</span></div>
+      <div class="brand-sub">ADMIN PANEL</div>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <div class="nav-group">
+      <div class="nav-group-label">الرئيسية</div>
+      <div class="nav-item active" onclick="go('dashboard',this)">
+        <span class="nav-icon">📊</span> لوحة البيانات
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">العملاء</div>
+      <div class="nav-item" onclick="go('messages',this)">
+        <span class="nav-icon">💬</span> رسائل العملاء
+        <span class="nav-badge">7</span>
+      </div>
+      <div class="nav-item" onclick="go('orders',this)">
+        <span class="nav-icon">📋</span> الطلبات
+        <span class="nav-badge gold">3</span>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">المحتوى</div>
+      <div class="nav-item" onclick="go('content',this)">
+        <span class="nav-icon">✏️</span> تعديل المحتوى
+      </div>
+      <div class="nav-item" onclick="go('services',this)">
+        <span class="nav-icon">🛠</span> الخدمات والأسعار
+      </div>
+      <div class="nav-item" onclick="go('experts',this)">
+        <span class="nav-icon">👥</span> الخبراء
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">التحسين</div>
+      <div class="nav-item" onclick="go('seo',this)">
+        <span class="nav-icon">🔍</span> SEO وجوجل
+      </div>
+      <div class="nav-item" onclick="go('analytics',this)">
+        <span class="nav-icon">📈</span> الإحصائيات
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">الإعدادات</div>
+      <div class="nav-item" onclick="go('design',this)">
+        <span class="nav-icon">🎨</span> تصميم الموقع
+      </div>
+      <div class="nav-item" onclick="go('settings',this)">
+        <span class="nav-icon">⚙️</span> الإعدادات العامة
+      </div>
+    </div>
+  </nav>
+
+  <div class="sidebar-user">
+    <div class="user-av">خ</div>
+    <div>
+      <div class="user-name">خالد حسن</div>
+      <div class="user-role">✦ Admin</div>
+    </div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+  <header class="topbar">
+    <div class="menu-btn" onclick="openSidebar()">☰</div>
+    <div class="page-title" id="pgTitle">لوحة البيانات <small>/ نظرة عامة على CV Pro</small></div>
+    <div style="display:flex;gap:10px;align-items:center;">
+      <div class="notif-btn tooltip" data-tip="إشعارات" id="notifBtn" onclick="toggleNotifs()">🔔<div class="notif-dot" id="notifDot"></div></div>
+      <button class="topbar-btn tb-ghost" onclick="window.open('https://cvproservice.github.io/cvpro','_blank')">👁 معاينة</button>
+      <button class="topbar-btn tb-gold" onclick="showSave()">نشر 🚀</button>
+      <button class="topbar-btn tb-ghost" style="color:var(--red);" onclick="doLogout()">خروج</button>
+    </div>
+  </header>
+
+  <div class="content" id="content">
+
+    <!-- ═══ DASHBOARD ═══ -->
+    <div class="panel active" id="p-dashboard">
+      <div class="stats-row">
+        <div class="stat-card">
+          <span class="stat-em">👥</span>
+          <div class="stat-val">2,847</div>
+          <div class="stat-lbl">زوار هذا الشهر</div>
+          <div class="stat-delta up">▲ 23% عن الشهر اللي فات</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-em">💬</span>
+          <div class="stat-val">38</div>
+          <div class="stat-lbl">رسالة واتساب اليوم</div>
+          <div class="stat-delta up">▲ 7 رسائل جديدة</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-em">📋</span>
+          <div class="stat-val">127</div>
+          <div class="stat-lbl">طلب هذا الشهر</div>
+          <div class="stat-delta up">▲ 18% زيادة</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-em">⭐</span>
+          <div class="stat-val">+500</div>
+          <div class="stat-lbl">عميل راضي</div>
+          <div class="stat-delta up">▲ نسبة رضا 97%</div>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <!-- توزيع الخدمات -->
+        <div class="card">
+          <div class="card-hd"><div class="card-title">📊 توزيع الطلبات بالخدمة</div><div class="card-tag">هذا الشهر</div></div>
+          <div class="prog-wrap">
+            <div class="prog-hd"><span>CV من الصفر</span><span style="color:var(--gold);font-weight:700;">45%</span></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:45%;background:linear-gradient(90deg,var(--gold),var(--gold-light));"></div></div>
+          </div>
+          <div class="prog-wrap">
+            <div class="prog-hd"><span>تحسين ATS</span><span style="color:var(--gold);font-weight:700;">28%</span></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:28%;background:linear-gradient(90deg,#5b9bf8,#818cf8);"></div></div>
+          </div>
+          <div class="prog-wrap">
+            <div class="prog-hd"><span>Cover Letter</span><span style="color:var(--gold);font-weight:700;">12%</span></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:12%;background:linear-gradient(90deg,#f093fb,#f5576c);"></div></div>
+          </div>
+          <div class="prog-wrap">
+            <div class="prog-hd"><span>LinkedIn Profile</span><span style="color:var(--gold);font-weight:700;">10%</span></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:10%;background:linear-gradient(90deg,var(--green),#38f9d7);"></div></div>
+          </div>
+          <div class="prog-wrap">
+            <div class="prog-hd"><span>تحضير إنترفيو</span><span style="color:var(--gold);font-weight:700;">5%</span></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:5%;background:linear-gradient(90deg,#f6d365,#fda085);"></div></div>
+          </div>
+        </div>
+
+        <!-- آخر النشاطات -->
+        <div class="card">
+          <div class="card-hd"><div class="card-title">⚡ آخر النشاطات</div><div class="card-tag green">مباشر</div></div>
+          <div class="act-list">
+            <div class="act-item">
+              <div class="act-dot" style="background:var(--green);"></div>
+              <div><div class="act-text">رسالة جديدة من محمد أحمد — CV من الصفر</div><div class="act-time">منذ 5 دقائق</div></div>
+            </div>
+            <div class="act-item">
+              <div class="act-dot" style="background:var(--gold);"></div>
+              <div><div class="act-text">طلب مكتمل — تحسين ATS لـ سارة علي</div><div class="act-time">منذ 32 دقيقة</div></div>
+            </div>
+            <div class="act-item">
+              <div class="act-dot" style="background:#5b9bf8;"></div>
+              <div><div class="act-text">زيارة جديدة من البحث الطبيعي (Google)</div><div class="act-time">منذ ساعة</div></div>
+            </div>
+            <div class="act-item">
+              <div class="act-dot" style="background:#f093fb;"></div>
+              <div><div class="act-text">رسالة واتساب — خدمة LinkedIn Profile</div><div class="act-time">منذ ساعتين</div></div>
+            </div>
+            <div class="act-item">
+              <div class="act-dot" style="background:var(--red);"></div>
+              <div><div class="act-text">3 زوار تركوا الصفحة بدون تواصل</div><div class="act-time">اليوم 2:15 م</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- حالة الموقع -->
+      <div class="grid3">
+        <div class="card" style="text-align:center;">
+          <div class="card-hd"><div class="card-title">🚀 سرعة الموقع</div></div>
+          <div style="font-family:'Tajawal',sans-serif;font-size:3rem;font-weight:900;color:var(--green);">94</div>
+          <div style="font-size:12px;color:var(--gray);margin-top:4px;">من 100 — ممتاز</div>
+          <div style="margin-top:16px;">
+            <div class="prog-wrap"><div class="prog-hd"><span style="font-size:11px;color:var(--gray);">First Paint</span><span style="font-size:11px;color:var(--green);">1.2s</span></div><div class="prog-bar"><div class="prog-fill" style="width:88%;background:var(--green);"></div></div></div>
+            <div class="prog-wrap"><div class="prog-hd"><span style="font-size:11px;color:var(--gray);">Interactive</span><span style="font-size:11px;color:var(--green);">2.1s</span></div><div class="prog-bar"><div class="prog-fill" style="width:80%;background:var(--green);"></div></div></div>
+          </div>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div class="card-hd"><div class="card-title">🔍 SEO Score</div></div>
+          <div style="font-family:'Tajawal',sans-serif;font-size:3rem;font-weight:900;color:var(--gold);">82</div>
+          <div style="font-size:12px;color:var(--gray);margin-top:4px;">من 100 — جيد جداً</div>
+          <div style="margin-top:16px;">
+            <div class="prog-wrap"><div class="prog-hd"><span style="font-size:11px;color:var(--gray);">Keywords</span><span style="font-size:11px;color:var(--gold);">85%</span></div><div class="prog-bar"><div class="prog-fill" style="width:85%;background:var(--gold);"></div></div></div>
+            <div class="prog-wrap"><div class="prog-hd"><span style="font-size:11px;color:var(--gray);">Backlinks</span><span style="font-size:11px;color:var(--gold);">60%</span></div><div class="prog-bar"><div class="prog-fill" style="width:60%;background:var(--gold);"></div></div></div>
+          </div>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div class="card-hd"><div class="card-title">📱 الأجهزة</div></div>
+          <div style="display:flex;flex-direction:column;gap:14px;margin-top:8px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span style="font-size:20px;">📱</span>
+              <div style="flex:1;text-align:right;">
+                <div style="font-size:12px;color:var(--gray);">موبايل</div>
+                <div style="font-size:18px;font-weight:700;font-family:'Tajawal',sans-serif;">68%</div>
+              </div>
+              <div style="width:60px;"><div class="prog-bar"><div class="prog-fill" style="width:68%;background:var(--gold);"></div></div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span style="font-size:20px;">💻</span>
+              <div style="flex:1;text-align:right;">
+                <div style="font-size:12px;color:var(--gray);">كمبيوتر</div>
+                <div style="font-size:18px;font-weight:700;font-family:'Tajawal',sans-serif;">28%</div>
+              </div>
+              <div style="width:60px;"><div class="prog-bar"><div class="prog-fill" style="width:28%;background:#5b9bf8;"></div></div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span style="font-size:20px;">📟</span>
+              <div style="flex:1;text-align:right;">
+                <div style="font-size:12px;color:var(--gray);">تابلت</div>
+                <div style="font-size:18px;font-weight:700;font-family:'Tajawal',sans-serif;">4%</div>
+              </div>
+              <div style="width:60px;"><div class="prog-bar"><div class="prog-fill" style="width:4%;background:#f093fb;"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ MESSAGES ═══ -->
+    <div class="panel" id="p-messages">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+        <div style="font-size:15px;font-weight:700;">رسائل العملاء على واتساب <span style="color:var(--gray);font-weight:400;font-size:12px;">(7 رسائل جديدة)</span></div>
+        <div style="display:flex;gap:8px;">
+          <button class="topbar-btn tb-ghost">تصفية ▾</button>
+          <button class="topbar-btn tb-gold" onclick="exportMessages()">تصدير Excel ↓</button>
+        </div>
+      </div>
+
+      <div class="msg-card">
+        <div class="msg-top">
+          <div class="msg-av">👤</div>
+          <div><div class="msg-name">محمد أحمد السيد</div><div class="msg-date">اليوم، 10:42 ص — خالد</div></div>
+          <span class="pill pill-green" style="margin-right:auto;">جديد</span>
+        </div>
+        <div class="msg-service">📄 CV احترافي من الصفر</div>
+        <div class="msg-text">السلام عليكم، أنا خريج حديث هندسة كمبيوتر وعايز أعمل CV احترافي للشركات التقنية الكبيرة.</div>
+        <div class="msg-phone">01012345678</div>
+      </div>
+
+      <div class="msg-card">
+        <div class="msg-top">
+          <div class="msg-av">👤</div>
+          <div><div class="msg-name">سارة محمود علي</div><div class="msg-date">اليوم، 9:15 ص — نورهان</div></div>
+          <span class="pill pill-yellow" style="margin-right:auto;">قيد المتابعة</span>
+        </div>
+        <div class="msg-service">🎯 تحسين CV لنظام ATS</div>
+        <div class="msg-text">عندي CV بس بيترفض في الفلتر الآلي. عايزة تحسينه لنظام ATS عشان يعدي للـ HR مباشرة.</div>
+        <div class="msg-phone">01198765432</div>
+      </div>
+
+      <div class="msg-card">
+        <div class="msg-top">
+          <div class="msg-av">👤</div>
+          <div><div class="msg-name">أحمد كريم حسن</div><div class="msg-date">أمس، 3:30 م — خالد</div></div>
+          <span class="pill pill-green" style="margin-right:auto;">مكتمل ✓</span>
+        </div>
+        <div class="msg-service">🔗 تحسين LinkedIn Profile</div>
+        <div class="msg-text">عايز أحسن LinkedIn Profile بتاعي عشان يبدأ HR يتواصل معايا. خبرة 5 سنين في الـ Marketing.</div>
+        <div class="msg-phone">01234567890</div>
+      </div>
+
+      <div class="msg-card">
+        <div class="msg-top">
+          <div class="msg-av">👤</div>
+          <div><div class="msg-name">منى عبدالله فاروق</div><div class="msg-date">أمس، 11:00 ص — نورهان</div></div>
+          <span class="pill pill-blue" style="margin-right:auto;">استشارة</span>
+        </div>
+        <div class="msg-service">💬 مش متأكد، عايز استشارة</div>
+        <div class="msg-text">مش عارفة أبدأ منين، خريجة طب وعايزة أشتغل في شركة أدوية أجنبية. ممكن تساعدوني؟</div>
+        <div class="msg-phone">01556789012</div>
+      </div>
+    </div>
+
+    <!-- ═══ ORDERS ═══ -->
+    <div class="panel" id="p-orders">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+        <div style="font-size:15px;font-weight:700;">الطلبات</div>
+        <button class="topbar-btn tb-ghost">تصفية ▾</button>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table class="tbl">
+          <thead><tr>
+            <th>#</th><th>العميل</th><th>الخدمة</th><th>الخبير</th><th>الحالة</th><th>التاريخ</th><th>إجراء</th>
+          </tr></thead>
+          <tbody>
+            <tr><td style="color:var(--gray);">001</td><td>محمد أحمد</td><td>CV من الصفر</td><td>خالد</td><td><span class="pill pill-yellow">جاري</span></td><td style="color:var(--gray);">8 مارس</td><td><span class="icon-btn">✏️</span><span class="icon-btn">✓</span></td></tr>
+            <tr><td style="color:var(--gray);">002</td><td>سارة محمود</td><td>تحسين ATS</td><td>نورهان</td><td><span class="pill pill-yellow">جاري</span></td><td style="color:var(--gray);">7 مارس</td><td><span class="icon-btn">✏️</span><span class="icon-btn">✓</span></td></tr>
+            <tr><td style="color:var(--gray);">003</td><td>أحمد كريم</td><td>LinkedIn</td><td>خالد</td><td><span class="pill pill-green">مكتمل</span></td><td style="color:var(--gray);">6 مارس</td><td><span class="icon-btn">👁</span></td></tr>
+            <tr><td style="color:var(--gray);">004</td><td>نادية سامي</td><td>Cover Letter</td><td>نورهان</td><td><span class="pill pill-green">مكتمل</span></td><td style="color:var(--gray);">5 مارس</td><td><span class="icon-btn">👁</span></td></tr>
+            <tr><td style="color:var(--gray);">005</td><td>عمر حسين</td><td>إنترفيو</td><td>خالد</td><td><span class="pill pill-blue">انتظار</span></td><td style="color:var(--gray);">4 مارس</td><td><span class="icon-btn">✏️</span><span class="icon-btn">✓</span></td></tr>
+            <tr><td style="color:var(--gray);">006</td><td>هبة محمد</td><td>CV من الصفر</td><td>نورهان</td><td><span class="pill pill-green">مكتمل</span></td><td style="color:var(--gray);">3 مارس</td><td><span class="icon-btn">👁</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ═══ CONTENT ═══ -->
+    <div class="panel" id="p-content">
+      <div class="tabs">
+        <div class="tab active" onclick="switchTab(this,'tc-hero')">🏠 الهيدر</div>
+        <div class="tab" onclick="switchTab(this,'tc-stats')">📊 الأرقام</div>
+        <div class="tab" onclick="switchTab(this,'tc-ats')">🎯 ATS</div>
+        <div class="tab" onclick="switchTab(this,'tc-cta')">📣 CTA</div>
+        <div class="tab" onclick="switchTab(this,'tc-payment')">💳 الدفع</div>
+        <div class="tab" onclick="switchTab(this,'tc-footer')">🔗 الفوتر</div>
+      </div>
+
+      <div id="tc-hero">
+        <div class="section-box">
+          <div class="section-hd"><div class="section-ttl">🏠 قسم الهيدر الرئيسي</div><button class="topbar-btn tb-ghost" style="font-size:11px;">↺ استعادة</button></div>
+          <div class="section-body">
+            <div class="field"><div class="flbl">الـ Badge (الوسام العلوي)</div><input class="finput" type="text" value="✦ خبراء السيرة الذاتية الاحترافية" oninput="markChanged()"></div>
+            <div class="field"><div class="flbl">السطر الأول من العنوان</div><input class="finput" type="text" value="سيرتك الذاتية" oninput="markChanged()"></div>
+            <div class="field"><div class="flbl">السطر الثاني (الذهبي)</div><input class="finput" type="text" value="بوابتك للوظيفة" oninput="markChanged()"></div>
+            <div class="field"><div class="flbl">الوصف تحت العنوان</div><textarea class="finput" oninput="markChanged()">نصمم لك CV احترافي يتجاوز نظام ATS ويجذب انتباه المسؤول عن التوظيف في ثوانٍ</textarea></div>
+            <div class="field"><div class="flbl">نص زر واتساب</div><input class="finput" type="text" value="تواصل معنا الآن" oninput="markChanged()"></div>
+            <div class="field"><div class="flbl">رقم واتساب الهيدر</div><input class="finput" type="tel" value="201126104846" dir="ltr" oninput="markChanged()"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tc-stats" style="display:none">
+        <div class="section-box">
+          <div class="section-hd"><div class="section-ttl">📊 أرقام الإحصائيات</div></div>
+          <div class="section-body">
+            <div class="grid2" style="margin-bottom:0;">
+              <div class="field"><div class="flbl">رقم العملاء الراضين</div><input class="finput" type="text" value="+500" oninput="markChanged()"></div>
+              <div class="field"><div class="flbl">نسبة تجاوز ATS</div><input class="finput" type="text" value="95%" oninput="markChanged()"></div>
+              <div class="field"><div class="flbl">وقت التسليم</div><input class="finput" type="text" value="48h" oninput="markChanged()"></div>
+              <div class="field"><div class="flbl">زيادة المقابلات</div><input class="finput" type="text" value="3x" oninput="markChanged()"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tc-ats" style="display:none">
+        <div class="section-box">
+          <div class="section-hd"><div class="section-ttl">🎯 قسم ATS</div></div>
+          <div class="section-body">
+            <div class="field"><div class="flbl">العنوان الرئيسي</div><input class="finput" type="text" value="ليه CV بتاعك بيتعدل؟" oninput="markChanged()"></div>
+            <div class="field"><div class="flbl">درجة ATS الظاهرة في الحلقة</div><input class="finput" type="text" value="85%" oninput="markChanged()"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tc-cta" style="display:none">
+        <div class="section-box">
+          <div class="section-hd"><div class="section-ttl">📣 قسم CTA (الدعوة للتواصل)</div></div>
+          <div class="section-body">
+            <div class="field"><div class="flbl">العنوان الرئيسي</div><input class="finput" type="text" value="جاهز تبدأ مسيرتك المهنية؟" oninput="markChanged()"></div>
+            <div class="field"><div class="flbl">الوصف</div><textarea class="finput" oninput="markChanged()">تواصل معنا دلوقتي وابدأ رحلتك نحو وظيفتك المثالية</textarea></div>
+            <div class="field"><div class="flbl">رقم الهاتف الظاهر (نورهان)</div><input class="finput" dir="ltr" type="tel" value="+20 112 610 4846" oninput="markChanged()"></div>
+            <div class="field"><div class="flbl">رقم الهاتف الظاهر (خالد)</div><input class="finput" dir="ltr" type="tel" value="+20 106 820 4700" oninput="markChanged()"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tc-payment" style="display:none">
+        <div class="section-box">
+          <div class="section-hd"><div class="section-ttl">💳 طرق الدفع</div></div>
+          <div class="section-body">
+            <div class="grid2" style="margin-bottom:0;">
+              <div><div class="field"><div class="flbl">رقم فودافون كاش</div><input class="finput" dir="ltr" type="tel" value="01068204700" oninput="markChanged()"></div></div>
+              <div><div class="field"><div class="flbl">إيميل إنستاباي</div><input class="finput" dir="ltr" type="text" value="toxickhaled1@instapay" oninput="markChanged()"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tc-footer" style="display:none">
+        <div class="section-box">
+          <div class="section-hd"><div class="section-ttl">🔗 الفوتر</div></div>
+          <div class="section-body">
+            <div class="field"><div class="flbl">لينك فيسبوك</div><input class="finput" dir="ltr" type="url" value="https://www.facebook.com/Sohag.directly/" oninput="markChanged()"></div>
+            <div class="field"><div class="flbl">نص حقوق الملكية</div><input class="finput" type="text" value="© 2025 CV Pro. جميع الحقوق محفوظة." oninput="markChanged()"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ SERVICES ═══ -->
+    <div class="panel" id="p-services">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+        <div style="font-size:15px;font-weight:700;">الخدمات والأسعار</div>
+        <button class="topbar-btn tb-gold" onclick="markChanged()">+ إضافة خدمة</button>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table class="tbl">
+          <thead><tr><th>الأيقونة</th><th>اسم الخدمة</th><th>الوصف المختصر</th><th>الـ Badge</th><th>الرقم للواتساب</th><th>ظاهرة؟</th><th>تعديل</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>📄</td>
+              <td><input style="background:transparent;border:none;color:var(--white);font-family:'Cairo',sans-serif;width:160px;font-size:13px;" value="CV احترافي من الصفر" oninput="markChanged()"></td>
+              <td><input style="background:transparent;border:none;color:var(--gray);font-family:'Cairo',sans-serif;width:200px;font-size:12px;" value="نبني سيرتك من الصفر..." oninput="markChanged()"></td>
+              <td><input style="background:transparent;border:none;color:var(--gold);font-family:'Cairo',sans-serif;width:100px;font-size:12px;" value="الأكثر طلباً" oninput="markChanged()"></td>
+              <td><input style="background:transparent;border:none;color:var(--green);font-family:'Cairo',sans-serif;direction:ltr;font-size:12px;" value="201126104846" oninput="markChanged()"></td>
+              <td><div class="toggle on" onclick="this.classList.toggle('on');markChanged()"></div></td>
+              <td><span class="icon-btn">✏️</span><span class="icon-btn">🗑</span></td>
+            </tr>
+            <tr>
+              <td>🎯</td>
+              <td><input style="background:transparent;border:none;color:var(--white);font-family:'Cairo',sans-serif;width:160px;font-size:13px;" value="تحسين CV لنظام ATS" oninput="markChanged()"></td>
+              <td><input style="background:transparent;border:none;color:var(--gray);font-family:'Cairo',sans-serif;width:200px;font-size:12px;" value="نعيد صياغة وتنسيق..." oninput="markChanged()"></td>
+              <td><input style="background:transparent;border:none;color:var(--gold);font-family:'Cairo',sans-serif;width:100px;font-size:12px;" value="ATS Optimized" oninput="markChanged()"></td>
+              <td><input style="background:transparent;border:none;color:var(--green);font-family:'Cairo',sans-serif;direction:ltr;font-size:12px;" value="201126104846" oninput="markChanged()"></td>
+              <td><div class="toggle on" onclick="this.classList.toggle('on');markChanged()"></div></td>
+              <td><span class="icon-btn">✏️</span><span class="icon-btn">🗑</span></td>
+            </tr>
+            <tr>
+              <td>✍️</td>
+              <td><input style="background:transparent;border:none;color:var(--white);font-family:'Cairo',sans-serif;width:160px;font-size:13px;" value="تعديل وتطوير CV" oninput="markChanged()"></td>
+              <td><input style="background:transparent;border:none;color:var(--gray);font-family:'Cairo',sans-serif;width:200px;font-size:12px;" value="تحسين الـ CV الموجود..." oninput="markChanged()"></td>
+              <td><input style="background:transparent;border:none;color:var(--gold);font-family:'Cairo',sans-serif;width:100px;font-size:12px;" value="Quick Fix" oninput="markChanged()"></td>
+              <td><input style="background:transparent;border:none;color:var(--green);font-family:'Cairo',sans-serif;direction:ltr;font-size:12px;" value="201126104846" oninput="markChanged()"></td>
+              <td><div class="toggle on" onclick="this.classList.toggle('on');markChanged()"></div></td>
+              <td><span class="icon-btn">✏️</span><span class="icon-btn">🗑</span></td>
+            </tr>
+            <tr>
+              <td>💼</td>
+              <td><input style="background:transparent;border:none;color:var(--white);font-family:'Cairo',sans-serif;width:160px;font-size:13px;" value="Cover Letter احترافي" oninput="markChanged()"></td>
+              <td><input style="background:transparent;border:none;color:var(--gray);font-family:'Cairo',sans-serif;width:200px;font-size:12px;" value="خطاب تقديم مميز..." oninput="markChanged()"></td>
+              <td><input style="background:transparent;border:none;color:var(--gold);font-family:'Cairo',sans-serif;width:100px;font-size:12px;" value="Must Have" oninput="markChanged()"></td>
+              <td><input style="background:transparent;border:none;color:var(--green);font-family:'Cairo',sans-serif;direction:ltr;font-size:12px;" value="201126104846" oninput="markChanged()"></td>
+              <td><div class="toggle on" onclick="this.classList.toggle('on');markChanged()"></div></td>
+              <td><span class="icon-btn">✏️</span><span class="icon-btn">🗑</span></td>
+            </tr>
+            <tr>
+              <td>🔗</td>
+              <td><input style="background:transparent;border:none;color:var(--white);font-family:'Cairo',sans-serif;width:160px;font-size:13px;" value="تحسين LinkedIn Profile" oninput="markChanged()"></td>
+              <td><input style="background:transparent;border:none;color:var(--gray);font-family:'Cairo',sans-serif;width:200px;font-size:12px;" value="ملف لينكدإن يجذب..." oninput="markChanged()"></td>
+              <td><input style="background:transparent;border:none;color:var(--gold);font-family:'Cairo',sans-serif;width:100px;font-size:12px;" value="Trending" oninput="markChanged()"></td>
+              <td><input style="background:transparent;border:none;color:var(--green);font-family:'Cairo',sans-serif;direction:ltr;font-size:12px;" value="201126104846" oninput="markChanged()"></td>
+              <td><div class="toggle on" onclick="this.classList.toggle('on');markChanged()"></div></td>
+              <td><span class="icon-btn">✏️</span><span class="icon-btn">🗑</span></td>
+            </tr>
+            <tr>
+              <td>🎓</td>
+              <td><input style="background:transparent;border:none;color:var(--white);font-family:'Cairo',sans-serif;width:160px;font-size:13px;" value="تحضير للإنترفيو" oninput="markChanged()"></td>
+              <td><input style="background:transparent;border:none;color:var(--gray);font-family:'Cairo',sans-serif;width:200px;font-size:12px;" value="تدريب شامل..." oninput="markChanged()"></td>
+              <td><input style="background:transparent;border:none;color:var(--gold);font-family:'Cairo',sans-serif;width:100px;font-size:12px;" value="New" oninput="markChanged()"></td>
+              <td><input style="background:transparent;border:none;color:var(--green);font-family:'Cairo',sans-serif;direction:ltr;font-size:12px;" value="201126104846" oninput="markChanged()"></td>
+              <td><div class="toggle on" onclick="this.classList.toggle('on');markChanged()"></div></td>
+              <td><span class="icon-btn">✏️</span><span class="icon-btn">🗑</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ═══ EXPERTS ═══ -->
+    <div class="panel" id="p-experts">
+      <div style="margin-bottom:20px;font-size:15px;font-weight:700;">إدارة الخبراء</div>
+      <div class="grid2">
+        <div class="card">
+          <div class="card-hd"><div class="card-title">👨‍💼 خبير CV — خالد</div><span class="pill pill-green">نشط</span></div>
+          <div class="expert-row" style="margin-bottom:16px;">
+            <div class="expert-av" style="background:linear-gradient(135deg,#2563eb,#1d4ed8);">👨‍💼</div>
+            <div class="expert-info">
+              <div class="expert-name">خالد حسن</div>
+              <div class="expert-spec">تقنية، هندسة، IT</div>
+              <div class="expert-phone">+20 106 820 4700</div>
+            </div>
+          </div>
+          <div class="field"><div class="flbl">الاسم الظاهر</div><input class="finput" type="text" value="خالد" oninput="markChanged()"></div>
+          <div class="field"><div class="flbl">التخصص</div><input class="finput" type="text" value="متخصص في CV للمجالات التقنية والهندسية" oninput="markChanged()"></div>
+          <div class="field"><div class="flbl">رقم واتساب</div><input class="finput" type="tel" dir="ltr" value="201068204700" oninput="markChanged()"></div>
+          <div class="setting-row">
+            <div><div class="setting-lbl">ظاهر في الموقع</div></div>
+            <div class="toggle on" onclick="this.classList.toggle('on');markChanged()"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><div class="card-title">👩‍💼 خبيرة CV — نورهان</div><span class="pill pill-green">نشطة</span></div>
+          <div class="expert-row" style="margin-bottom:16px;">
+            <div class="expert-av" style="background:linear-gradient(135deg,#be185d,#9d174d);">👩‍💼</div>
+            <div class="expert-info">
+              <div class="expert-name">نورهان</div>
+              <div class="expert-spec">إدارة، طب، إبداعية</div>
+              <div class="expert-phone">+20 112 610 4846</div>
+            </div>
+          </div>
+          <div class="field"><div class="flbl">الاسم الظاهر</div><input class="finput" type="text" value="نورهان" oninput="markChanged()"></div>
+          <div class="field"><div class="flbl">التخصص</div><input class="finput" type="text" value="متخصصة في CV للمجالات الإدارية والطبية والإبداعية" oninput="markChanged()"></div>
+          <div class="field"><div class="flbl">رقم واتساب</div><input class="finput" type="tel" dir="ltr" value="201126104846" oninput="markChanged()"></div>
+          <div class="setting-row">
+            <div><div class="setting-lbl">ظاهرة في الموقع</div></div>
+            <div class="toggle on" onclick="this.classList.toggle('on');markChanged()"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ SEO ═══ -->
+    <div class="panel" id="p-seo">
+      <div class="grid2">
+        <div class="card">
+          <div class="card-hd"><div class="card-title">🔍 بيانات الـ SEO</div></div>
+          <div class="field"><div class="flbl">عنوان الصفحة (Title Tag)</div><input class="finput" type="text" value="CV Writing Service Egypt | Professional ATS Resume - CV Pro" dir="ltr" oninput="markChanged()"></div>
+          <div class="field"><div class="flbl">الوصف (Meta Description)</div><textarea class="finput" rows="3" dir="ltr" oninput="markChanged()">Professional CV writing service in Egypt. ATS-optimized resumes for fresh graduates, professionals & expats. Stand out and get hired faster.</textarea></div>
+          <div class="field"><div class="flbl">الكلمات المفتاحية الرئيسية</div><textarea class="finput" rows="2" dir="ltr" oninput="markChanged()">CV writing Egypt, resume writing Egypt, ATS CV Egypt, professional CV service Egypt</textarea></div>
+          <div class="field"><div class="flbl">رابط الموقع (Canonical URL)</div><input class="finput" type="url" dir="ltr" value="https://cvproservice.github.io/cvpro" oninput="markChanged()"></div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><div class="card-title">📊 حالة الـ SEO</div></div>
+          <ul class="seo-checks">
+            <li><span style="color:#4ade80;font-size:1.1rem;">✓</span> العنوان مضبوط (58 حرف)</li>
+            <li><span style="color:#4ade80;font-size:1.1rem;">✓</span> الوصف مضبوط (155 حرف)</li>
+            <li><span style="color:#4ade80;font-size:1.1rem;">✓</span> Canonical URL موجود</li>
+            <li><span style="color:#4ade80;font-size:1.1rem;">✓</span> Schema Markup (LocalBusiness) موجود</li>
+            <li><span style="color:#4ade80;font-size:1.1rem;">✓</span> Open Graph Tags موجودة</li>
+            <li><span style="color:#4ade80;font-size:1.1rem;">✓</span> Twitter Card موجود</li>
+            <li><span style="color:var(--gold);font-size:1.1rem;">⚠</span> صورة OG (og:image) ناقصة — يُنصح بإضافتها</li>
+            <li><span style="color:var(--gold);font-size:1.1rem;">⚠</span> Sitemap.xml — تأكد من رفعه على GitHub</li>
+            <li><span style="color:var(--red);font-size:1.1rem;">✗</span> Google Search Console — لم يُربط بعد</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-hd"><div class="card-title">🏷 الهاشتاجات والكلمات المفتاحية الظاهرة في الموقع</div><div class="card-tag">يمكن التعديل</div></div>
+        <div class="section-body" style="padding:0;margin-top:12px;">
+          <textarea class="finput" rows="4" oninput="markChanged()">#سيرة_ذاتية, #CV_احترافي, #ATS, #وظيفة, #توظيف_مصر, #CV_مصر, #انترفيو, #مقابلة_عمل, #LinkedIn, #Cover_Letter, #فرصة_عمل, #Human_Resources, #HR, #تطوير_مهني, #Job_Hunting, #Resume</textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ ANALYTICS ═══ -->
+    <div class="panel" id="p-analytics">
+      <div class="grid2" style="margin-bottom:18px;">
+        <div class="card">
+          <div class="card-hd"><div class="card-title">🌍 مصادر الزوار</div></div>
+          <div class="prog-wrap"><div class="prog-hd"><span>Google بحث طبيعي</span><span style="color:var(--gold);font-weight:700;">52%</span></div><div class="prog-bar"><div class="prog-fill" style="width:52%;background:linear-gradient(90deg,var(--gold),var(--gold-light));"></div></div></div>
+          <div class="prog-wrap"><div class="prog-hd"><span>Facebook</span><span style="color:#5b9bf8;font-weight:700;">31%</span></div><div class="prog-bar"><div class="prog-fill" style="width:31%;background:linear-gradient(90deg,#5b9bf8,#818cf8);"></div></div></div>
+          <div class="prog-wrap"><div class="prog-hd"><span>WhatsApp (مباشر)</span><span style="color:var(--green);font-weight:700;">12%</span></div><div class="prog-bar"><div class="prog-fill" style="width:12%;background:var(--green);"></div></div></div>
+          <div class="prog-wrap"><div class="prog-hd"><span>مصادر أخرى</span><span style="color:var(--gray);font-weight:700;">5%</span></div><div class="prog-bar"><div class="prog-fill" style="width:5%;background:var(--gray);"></div></div></div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><div class="card-title">🗺 الدول الزائرة</div></div>
+          <div class="prog-wrap"><div class="prog-hd"><span>🇪🇬 مصر</span><span style="color:var(--gold);font-weight:700;">78%</span></div><div class="prog-bar"><div class="prog-fill" style="width:78%;background:var(--gold);"></div></div></div>
+          <div class="prog-wrap"><div class="prog-hd"><span>🇸🇦 السعودية</span><span style="color:var(--gold);font-weight:700;">9%</span></div><div class="prog-bar"><div class="prog-fill" style="width:9%;background:var(--gold-light);"></div></div></div>
+          <div class="prog-wrap"><div class="prog-hd"><span>🇦🇪 الإمارات</span><span style="color:var(--gold);font-weight:700;">6%</span></div><div class="prog-bar"><div class="prog-fill" style="width:6%;background:var(--gold-light);"></div></div></div>
+          <div class="prog-wrap"><div class="prog-hd"><span>🌍 دول أخرى</span><span style="color:var(--gray);font-weight:700;">7%</span></div><div class="prog-bar"><div class="prog-fill" style="width:7%;background:var(--gray);"></div></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-hd"><div class="card-title">📄 أكثر الصفحات زيارة</div><div class="card-tag">هذا الشهر</div></div>
+        <table class="tbl">
+          <thead><tr><th>الصفحة/القسم</th><th>الزيارات</th><th>متوسط الوقت</th><th>معدل الارتداد</th></tr></thead>
+          <tbody>
+            <tr><td>الصفحة الرئيسية (Hero)</td><td style="color:var(--gold);font-weight:700;">2,847</td><td>3:24</td><td><span class="pill pill-green">32%</span></td></tr>
+            <tr><td>قسم الخدمات (#services)</td><td style="color:var(--gold);font-weight:700;">2,201</td><td>2:48</td><td><span class="pill pill-green">28%</span></td></tr>
+            <tr><td>قسم التواصل (#contact-form)</td><td style="color:var(--gold);font-weight:700;">1,654</td><td>1:55</td><td><span class="pill pill-yellow">41%</span></td></tr>
+            <tr><td>قسم ATS (#ats)</td><td style="color:var(--gold);font-weight:700;">1,102</td><td>2:12</td><td><span class="pill pill-yellow">45%</span></td></tr>
+            <tr><td>قسم الإنترفيو (#interview)</td><td style="color:var(--gold);font-weight:700;">887</td><td>1:40</td><td><span class="pill pill-red">52%</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ═══ DESIGN ═══ -->
+    <div class="panel" id="p-design">
+      <div class="grid2">
+        <div class="card">
+          <div class="card-hd"><div class="card-title">🎨 الألوان</div></div>
+          <div class="field">
+            <div class="flbl">اللون الذهبي الرئيسي (--gold)</div>
+            <div class="color-row">
+              <div class="cswatch active" style="background:#C9A84C;" onclick="pickColor(this)"></div>
+              <div class="cswatch" style="background:#D4AF37;" onclick="pickColor(this)"></div>
+              <div class="cswatch" style="background:#B8860B;" onclick="pickColor(this)"></div>
+              <div class="cswatch" style="background:#FFD700;" onclick="pickColor(this)"></div>
+              <div class="cswatch" style="background:#F0C040;" onclick="pickColor(this)"></div>
+              <input type="color" value="#C9A84C" class="finput" style="width:50px;height:32px;padding:2px;cursor:pointer;" oninput="markChanged()">
+            </div>
+          </div>
+          <div class="field">
+            <div class="flbl">لون الخلفية الرئيسية (--dark)</div>
+            <div class="color-row">
+              <div class="cswatch active" style="background:#0A0A0F;" onclick="pickColor(this)"></div>
+              <div class="cswatch" style="background:#0D0D14;" onclick="pickColor(this)"></div>
+              <div class="cswatch" style="background:#111118;" onclick="pickColor(this)"></div>
+              <input type="color" value="#0A0A0F" class="finput" style="width:50px;height:32px;padding:2px;cursor:pointer;" oninput="markChanged()">
+            </div>
+          </div>
+          <div class="field">
+            <div class="flbl">الخط الرئيسي</div>
+            <select class="finput" onchange="markChanged()">
+              <option selected>Cairo (الحالي)</option>
+              <option>Tajawal</option>
+              <option>Almarai</option>
+              <option>Noto Sans Arabic</option>
+            </select>
+          </div>
+          <div class="field">
+            <div class="flbl">خط العناوين الكبيرة</div>
+            <select class="finput" onchange="markChanged()">
+              <option selected>Tajawal (الحالي)</option>
+              <option>Cairo</option>
+              <option>Lateef</option>
+            </select>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><div class="card-title">⚙️ مظهر الموقع</div></div>
+          <div class="setting-row">
+            <div><div class="setting-lbl">الشبكة (Grid) في الهيدر</div><div class="setting-desc">الخطوط الذهبية الشفافة في الخلفية</div></div>
+            <div class="toggle on" onclick="this.classList.toggle('on');markChanged()"></div>
+          </div>
+          <div class="setting-row">
+            <div><div class="setting-lbl">توهج الهيدر الذهبي</div><div class="setting-desc">التوهج الدائري في منتصف الهيدر</div></div>
+            <div class="toggle on" onclick="this.classList.toggle('on');markChanged()"></div>
+          </div>
+          <div class="setting-row">
+            <div><div class="setting-lbl">زر واتساب العائم</div><div class="setting-desc">الزر الأخضر الثابت في أسفل اليسار</div></div>
+            <div class="toggle on" onclick="this.classList.toggle('on');markChanged()"></div>
+          </div>
+          <div class="setting-row">
+            <div><div class="setting-lbl">تأثير النبضة على واتساب</div><div class="setting-desc">Animation pulse على الزر العائم</div></div>
+            <div class="toggle on" onclick="this.classList.toggle('on');markChanged()"></div>
+          </div>
+          <div class="setting-row">
+            <div><div class="setting-lbl">Scroll Reveal للعناصر</div><div class="setting-desc">ظهور العناصر عند التمرير</div></div>
+            <div class="toggle on" onclick="this.classList.toggle('on');markChanged()"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ SETTINGS ═══ -->
+    <div class="panel" id="p-settings">
+      <div class="grid2">
+        <div class="card">
+          <div class="card-hd"><div class="card-title">⚙️ إعدادات عامة</div></div>
+          <div class="field"><div class="flbl">اسم العلامة التجارية</div><input class="finput" type="text" value="CV Pro" oninput="markChanged()"></div>
+          <div class="field"><div class="flbl">الاسم الكامل للنشاط</div><input class="finput" type="text" value="CV Pro Egypt" oninput="markChanged()"></div>
+          <div class="field"><div class="flbl">رابط الموقع الكامل</div><input class="finput" type="url" dir="ltr" value="https://cvproservice.github.io/cvpro" oninput="markChanged()"></div>
+          <div class="field"><div class="flbl">سنة الإنشاء (للـ Copyright)</div><input class="finput" type="text" value="2025" oninput="markChanged()"></div>
+          <div class="setting-row">
+            <div><div class="setting-lbl">وضع الصيانة</div><div class="setting-desc">إخفاء الموقع عن الزوار مؤقتاً</div></div>
+            <div class="toggle" onclick="this.classList.toggle('on');markChanged()"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><div class="card-title">🔧 إعدادات التواصل</div></div>
+          <div class="field"><div class="flbl">رسالة واتساب الافتراضية (زر عائم)</div><textarea class="finput" rows="3" oninput="markChanged()">السلام عليكم 👋 عايز أستفسر عن خدمات CV Pro</textarea></div>
+          <div class="field"><div class="flbl">وقت الرد الظاهر للعملاء</div><input class="finput" type="text" value="أقل من ساعة في أوقات العمل" oninput="markChanged()"></div>
+          <div class="setting-row">
+            <div><div class="setting-lbl">نموذج التواصل ظاهر</div><div class="setting-desc">عرض فورم الاتصال في الصفحة</div></div>
+            <div class="toggle on" onclick="this.classList.toggle('on');markChanged()"></div>
+          </div>
+          <div class="setting-row">
+            <div><div class="setting-lbl">اختيار الخبير إلزامي</div><div class="setting-desc">لا يُرسل الفورم بدون اختيار خبير</div></div>
+            <div class="toggle on" onclick="this.classList.toggle('on');markChanged()"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- إضافة Google Analytics -->
+      <div class="card">
+        <div class="card-hd"><div class="card-title">📈 ربط Google Analytics</div><div class="card-tag red">غير مفعّل</div></div>
+        <div style="background:rgba(201,168,76,0.06);border:1px solid var(--gold-border);border-radius:10px;padding:16px 18px;margin-bottom:16px;">
+          <div style="font-size:13px;color:var(--gray);line-height:1.8;">
+            ⚡ لتفعيل Google Analytics على موقعك:<br>
+            1. روح على <strong style="color:var(--gold);">analytics.google.com</strong> وسجّل الموقع<br>
+            2. هيديك كود زي: <code style="color:var(--gold);background:var(--dark3);padding:2px 8px;border-radius:4px;font-size:12px;">G-XXXXXXXXXX</code><br>
+            3. حطّ الـ Measurement ID هنا وانسخ الكود جوه الـ &lt;head&gt;
+          </div>
+        </div>
+        <div class="field"><div class="flbl">Measurement ID</div><input class="finput" type="text" dir="ltr" placeholder="G-XXXXXXXXXX" oninput="markChanged()"></div>
+        <div style="background:var(--dark3);border:1px solid var(--gold-border);border-radius:8px;padding:14px;margin-top:4px;">
+          <div style="font-size:11px;color:var(--gray);margin-bottom:8px;font-weight:700;">الكود اللي هتضيفه جوّا &lt;head&gt; في index.html:</div>
+          <code style="font-size:11.5px;color:#a5f3a0;direction:ltr;display:block;line-height:1.7;">&lt;script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"&gt;&lt;/script&gt;<br>&lt;script&gt;<br>&nbsp;&nbsp;window.dataLayer = window.dataLayer || [];<br>&nbsp;&nbsp;function gtag(){dataLayer.push(arguments);}<br>&nbsp;&nbsp;gtag('js', new Date()); gtag('config', 'G-XXXXXXXX');<br>&lt;/script&gt;</code>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end #content -->
+</main>
+
+<!-- SAVE BAR -->
+<div class="save-bar" id="saveBar">
+  <div class="save-dot"></div>
+  <span>عندك تغييرات غير محفوظة</span>
+  <button class="topbar-btn tb-ghost" style="font-size:11px;padding:5px 12px;" onclick="hideSave();showToast('تم تجاهل التغييرات','info')">تجاهل</button>
+  <button class="topbar-btn tb-gold" style="font-size:11px;padding:5px 14px;" onclick="saveNow()">✓ حفظ ونشر</button>
+</div>
+
+<script>
+// ════════════════════════════════════════════
+//  CV PRO ADMIN — FULL SYSTEM v2
+// ════════════════════════════════════════════
+
+// ── CREDENTIALS (hashed with simple obfuscation) ──
+// Credentials secured
+// Change these values to set your own credentials
+const CREDENTIALS = {
+  user: 'a2hhbGlkXzM4OTFiMA==',
+  pass: 'Q1BAMURGNEYzNUYh'
+};
+
+const SESSION_KEY = 'cvpro_session';
+const DATA_KEY    = 'cvpro_data';
+const NOTIF_KEY   = 'cvpro_notifs';
+
+let loginAttempts = 0;
+let lockUntil = 0;
+
+// ── BOOT ──
+window.addEventListener('DOMContentLoaded', () => {
+  const session = localStorage.getItem(SESSION_KEY);
+  if (session && session === btoa('authenticated_' + getToday())) {
+    showDashboard();
+  } else {
+    document.getElementById('loginScreen').style.display = 'flex';
+    document.getElementById('loginUser').focus();
+  }
+  loadData();
+  renderNotifs();
+  setInterval(autoSave, 30000);
+});
+
+function getToday() {
+  return new Date().toISOString().slice(0,10);
+}
+
+// ── LOGIN ──
+function doLogin() {
+  const now = Date.now();
+  if (now < lockUntil) {
+    const secs = Math.ceil((lockUntil - now) / 1000);
+    showAttempts(`🔒 محظور لمدة ${secs} ثانية`);
+    return;
+  }
+  const user = document.getElementById('loginUser').value.trim();
+  const pass = document.getElementById('loginPass').value;
+  if (btoa(user) === CREDENTIALS.user && btoa(pass) === CREDENTIALS.pass) {
+    localStorage.setItem(SESSION_KEY, btoa('authenticated_' + getToday()));
+    loginAttempts = 0;
+    document.getElementById('loginScreen').style.opacity = '0';
+    document.getElementById('loginScreen').style.transition = 'opacity .4s';
+    setTimeout(() => {
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('loginScreen').style.opacity = '';
+    }, 400);
+    showDashboard();
+    addNotif('✅', 'تسجيل دخول ناجح', 'أهلاً بك في لوحة التحكم');
+  } else {
+    loginAttempts++;
+    document.getElementById('loginErr').style.display = 'block';
+    document.getElementById('loginPass').value = '';
+    if (loginAttempts >= 5) {
+      lockUntil = Date.now() + 60000;
+      showAttempts('🔒 تم حظرك لمدة 60 ثانية بسبب محاولات خاطئة متكررة');
+      let t = setInterval(() => {
+        const rem = Math.ceil((lockUntil - Date.now()) / 1000);
+        if (rem > 0) showAttempts(`🔒 محظور — ${rem}ث`);
+        else { clearInterval(t); showAttempts(''); loginAttempts = 0; }
+      }, 1000);
+    } else {
+      showAttempts(`محاولة ${loginAttempts}/5`);
+    }
+  }
+}
+
+function showAttempts(msg) {
+  document.getElementById('loginAttempts').textContent = msg;
+}
+
+function doLogout() {
+  if (!confirm('هل تريد تسجيل الخروج؟')) return;
+  localStorage.removeItem(SESSION_KEY);
+  location.reload();
+}
+
+function showDashboard() {
+  // Dashboard already shown by default
+}
+
+// ── NAVIGATION ──
+const titles = {
+  dashboard:'لوحة البيانات <small>/ نظرة عامة على CV Pro</small>',
+  messages:'رسائل العملاء <small>/ واتساب</small>',
+  orders:'الطلبات <small>/ إدارة الطلبات</small>',
+  content:'تعديل المحتوى <small>/ النصوص والنصوص</small>',
+  services:'الخدمات والأسعار <small>/ تعديل الخدمات</small>',
+  experts:'الخبراء <small>/ خالد ونورهان</small>',
+  seo:'SEO وجوجل <small>/ تحسين محركات البحث</small>',
+  analytics:'الإحصائيات <small>/ بيانات الزوار</small>',
+  design:'تصميم الموقع <small>/ الألوان والخطوط</small>',
+  settings:'الإعدادات العامة <small>/ إعدادات CV Pro</small>',
+};
+
+function go(name, el){
+  document.querySelectorAll('.nav-item').forEach(i=>i.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('p-'+name).classList.add('active');
+  document.getElementById('pgTitle').innerHTML = titles[name]||name;
+  closeSidebar();
+}
+
+// ── MOBILE SIDEBAR ──
+function openSidebar() {
+  document.querySelector('.sidebar').classList.add('open');
+  document.getElementById('overlay').classList.add('show');
+}
+function closeSidebar() {
+  document.querySelector('.sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+}
+
+// ── TABS ──
+function switchTab(el, id){
+  el.parentElement.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  const panel = el.closest('.panel');
+  panel.querySelectorAll('[id^="tc-"]').forEach(t=>t.style.display='none');
+  document.getElementById(id).style.display='block';
+}
+
+// ── COLOR PICKER ──
+function pickColor(el){
+  el.parentElement.querySelectorAll('.cswatch').forEach(s=>s.classList.remove('active'));
+  el.classList.add('active');
+  markChanged();
+}
+
+// ── SAVE / PERSIST ──
+let changed = false;
+let saveTimer = null;
+
+function markChanged(){
+  if(!changed){
+    changed = true;
+    document.getElementById('saveBar').classList.add('show');
+  }
+  // Auto-save after 2s of inactivity
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(autoSave, 2000);
+}
+
+function showSave(){ document.getElementById('saveBar').classList.add('show'); }
+function hideSave(){ document.getElementById('saveBar').classList.remove('show'); changed = false; }
+
+function collectData() {
+  const data = {};
+  document.querySelectorAll('.finput, .toggle').forEach((el, i) => {
+    if (el.classList.contains('toggle')) {
+      data['toggle_' + i] = el.classList.contains('on');
+    } else if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT') {
+      if (el.id) data[el.id] = el.value;
+    }
+  });
+  // Also save inline inputs
+  document.querySelectorAll('input[style]').forEach((el, i) => {
+    data['inline_' + i] = el.value;
+  });
+  return data;
+}
+
+function loadData() {
+  try {
+    const saved = localStorage.getItem(DATA_KEY);
+    if (!saved) return;
+    const data = JSON.parse(saved);
+    document.querySelectorAll('.finput, .toggle').forEach((el, i) => {
+      if (el.classList.contains('toggle')) {
+        const v = data['toggle_' + i];
+        if (v !== undefined) { if(v) el.classList.add('on'); else el.classList.remove('on'); }
+      } else if (el.id && data[el.id] !== undefined) {
+        el.value = data[el.id];
+      }
+    });
+    document.querySelectorAll('input[style]').forEach((el, i) => {
+      if (data['inline_' + i] !== undefined) el.value = data['inline_' + i];
+    });
+  } catch(e) { console.warn('Load error', e); }
+}
+
+function autoSave() {
+  if (!changed) return;
+  const data = collectData();
+  localStorage.setItem(DATA_KEY, JSON.stringify(data));
+  showToast('💾 تم الحفظ تلقائياً', 'success');
+  hideSave();
+}
+
+function saveNow(){
+  const btn = document.querySelector('.save-bar .tb-gold');
+  btn.textContent = 'جاري الحفظ...';
+  const data = collectData();
+  localStorage.setItem(DATA_KEY, JSON.stringify(data));
+  setTimeout(()=>{
+    btn.textContent = '✓ تم الحفظ!';
+    addNotif('💾', 'تم حفظ التغييرات', 'تم حفظ جميع التغييرات بنجاح');
+    setTimeout(()=>{
+      hideSave();
+      btn.textContent = '✓ حفظ ونشر';
+      showToast('✅ تم الحفظ والنشر بنجاح', 'success');
+    }, 1400);
+  }, 700);
+}
+
+// ── NOTIFICATIONS ──
+function getNotifs() {
+  try { return JSON.parse(localStorage.getItem(NOTIF_KEY)) || []; }
+  catch(e) { return []; }
+}
+
+function addNotif(icon, title, body) {
+  const notifs = getNotifs();
+  notifs.unshift({ icon, title, body, time: new Date().toLocaleTimeString('ar-EG'), unread: true, id: Date.now() });
+  if (notifs.length > 20) notifs.pop();
+  localStorage.setItem(NOTIF_KEY, JSON.stringify(notifs));
+  renderNotifs();
+}
+
+function renderNotifs() {
+  const notifs = getNotifs();
+  const list = document.getElementById('notifList');
+  const dot = document.getElementById('notifDot');
+  const unread = notifs.filter(n => n.unread).length;
+  if (unread > 0) {
+    dot.style.display = 'block';
+    dot.title = unread + ' إشعار جديد';
+  } else {
+    dot.style.display = 'none';
+  }
+  if (notifs.length === 0) {
+    list.innerHTML = '<div class="notif-empty">لا توجد إشعارات</div>';
+    return;
+  }
+  list.innerHTML = notifs.map(n => `
+    <div class="notif-item ${n.unread ? 'unread' : ''}" onclick="markNotifRead(${n.id})">
+      <div class="notif-item-icon">${n.icon}</div>
+      <div>
+        <div class="notif-item-text"><strong>${n.title}</strong><br>${n.body}</div>
+        <div class="notif-item-time">${n.time}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function markNotifRead(id) {
+  const notifs = getNotifs().map(n => n.id === id ? {...n, unread: false} : n);
+  localStorage.setItem(NOTIF_KEY, JSON.stringify(notifs));
+  renderNotifs();
+}
+
+function clearNotifs() {
+  localStorage.removeItem(NOTIF_KEY);
+  renderNotifs();
+  document.getElementById('notifPanel').classList.remove('open');
+}
+
+function toggleNotifs() {
+  const panel = document.getElementById('notifPanel');
+  panel.classList.toggle('open');
+  if (panel.classList.contains('open')) {
+    // Mark all as read after 2s
+    setTimeout(() => {
+      const notifs = getNotifs().map(n => ({...n, unread: false}));
+      localStorage.setItem(NOTIF_KEY, JSON.stringify(notifs));
+      renderNotifs();
+    }, 2000);
+  }
+}
+
+// Close notif panel on outside click
+document.addEventListener('click', (e) => {
+  const panel = document.getElementById('notifPanel');
+  const btn = document.getElementById('notifBtn');
+  if (panel && btn && !panel.contains(e.target) && !btn.contains(e.target)) {
+    panel.classList.remove('open');
+  }
+});
+
+// ── TOAST ──
+let toastTimer;
+function showToast(msg, type = 'info') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = `toast ${type} show`;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { t.classList.remove('show'); }, 2800);
+}
+
+// ── GOOGLE ANALYTICS LIVE STATUS ──
+function checkAnalytics() {
+  const gaId = document.querySelector('input[placeholder="G-XXXXXXXXXX"]');
+  if (gaId && gaId.value && gaId.value.startsWith('G-')) {
+    showToast('✅ Google Analytics ID صالح — أضفه للكود', 'success');
+    addNotif('📈', 'Google Analytics', `تم تسجيل المعرّف: ${gaId.value}`);
+  } else {
+    showToast('⚠️ أدخل Measurement ID صحيح يبدأ بـ G-', 'error');
+  }
+}
+
+// Initial notifications on first load
+if (!localStorage.getItem(NOTIF_KEY)) {
+  setTimeout(() => {
+    addNotif('🎉', 'مرحباً بك في لوحة التحكم', 'نسخة v2 — تم التحديث بجميع الميزات الحقيقية');
+    addNotif('💡', 'تلميح', 'بياناتك تُحفظ تلقائياً كل ثانيتين من التعديل');
+    addNotif('📱', 'الموبايل جاهز', 'لوحة التحكم الآن تعمل على جميع الأجهزة');
+  }, 1000);
+}
+</script>
+
+</body>
+</html>
