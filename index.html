@@ -202,12 +202,69 @@
   .copy-toast { position: fixed; bottom: 110px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--dark2); border: 1px solid rgba(201,168,76,0.3); color: var(--gold); padding: 10px 22px; border-radius: 10px; font-size: 0.88rem; font-weight: 700; opacity: 0; transition: all 0.3s; z-index: 300; pointer-events: none; }
   .copy-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
+  /* HAMBURGER */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; background: none; border: none; z-index: 101; }
+  .hamburger span { display: block; width: 26px; height: 2px; background: var(--gold); border-radius: 2px; transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,10,15,0.98); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: var(--white); text-decoration: none; font-size: 1.4rem; font-weight: 700; font-family: 'Tajawal',sans-serif; transition: color 0.3s; }
+  .mobile-menu a:hover { color: var(--gold); }
+
+  /* PRICING */
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; margin-top: 60px; max-width: 1200px; margin-left: auto; margin-right: auto; }
+  .price-card { background: var(--dark3); border: 1px solid rgba(201,168,76,0.12); border-radius: 24px; padding: 38px 30px; position: relative; transition: all 0.4s; overflow: hidden; }
+  .price-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); opacity: 0; transition: opacity 0.3s; }
+  .price-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-8px); box-shadow: 0 25px 60px rgba(0,0,0,0.4); }
+  .price-card:hover::before { opacity: 1; }
+  .price-card.featured { border-color: rgba(201,168,76,0.5); background: linear-gradient(135deg, var(--dark3), rgba(201,168,76,0.05)); }
+  .price-card.featured::before { opacity: 1; }
+  .price-tag-popular { position: absolute; top: 18px; left: 18px; background: var(--gold); color: var(--dark); font-size: 0.72rem; font-weight: 900; padding: 4px 12px; border-radius: 50px; letter-spacing: 1px; }
+  .price-icon { font-size: 2.4rem; margin-bottom: 18px; display: block; }
+  .price-name { font-family: 'Tajawal',sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--white); margin-bottom: 8px; }
+  .price-desc { color: var(--gray); font-size: 0.88rem; line-height: 1.6; margin-bottom: 22px; }
+  .price-old { color: var(--gray); font-size: 0.9rem; text-decoration: line-through; display: block; margin-bottom: 4px; opacity: 0.7; }
+  .price-amount { font-family: 'Tajawal',sans-serif; font-size: 2.6rem; font-weight: 900; color: var(--gold); line-height: 1; }
+  .price-currency { font-size: 1rem; font-weight: 700; vertical-align: super; }
+  .price-period { color: var(--gray); font-size: 0.82rem; margin-right: 4px; }
+  .price-discount-badge { display: inline-block; background: rgba(74,222,128,0.15); border: 1px solid rgba(74,222,128,0.4); color: #4ade80; font-size: 0.78rem; font-weight: 700; padding: 3px 10px; border-radius: 50px; margin-top: 6px; margin-bottom: 20px; }
+  .price-features { list-style: none; margin-bottom: 28px; }
+  .price-features li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 0.9rem; color: var(--gray); line-height: 1.5; }
+  .price-features li .pf-icon { color: #4ade80; flex-shrink: 0; margin-top: 2px; }
+  .price-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background: linear-gradient(135deg,#25D366,#128C7E); color: white; padding: 14px 20px; border-radius: 12px; text-decoration: none; font-size: 0.95rem; font-weight: 700; transition: all 0.3s; font-family: 'Cairo',sans-serif; }
+  .price-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(37,211,102,0.35); }
+
+  /* FAQ */
+  .faq-list { max-width: 800px; margin: 60px auto 0; }
+  .faq-item { border: 1px solid rgba(201,168,76,0.1); border-radius: 16px; margin-bottom: 14px; overflow: hidden; transition: border-color 0.3s; }
+  .faq-item.open { border-color: rgba(201,168,76,0.35); }
+  .faq-q { display: flex; align-items: center; justify-content: space-between; padding: 22px 28px; cursor: pointer; font-weight: 700; font-size: 1rem; color: var(--white); background: var(--dark3); gap: 15px; transition: background 0.3s; }
+  .faq-item.open .faq-q { background: rgba(201,168,76,0.06); }
+  .faq-q:hover { background: rgba(201,168,76,0.06); }
+  .faq-arrow { color: var(--gold); font-size: 1.2rem; transition: transform 0.3s; flex-shrink: 0; }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; background: var(--dark2); color: var(--gray); font-size: 0.95rem; line-height: 1.8; padding: 0 28px; }
+  .faq-item.open .faq-a { max-height: 400px; padding: 20px 28px; }
+
+  /* PORTFOLIO PREVIEW */
+  .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 60px; }
+  .portfolio-card { background: var(--dark3); border: 1px solid rgba(201,168,76,0.12); border-radius: 20px; overflow: hidden; transition: all 0.4s; }
+  .portfolio-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+  .portfolio-mock { height: 220px; background: var(--dark2); position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .portfolio-info { padding: 22px; }
+  .portfolio-info h4 { font-weight: 700; color: var(--white); margin-bottom: 6px; }
+  .portfolio-info p { color: var(--gray); font-size: 0.88rem; }
+
   /* MOBILE */
   @media(max-width:768px) {
     .nav-links { display: none; }
+    .hamburger { display: flex; }
     .stats { gap: 30px; }
     .process-steps { grid-template-columns: 1fr 1fr; }
     .contact-grid { grid-template-columns: 1fr !important; }
+    .pricing-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -223,8 +280,9 @@
   </div>
   <ul class="nav-links">
     <li><a href="#services">خدماتنا</a></li>
+    <li><a href="#pricing">الأسعار</a></li>
     <li><a href="#ats">نظام ATS</a></li>
-    <li><a href="#interview">الإنترفيو</a></li>
+    <li><a href="#faq">الأسئلة</a></li>
     <li><a href="#process">كيف نعمل</a></li>
     <li><a href="#contact-form" class="nav-cta">اتصل بنا</a></li>
     <li>
@@ -233,9 +291,25 @@
       </a>
     </li>
   </ul>
-  <a href="https://wa.me/201126104846?text=السلام عليكم عايز أستفسر عن CV Pro" target="_blank" style="display:none;align-items:center;gap:7px;background:#25D366;color:white;padding:9px 16px;border-radius:9px;text-decoration:none;font-size:0.85rem;font-weight:700;" id="mobileWaBtn">💬 واتساب</a>
+  <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()" aria-label="القائمة">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
-<style>@media(max-width:768px){#mobileWaBtn{display:flex!important;}}</style>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="closeMenu()">🎯 خدماتنا</a>
+  <a href="#pricing" onclick="closeMenu()">💰 الأسعار</a>
+  <a href="#ats" onclick="closeMenu()">🤖 نظام ATS</a>
+  <a href="#faq" onclick="closeMenu()">❓ الأسئلة الشائعة</a>
+  <a href="#process" onclick="closeMenu()">⚡ كيف نعمل</a>
+  <a href="#testimonials" onclick="closeMenu()">⭐ آراء العملاء</a>
+  <a href="#contact-form" onclick="closeMenu()" style="background:var(--gold);color:var(--dark);padding:14px 40px;border-radius:12px;margin-top:10px;">تواصل معنا</a>
+  <div style="display:flex;gap:15px;margin-top:10px;">
+    <a href="https://wa.me/201126104846" target="_blank" style="background:rgba(37,211,102,0.15);border:1px solid #25D366;color:#25D366;padding:10px 20px;border-radius:10px;">💬 نورهان</a>
+    <a href="https://wa.me/201068204700" target="_blank" style="background:rgba(37,99,235,0.15);border:1px solid #2563eb;color:#5B9BF8;padding:10px 20px;border-radius:10px;">💬 خالد</a>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -330,6 +404,236 @@
       </a>
     </div>
   </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" style="padding:100px 5%;background:var(--dark);">
+  <div style="text-align:center;">
+    <span class="section-label">✦ نماذج أعمالنا</span>
+    <h2 class="section-title">شوف شغلنا بنفسك</h2>
+    <p class="section-desc" style="margin:0 auto;">تصاميم احترافية لعملاء حقيقيين — هكذا سيبدو CV بتاعك</p>
+  </div>
+  <div class="portfolio-grid reveal">
+
+    <!-- Mock CV 1 -->
+    <div class="portfolio-card">
+      <div class="portfolio-mock">
+        <div style="width:85%;height:85%;background:white;border-radius:8px;padding:18px;display:flex;flex-direction:column;gap:8px;box-shadow:0 10px 40px rgba(0,0,0,0.5);">
+          <div style="display:flex;align-items:center;gap:10px;border-bottom:2px solid #1d4ed8;padding-bottom:10px;">
+            <div style="width:36px;height:36px;background:linear-gradient(135deg,#1d4ed8,#2563eb);border-radius:50%;flex-shrink:0;"></div>
+            <div><div style="height:7px;background:#1a1a2e;border-radius:4px;width:100px;margin-bottom:4px;"></div><div style="height:5px;background:#ccc;border-radius:4px;width:70px;"></div></div>
+          </div>
+          <div style="height:5px;background:#e5e7eb;border-radius:4px;width:90%;margin-top:6px;"></div>
+          <div style="height:5px;background:#e5e7eb;border-radius:4px;width:75%;"></div>
+          <div style="height:5px;background:#e5e7eb;border-radius:4px;width:85%;"></div>
+          <div style="height:5px;background:#1d4ed8;border-radius:4px;width:50%;margin-top:8px;"></div>
+          <div style="height:5px;background:#e5e7eb;border-radius:4px;width:95%;"></div>
+          <div style="height:5px;background:#e5e7eb;border-radius:4px;width:80%;"></div>
+          <div style="height:5px;background:#1d4ed8;border-radius:4px;width:50%;margin-top:8px;"></div>
+          <div style="height:5px;background:#e5e7eb;border-radius:4px;width:90%;"></div>
+          <div style="height:5px;background:#e5e7eb;border-radius:4px;width:70%;"></div>
+          <div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap;">
+            <div style="height:18px;background:#dbeafe;border-radius:50px;width:45px;"></div>
+            <div style="height:18px;background:#dbeafe;border-radius:50px;width:55px;"></div>
+            <div style="height:18px;background:#dbeafe;border-radius:50px;width:40px;"></div>
+          </div>
+        </div>
+        <div style="position:absolute;top:12px;right:12px;background:var(--gold);color:var(--dark);font-size:0.7rem;font-weight:800;padding:3px 10px;border-radius:50px;">ATS ✓</div>
+      </div>
+      <div class="portfolio-info">
+        <h4>CV مهندس برمجيات</h4>
+        <p>تصميم احترافي أزرق — متوافق ATS — 2 صفحة</p>
+      </div>
+    </div>
+
+    <!-- Mock CV 2 -->
+    <div class="portfolio-card">
+      <div class="portfolio-mock">
+        <div style="width:85%;height:85%;background:white;border-radius:8px;padding:18px;display:flex;flex-direction:column;gap:8px;box-shadow:0 10px 40px rgba(0,0,0,0.5);">
+          <div style="display:flex;align-items:center;gap:10px;border-bottom:2px solid #C9A84C;padding-bottom:10px;">
+            <div style="width:36px;height:36px;background:linear-gradient(135deg,#C9A84C,#E8C97A);border-radius:50%;flex-shrink:0;"></div>
+            <div><div style="height:7px;background:#1a1a2e;border-radius:4px;width:110px;margin-bottom:4px;"></div><div style="height:5px;background:#ccc;border-radius:4px;width:80px;"></div></div>
+          </div>
+          <div style="height:5px;background:#e5e7eb;border-radius:4px;width:90%;margin-top:6px;"></div>
+          <div style="height:5px;background:#e5e7eb;border-radius:4px;width:70%;"></div>
+          <div style="height:5px;background:#C9A84C;border-radius:4px;width:50%;margin-top:8px;"></div>
+          <div style="height:5px;background:#e5e7eb;border-radius:4px;width:95%;"></div>
+          <div style="height:5px;background:#e5e7eb;border-radius:4px;width:80%;"></div>
+          <div style="height:5px;background:#C9A84C;border-radius:4px;width:50%;margin-top:8px;"></div>
+          <div style="height:5px;background:#e5e7eb;border-radius:4px;width:85%;"></div>
+          <div style="height:5px;background:#e5e7eb;border-radius:4px;width:65%;"></div>
+          <div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap;">
+            <div style="height:18px;background:#fef9ee;border-radius:50px;width:50px;border:1px solid #C9A84C;"></div>
+            <div style="height:18px;background:#fef9ee;border-radius:50px;width:45px;border:1px solid #C9A84C;"></div>
+          </div>
+        </div>
+        <div style="position:absolute;top:12px;right:12px;background:var(--gold);color:var(--dark);font-size:0.7rem;font-weight:800;padding:3px 10px;border-radius:50px;">ATS ✓</div>
+      </div>
+      <div class="portfolio-info">
+        <h4>CV محاسب مالي</h4>
+        <p>تصميم ذهبي أنيق — عربي/إنجليزي — 1 صفحة</p>
+      </div>
+    </div>
+
+    <!-- Mock CV 3 -->
+    <div class="portfolio-card">
+      <div class="portfolio-mock">
+        <div style="width:85%;height:85%;background:white;border-radius:8px;display:flex;flex-direction:row;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.5);">
+          <div style="width:35%;background:linear-gradient(180deg,#0f172a,#1e293b);padding:14px;display:flex;flex-direction:column;gap:8px;">
+            <div style="width:40px;height:40px;background:rgba(255,255,255,0.2);border-radius:50%;margin:0 auto 8px;"></div>
+            <div style="height:4px;background:rgba(255,255,255,0.5);border-radius:4px;"></div>
+            <div style="height:4px;background:rgba(255,255,255,0.3);border-radius:4px;width:80%;"></div>
+            <div style="height:3px;background:#4ade80;border-radius:4px;width:60%;margin-top:10px;"></div>
+            <div style="height:4px;background:rgba(255,255,255,0.3);border-radius:4px;"></div>
+            <div style="height:4px;background:rgba(255,255,255,0.3);border-radius:4px;width:75%;"></div>
+          </div>
+          <div style="flex:1;padding:14px;display:flex;flex-direction:column;gap:7px;">
+            <div style="height:5px;background:#e5e7eb;border-radius:4px;width:90%;"></div>
+            <div style="height:5px;background:#e5e7eb;border-radius:4px;width:75%;"></div>
+            <div style="height:4px;background:#4ade80;border-radius:4px;width:45%;margin-top:5px;"></div>
+            <div style="height:5px;background:#e5e7eb;border-radius:4px;width:90%;"></div>
+            <div style="height:5px;background:#e5e7eb;border-radius:4px;width:80%;"></div>
+            <div style="height:4px;background:#4ade80;border-radius:4px;width:45%;margin-top:5px;"></div>
+            <div style="height:5px;background:#e5e7eb;border-radius:4px;width:85%;"></div>
+          </div>
+        </div>
+        <div style="position:absolute;top:12px;right:12px;background:var(--gold);color:var(--dark);font-size:0.7rem;font-weight:800;padding:3px 10px;border-radius:50px;">ATS ✓</div>
+      </div>
+      <div class="portfolio-info">
+        <h4>CV مسوّق رقمي</h4>
+        <p>تصميم عمودي عصري — إنجليزي — 1 صفحة</p>
+      </div>
+    </div>
+
+  </div>
+  <div style="text-align:center;margin-top:50px;">
+    <a href="https://wa.me/201068204700?text=السلام عليكم خالد 👋 عايز أشوف نماذج أكتر من شغلكم" target="_blank" style="display:inline-flex;align-items:center;gap:10px;border:2px solid rgba(201,168,76,0.4);color:var(--gold);padding:15px 35px;border-radius:12px;text-decoration:none;font-weight:700;font-size:1rem;transition:all 0.3s;" onmouseover="this.style.background='rgba(201,168,76,0.08)'" onmouseout="this.style.background='transparent'">
+      👁️ شوف نماذج أكتر على الواتساب
+    </a>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" style="background:var(--dark2);padding:100px 5%;">
+  <div style="text-align:center;">
+    <span class="section-label">✦ الأسعار والباقات</span>
+    <h2 class="section-title">باقات مناسبة لكل ميزانية</h2>
+    <p class="section-desc" style="margin:0 auto 15px;">أسعار مخصوصة للسوق المصري — شفافية كاملة بدون أي مفاجآت</p>
+    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.3);color:#4ade80;padding:8px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;margin-bottom:10px;">
+      🎉 خصم لفترة محدودة — وفّر حتى 30%
+    </div>
+  </div>
+  <div class="pricing-grid reveal">
+
+    <!-- CV من الصفر -->
+    <div class="price-card">
+      <span class="price-icon">📄</span>
+      <div class="price-name">CV من الصفر</div>
+      <div class="price-desc">CV احترافي مكتوب من البداية ومتوافق مع نظام ATS</div>
+      <span class="price-old">كان 350 جنيه</span>
+      <div><span class="price-currency">ج</span><span class="price-amount">249</span><span class="price-period">فقط</span></div>
+      <div class="price-discount-badge">✂️ وفّر 101 جنيه — خصم 29%</div>
+      <ul class="price-features">
+        <li><span class="pf-icon">✓</span> CV احترافي بالعربي أو الإنجليزي</li>
+        <li><span class="pf-icon">✓</span> متوافق 100% مع نظام ATS</li>
+        <li><span class="pf-icon">✓</span> تسليم خلال 48 ساعة</li>
+        <li><span class="pf-icon">✓</span> صيغة PDF + Word</li>
+        <li><span class="pf-icon">✓</span> تعديلان مجانيان</li>
+      </ul>
+      <a href="https://wa.me/201068204700?text=السلام عليكم خالد 👋 عايز أطلب باقة CV من الصفر بسعر 249 جنيه" target="_blank" class="price-btn">💬 اطلب دلوقتي</a>
+    </div>
+
+    <!-- تحسين CV -->
+    <div class="price-card">
+      <span class="price-icon">🎯</span>
+      <div class="price-name">تحسين CV موجود</div>
+      <div class="price-desc">نعدّل ونطوّر CV عندك عشان يعدّي نظام ATS ويجذب HR</div>
+      <span class="price-old">كان 250 جنيه</span>
+      <div><span class="price-currency">ج</span><span class="price-amount">179</span><span class="price-period">فقط</span></div>
+      <div class="price-discount-badge">✂️ وفّر 71 جنيه — خصم 28%</div>
+      <ul class="price-features">
+        <li><span class="pf-icon">✓</span> مراجعة وتحسين شامل للمحتوى</li>
+        <li><span class="pf-icon">✓</span> إضافة كلمات مفتاحية لمجالك</li>
+        <li><span class="pf-icon">✓</span> تحسين التنسيق والهيكل</li>
+        <li><span class="pf-icon">✓</span> تسليم خلال 24 ساعة</li>
+        <li><span class="pf-icon">✓</span> تعديل مجاني واحد</li>
+      </ul>
+      <a href="https://wa.me/201068204700?text=السلام عليكم خالد 👋 عايز أطلب باقة تحسين CV بسعر 179 جنيه" target="_blank" class="price-btn">💬 اطلب دلوقتي</a>
+    </div>
+
+    <!-- الباقة الشاملة - featured -->
+    <div class="price-card featured">
+      <div class="price-tag-popular">⭐ الأوفر</div>
+      <span class="price-icon">🚀</span>
+      <div class="price-name">الباقة الشاملة</div>
+      <div class="price-desc">CV + Cover Letter + تحسين LinkedIn — كل حاجة في صفقة واحدة</div>
+      <span class="price-old">كان 700 جنيه</span>
+      <div><span class="price-currency">ج</span><span class="price-amount">449</span><span class="price-period">فقط</span></div>
+      <div class="price-discount-badge">✂️ وفّر 251 جنيه — خصم 36%</div>
+      <ul class="price-features">
+        <li><span class="pf-icon">✓</span> CV احترافي متوافق مع ATS</li>
+        <li><span class="pf-icon">✓</span> Cover Letter مخصص للوظيفة</li>
+        <li><span class="pf-icon">✓</span> تحسين بروفايل LinkedIn</li>
+        <li><span class="pf-icon">✓</span> استشارة مجانية قبل البدء</li>
+        <li><span class="pf-icon">✓</span> 3 تعديلات مجانية</li>
+        <li><span class="pf-icon">✓</span> تسليم خلال 72 ساعة</li>
+      </ul>
+      <a href="https://wa.me/201068204700?text=السلام عليكم خالد 👋 عايز أطلب الباقة الشاملة (CV + Cover Letter + LinkedIn) بسعر 449 جنيه" target="_blank" class="price-btn">💬 احجز الباقة دي</a>
+    </div>
+
+    <!-- Cover Letter -->
+    <div class="price-card">
+      <span class="price-icon">💼</span>
+      <div class="price-name">Cover Letter</div>
+      <div class="price-desc">خطاب تقديم احترافي مخصص لكل وظيفة بتتقدم عليها</div>
+      <span class="price-old">كان 200 جنيه</span>
+      <div><span class="price-currency">ج</span><span class="price-amount">139</span><span class="price-period">فقط</span></div>
+      <div class="price-discount-badge">✂️ وفّر 61 جنيه — خصم 30%</div>
+      <ul class="price-features">
+        <li><span class="pf-icon">✓</span> مخصص لكل وظيفة على حدة</li>
+        <li><span class="pf-icon">✓</span> بالعربي أو الإنجليزي</li>
+        <li><span class="pf-icon">✓</span> تسليم خلال 24 ساعة</li>
+        <li><span class="pf-icon">✓</span> تعديل مجاني واحد</li>
+      </ul>
+      <a href="https://wa.me/201126104846?text=السلام عليكم نورهان 👋 عايز أطلب Cover Letter احترافي بسعر 139 جنيه" target="_blank" class="price-btn">💬 اطلب دلوقتي</a>
+    </div>
+
+    <!-- LinkedIn -->
+    <div class="price-card">
+      <span class="price-icon">🔗</span>
+      <div class="price-name">تحسين LinkedIn</div>
+      <div class="price-desc">بروفايل LinkedIn احترافي يجذب الـ Recruiters ويزيد فرصك</div>
+      <span class="price-old">كان 280 جنيه</span>
+      <div><span class="price-currency">ج</span><span class="price-amount">199</span><span class="price-period">فقط</span></div>
+      <div class="price-discount-badge">✂️ وفّر 81 جنيه — خصم 29%</div>
+      <ul class="price-features">
+        <li><span class="pf-icon">✓</span> تحسين الـ Headline والـ Summary</li>
+        <li><span class="pf-icon">✓</span> كلمات مفتاحية لمجالك</li>
+        <li><span class="pf-icon">✓</span> نصائح للصورة والبانر</li>
+        <li><span class="pf-icon">✓</span> تسليم خلال 48 ساعة</li>
+      </ul>
+      <a href="https://wa.me/201126104846?text=السلام عليكم نورهان 👋 عايز أطلب تحسين LinkedIn بسعر 199 جنيه" target="_blank" class="price-btn">💬 اطلب دلوقتي</a>
+    </div>
+
+    <!-- انترفيو -->
+    <div class="price-card">
+      <span class="price-icon">🎓</span>
+      <div class="price-name">تحضير الإنترفيو</div>
+      <div class="price-desc">جلسة تدريبية مع خبير لتجهيزك لأي مقابلة عمل بثقة</div>
+      <span class="price-old">كان 350 جنيه</span>
+      <div><span class="price-currency">ج</span><span class="price-amount">249</span><span class="price-period">للجلسة</span></div>
+      <div class="price-discount-badge">✂️ وفّر 101 جنيه — خصم 29%</div>
+      <ul class="price-features">
+        <li><span class="pf-icon">✓</span> جلسة على واتساب/زووم ساعة</li>
+        <li><span class="pf-icon">✓</span> أسئلة مخصصة لمجالك</li>
+        <li><span class="pf-icon">✓</span> تقييم لغة الجسد والأسلوب</li>
+        <li><span class="pf-icon">✓</span> ملاحظات مكتوبة بعد الجلسة</li>
+      </ul>
+      <a href="https://wa.me/201126104846?text=السلام عليكم نورهان 👋 عايز أحجز جلسة تحضير إنترفيو بسعر 249 جنيه" target="_blank" class="price-btn">💬 احجز جلستك</a>
+    </div>
+
+  </div>
+  <p style="text-align:center;color:var(--gray);font-size:0.85rem;margin-top:40px;opacity:0.7;">💡 الأسعار بالجنيه المصري · الدفع بعد الاتفاق · الخصومات لفترة محدودة</p>
 </section>
 
 <!-- ATS -->
@@ -447,6 +751,90 @@
         <div><div style="font-weight:700;color:var(--white);">رنا مصطفى</div><div style="color:var(--gold);font-size:0.82rem;">طبيبة — سوهاج</div></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="padding:100px 5%;background:var(--dark2);">
+  <div style="text-align:center;">
+    <span class="section-label">✦ الأسئلة الشائعة</span>
+    <h2 class="section-title">كل أسئلتك هنا 👇</h2>
+    <p class="section-desc" style="margin:0 auto;">إجابات على أكتر الأسئلة اللي بتوصلنا</p>
+  </div>
+  <div class="faq-list reveal">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>💰 كام سعر الخدمة؟</span>
+        <span class="faq-arrow">▾</span>
+      </div>
+      <div class="faq-a">الأسعار بتبدأ من 139 جنيه للـ Cover Letter، و249 جنيه للـ CV من الصفر، و449 جنيه للباقة الشاملة (CV + Cover Letter + LinkedIn). شوف قسم الأسعار فوق لتفاصيل أكتر. كل الأسعار دي عليها خصومات لفترة محدودة!</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>⏱️ كام يوم التسليم؟</span>
+        <span class="faq-arrow">▾</span>
+      </div>
+      <div class="faq-a">CV من الصفر: خلال 48 ساعة من وقت استلام بياناتك. تحسين CV: خلال 24 ساعة. Cover Letter: خلال 24 ساعة. الباقة الشاملة: خلال 72 ساعة. لو عندك مقابلة مستعجلة تقدر تطلب تسليم سريع وهنحاول نتعاون معاك.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>📝 بتعملوا CV بالعربي ولا الإنجليزي؟</span>
+        <span class="faq-arrow">▾</span>
+      </div>
+      <div class="faq-a">بنعمل CV بالعربي والإنجليزي وكمان بالاتنين مع بعض لو محتاج. هتحدد في البداية اللغة اللي عايزها حسب السوق اللي بتقدم فيه. شركات محلية؟ عربي مناسب. شركات متعددة الجنسيات أو فرص خارج مصر؟ إنجليزي أفضل.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>🔄 كام تعديل مجاني بعد الاستلام؟</span>
+        <span class="faq-arrow">▾</span>
+      </div>
+      <div class="faq-a">بيختلف حسب الباقة: CV من الصفر وتحسين CV = تعديلان مجانيان. Cover Letter = تعديل مجاني واحد. الباقة الشاملة = 3 تعديلات مجانية. التعديلات دي في خلال 7 أيام من الاستلام. بعد كده أي تعديل بسعر رمزي.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>💳 إمتى بدفع؟</span>
+        <span class="faq-arrow">▾</span>
+      </div>
+      <div class="faq-a">الدفع بيكون بعد الاتفاق على التفاصيل والسعر وقبل البدء في الشغل. بنقبل الدفع عن طريق فودافون كاش أو إنستاباي. مفيش دفع قبل ما تتفق على كل حاجة.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>📄 هستلم الـ CV بأي صيغة؟</span>
+        <span class="faq-arrow">▾</span>
+      </div>
+      <div class="faq-a">هتستلم الـ CV بصيغة PDF و Word (DOCX) مع بعض. الـ PDF للتقديم والإرسال، والـ Word عشان تقدر تعدل فيه بنفسك لو احتجت في المستقبل.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>🎓 أنا خريج جديد ومفيش خبرة — تقدروا تساعدوني؟</span>
+        <span class="faq-arrow">▾</span>
+      </div>
+      <div class="faq-a">أيوه تمام! في الواقع كتير من عملائنا خريجين جدد. بنشتغل معاك على إبراز مشاريع التخرج والتدريبات والأنشطة الجامعية والمهارات بطريقة احترافية. CV الخريج الجديد له استراتيجية خاصة بنتقنها.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>🌍 بتخدموا ناس برا مصر؟</span>
+        <span class="faq-arrow">▾</span>
+      </div>
+      <div class="faq-a">بالطبع! بنخدم عملاء في مصر والسعودية والإمارات والكويت وكل دول الخليج. الـ CV بيتعمل حسب متطلبات السوق اللي بتستهدفه سواء كان محلي أو خليجي.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>🤝 إيه الضمانات اللي بتقدموها؟</span>
+        <span class="faq-arrow">▾</span>
+      </div>
+      <div class="faq-a">بنضمن تسليم CV متوافق مع نظام ATS، وإذا مكنتش راضي بعد التعديلات المجانية هنرجعلك فلوسك. +500 عميل راضي و95% نسبة تجاوز ATS دي مش كلام — دي نتايج حقيقية.</div>
+    </div>
+
   </div>
 </section>
 
@@ -604,6 +992,11 @@
     </a>
   </div>
   <p style="margin-top:15px;font-size:0.8rem;opacity:0.5;">© 2025 CV Pro. جميع الحقوق محفوظة.</p>
+  <p style="margin-top:8px;font-size:0.78rem;opacity:0.4;">
+    <a href="#faq" style="color:var(--gray);text-decoration:none;margin:0 8px;">الأسئلة الشائعة</a> ·
+    <a href="#pricing" style="color:var(--gray);text-decoration:none;margin:0 8px;">الأسعار</a> ·
+    <span style="margin:0 8px;">سياسة الخصوصية: بياناتك محفوظة ومش بنشاركها مع أي طرف تالت</span>
+  </p>
 </footer>
 
 <!-- FLOATING WHATSAPP -->
@@ -683,7 +1076,7 @@
   // Back to top
   const backTop = document.createElement('a');
   backTop.href = '#'; backTop.title = 'العودة للأعلى';
-  backTop.style.cssText = 'position:fixed;bottom:28px;right:28px;width:42px;height:42px;background:var(--dark3);border:1px solid rgba(201,168,76,0.35);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.2rem;z-index:200;opacity:0;transition:all 0.3s;text-decoration:none;';
+  backTop.style.cssText = 'position:fixed;bottom:110px;right:28px;width:42px;height:42px;background:var(--dark3);border:1px solid rgba(201,168,76,0.35);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.2rem;z-index:200;opacity:0;transition:all 0.3s;text-decoration:none;';
   backTop.innerHTML = '↑';
   document.body.appendChild(backTop);
   window.addEventListener('scroll', () => {
@@ -692,13 +1085,37 @@
   });
   backTop.addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
+  // Hamburger menu
+  function toggleMenu() {
+    const btn = document.getElementById('hamburgerBtn');
+    const menu = document.getElementById('mobileMenu');
+    btn.classList.toggle('open');
+    menu.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  }
+  function closeMenu() {
+    document.getElementById('hamburgerBtn').classList.remove('open');
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // FAQ accordion
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
   // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
+      closeMenu();
       document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
     });
   });
+
 </script>
 </body>
 </html>
