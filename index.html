@@ -77,14 +77,26 @@
   html { scroll-behavior: smooth; }
   body { font-family: 'Cairo', sans-serif; background: var(--dark); color: var(--white); overflow-x: hidden; }
 
-  /* URGENCY BAR */
-  #urgencyBar { position:fixed; top:0; left:0; right:0; z-index:500; background:linear-gradient(90deg,#C9A84C,#E8C97A,#C9A84C); background-size:200% 100%; animation:shimmer 3s infinite linear; padding:4px 14px; font-family:'Cairo',sans-serif; font-size:0.76rem; font-weight:700; color:#0A0A0F; display:flex; align-items:center; justify-content:center; gap:8px; height:28px; overflow:hidden; }
   @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 
   /* STICKY MOBILE CTA */
   #stickyMobileCta { display:none; position:fixed; bottom:0; left:0; right:0; z-index:600; background:linear-gradient(135deg,#25D366,#128C7E); padding:12px 20px; box-shadow:0 -4px 20px rgba(37,211,102,0.4); }
   #stickyMobileCta a { display:flex; align-items:center; justify-content:center; gap:10px; color:white; text-decoration:none; font-family:'Cairo',sans-serif; font-weight:800; font-size:1rem; }
   @media(max-width:768px){ #stickyMobileCta { display:block; } body { padding-bottom:62px; } }
+
+  /* BEFORE/AFTER GRID */
+  @media(max-width:600px){ .before-after-grid{ grid-template-columns:1fr !important; } .about-grid{ grid-template-columns:1fr !important; } }
+
+  /* CV CHECKER */
+  .checker-options { display:flex; flex-direction:column; gap:12px; }
+  .checker-btn { background:var(--dark2); border:1.5px solid rgba(201,168,76,0.2); border-radius:14px; padding:15px 20px; color:var(--white); font-family:'Cairo',sans-serif; font-size:0.97rem; font-weight:600; cursor:pointer; transition:all 0.25s; text-align:right; }
+  .checker-btn:hover { border-color:var(--gold); background:rgba(201,168,76,0.07); transform:translateX(-4px); }
+  .checker-btn.selected { border-color:var(--gold); background:rgba(201,168,76,0.12); color:var(--gold); }
+
+  /* STEP DOTS */
+  .step-dot { width:10px; height:10px; border-radius:50%; background:rgba(201,168,76,0.2); transition:all 0.3s; }
+  .step-dot.active { background:var(--gold); transform:scale(1.3); }
+  .step-dot.done { background:rgba(74,222,128,0.6); }
 
   /* TRUST STRIP */
   .trust-strip { display:flex; justify-content:center; gap:30px; flex-wrap:wrap; padding:22px 5%; background:rgba(201,168,76,0.04); border-bottom:1px solid rgba(201,168,76,0.08); }
@@ -115,7 +127,8 @@
     display: flex; align-items: center; justify-content: space-between;
     transition: top 0.3s;
   }
-  .logo { font-family: 'Tajawal', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--gold); letter-spacing: 1px; }
+  .logo { font-family: 'Tajawal', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--gold); letter-spacing: 1px; cursor: pointer; user-select: none; transition: opacity 0.2s; }
+  .logo:hover { opacity: 0.85; }
   .logo span { color: var(--white); }
   .nav-links { display: flex; gap: 30px; list-style: none; }
   .nav-links a { color: var(--gray); text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: color 0.3s; }
@@ -296,7 +309,6 @@
 
   /* MOBILE */
   @media(max-width:768px) {
-    #urgencyBar { font-size:0.7rem; padding:6px 8px; gap:5px; flex-wrap:nowrap; }
     nav { top: 0; padding: 12px 5%; }
     .logo { font-size: 1.3rem; }
     .hero { padding: 140px 5% 60px; }
@@ -321,7 +333,6 @@
     .faq-item.open .faq-a { padding: 16px 18px; }
   }
   @media(max-width:400px) {
-    #urgencyBar { font-size:0.65rem; }
     .hero h1 { font-size: 2rem; }
   }
 </style>
@@ -331,18 +342,15 @@
 <div class="copy-toast" id="copyToast">✓ تم النسخ!</div>
 
 
-<div id="urgencyBar">
-  🔥 خصم 30% لفترة محدودة — العرض بينتهي بعد: <strong id="urgencyCountdown" style="font-family:monospace;letter-spacing:1px;background:rgba(0,0,0,0.15);padding:2px 8px;border-radius:4px;">23:59:59</strong> ⚡ اطلب دلوقتي قبل ما يخلص!
-</div>
-
 <nav>
   <div>
-    <div class="logo">CV<span>Pro</span></div>
+    <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'});setTimeout(()=>location.reload(),400);" title="الرجوع للبداية">CV<span>Pro</span></div>
   </div>
   <ul class="nav-links">
     <li><a href="#services">خدماتنا</a></li>
     <li><a href="#portfolio">نماذج أعمالنا</a></li>
     <li><a href="#pricing">الأسعار</a></li>
+    <li><a href="#about">من نحن</a></li>
     <li><a href="#testimonials">آراء العملاء</a></li>
     <li><a href="#faq">الأسئلة</a></li>
     <li><a href="#contact-form" class="nav-cta">🚀 اطلب الآن</a></li>
@@ -365,6 +373,7 @@
   <a href="#services" onclick="closeMenu()">🎯 خدماتنا</a>
   <a href="#portfolio" onclick="closeMenu()">🖼️ نماذج أعمالنا</a>
   <a href="#pricing" onclick="closeMenu()">💰 الأسعار</a>
+  <a href="#about" onclick="closeMenu()">🏢 من نحن</a>
   <a href="#testimonials" onclick="closeMenu()">⭐ آراء العملاء</a>
   <a href="#faq" onclick="closeMenu()">❓ الأسئلة الشائعة</a>
   <a href="#contact-form" onclick="closeMenu()" style="background:var(--gold);color:var(--dark);padding:14px 40px;border-radius:12px;margin-top:10px;font-weight:900;">🚀 اطلب CV دلوقتي</a>
@@ -379,20 +388,20 @@
   <div class="hero-grid"></div>
   <div>
     <div class="live-counter"><span class="live-dot"></span> <span id="liveViewers">17</span> شخص بيشوف الموقع دلوقتي</div>
-    <div class="badge">✦ خبراء السيرة الذاتية الاحترافية — +500 عميل راضي</div>
-    <h1>سيرتك الذاتية<br><span class="gold">بوابتك للوظيفة</span></h1>
-    <p>نصمم لك CV احترافي يتجاوز نظام ATS ويجذب انتباه المسؤول عن التوظيف في ثوانٍ — <strong style="color:var(--white);">ضمان استرداد كامل لو مش راضي</strong></p>
+    <div class="badge">✦ +500 عميل — 95% منهم عدّوا نظام ATS</div>
+    <h1><span class="gold">CV بيترفض؟</span><br>إحنا نصلحه.</h1>
+    <p>أكتر من <strong style="color:var(--white);">75% من الـ CVs بتتصفّى آلياً</strong> قبل ما يشوفها أي إنسان — نكتبلك CV بيعدي النظام ده ويوصل لصاحب القرار، أو هنرجعلك فلوسك.</p>
     <div class="hero-btns">
-      <a href="#contact-form" class="btn-primary" style="font-size:1.15rem;padding:20px 42px;">
-        <span>🚀</span> اطلب CV احترافي الآن
+      <a href="#cv-checker" class="btn-primary" style="font-size:1.1rem;padding:18px 36px;">
+        <span>🔍</span> قيّم CV بتاعك مجاناً
       </a>
-      <a href="#pricing" class="btn-secondary">شوف الأسعار ↓</a>
+      <a href="#contact-form" class="btn-secondary">اطلب CV احترافي ↓</a>
     </div>
     <div style="margin-top:25px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+      <span style="color:var(--gray);font-size:0.85rem;display:flex;align-items:center;gap:6px;"><span style="color:#4ade80;">✓</span> تقييم مجاني فوري</span>
       <span style="color:var(--gray);font-size:0.85rem;display:flex;align-items:center;gap:6px;"><span style="color:#4ade80;">✓</span> تسليم خلال 48 ساعة</span>
-      <span style="color:var(--gray);font-size:0.85rem;display:flex;align-items:center;gap:6px;"><span style="color:#4ade80;">✓</span> عربي وإنجليزي</span>
-      <span style="color:var(--gray);font-size:0.85rem;display:flex;align-items:center;gap:6px;"><span style="color:#4ade80;">✓</span> ضمان استرداد</span>
-      <span style="color:var(--gray);font-size:0.85rem;display:flex;align-items:center;gap:6px;"><span style="color:#4ade80;">✓</span> بدون تعقيد</span>
+      <span style="color:var(--gray);font-size:0.85rem;display:flex;align-items:center;gap:6px;"><span style="color:#4ade80;">✓</span> ضمان استرداد كامل</span>
+      <span style="color:var(--gray);font-size:0.85rem;display:flex;align-items:center;gap:6px;"><span style="color:#4ade80;">✓</span> دفع بعد الاتفاق</span>
     </div>
   </div>
 </section>
@@ -405,7 +414,219 @@
   <div class="stat-item"><strong class="stat-num">3x</strong><div class="stat-label">زيادة في المقابلات</div></div>
 </div>
 
-<!-- TRUST STRIP -->
+<!-- BEFORE / AFTER SECTION -->
+<section id="before-after" style="padding:90px 5%;background:var(--dark2);">
+  <div style="text-align:center;margin-bottom:55px;">
+    <span class="section-label">✦ الفرق الحقيقي</span>
+    <h2 class="section-title">CV قبل وبعد CV Pro</h2>
+    <p class="section-desc" style="margin:0 auto;">نفس الشخص، نفس الخبرات — بس بعد تحسيننا فرق في النتايج</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:30px;max-width:1000px;margin:0 auto;" class="reveal before-after-grid">
+
+    <!-- BEFORE -->
+    <div style="position:relative;">
+      <div style="background:#1a0a0a;border:2px solid rgba(255,80,80,0.35);border-radius:20px;padding:30px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:16px;right:16px;background:rgba(255,80,80,0.15);border:1px solid rgba(255,80,80,0.4);color:#ff5050;font-size:0.75rem;font-weight:900;padding:5px 14px;border-radius:50px;letter-spacing:1px;">✗ قبل</div>
+        <!-- Fake CV bad -->
+        <div style="background:#fff;border-radius:8px;padding:20px;margin-top:10px;direction:ltr;">
+          <div style="height:10px;background:#333;width:60%;border-radius:3px;margin-bottom:6px;"></div>
+          <div style="height:7px;background:#999;width:40%;border-radius:3px;margin-bottom:16px;"></div>
+          <div style="display:flex;gap:4px;margin-bottom:14px;flex-wrap:wrap;">
+            <div style="height:6px;background:#bbb;width:30%;border-radius:2px;"></div>
+            <div style="height:6px;background:#bbb;width:25%;border-radius:2px;"></div>
+            <div style="height:6px;background:#bbb;width:35%;border-radius:2px;"></div>
+          </div>
+          <!-- bad sections -->
+          <div style="height:8px;background:#ddd;width:45%;border-radius:3px;margin-bottom:8px;"></div>
+          <div style="margin-right:10px;">
+            <div style="height:5px;background:#e0e0e0;width:95%;border-radius:2px;margin-bottom:5px;"></div>
+            <div style="height:5px;background:#e0e0e0;width:88%;border-radius:2px;margin-bottom:5px;"></div>
+            <div style="height:5px;background:#e0e0e0;width:92%;border-radius:2px;margin-bottom:5px;"></div>
+          </div>
+          <div style="height:8px;background:#ddd;width:40%;border-radius:3px;margin:12px 0 8px;"></div>
+          <div style="margin-right:10px;">
+            <div style="height:5px;background:#e0e0e0;width:90%;border-radius:2px;margin-bottom:5px;"></div>
+            <div style="height:5px;background:#e0e0e0;width:80%;border-radius:2px;margin-bottom:5px;"></div>
+          </div>
+          <!-- image/table icons - bad ATS -->
+          <div style="margin-top:12px;display:flex;gap:8px;align-items:center;">
+            <div style="width:32px;height:32px;background:#f0f0f0;border:1px solid #ddd;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:#999;">IMG</div>
+            <div style="flex:1;height:5px;background:#e8e8e8;border-radius:2px;"></div>
+          </div>
+        </div>
+        <!-- Bad markers -->
+        <div style="margin-top:18px;display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;gap:8px;font-size:0.82rem;color:#ff7070;"><span>✗</span> مفيش كلمات مفتاحية</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:0.82rem;color:#ff7070;"><span>✗</span> صور وجداول تربك ATS</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:0.82rem;color:#ff7070;"><span>✗</span> خبرات بدون أرقام أو نتايج</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:0.82rem;color:#ff7070;"><span>✗</span> ATS Score: 28%</div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:14px;color:#ff5050;font-weight:700;font-size:0.9rem;">❌ بيتصفّى قبل ما يوصل لحد</div>
+    </div>
+
+    <!-- AFTER -->
+    <div style="position:relative;">
+      <div style="background:#0a1a0a;border:2px solid rgba(74,222,128,0.4);border-radius:20px;padding:30px;position:relative;overflow:hidden;box-shadow:0 0 40px rgba(74,222,128,0.08);">
+        <div style="position:absolute;top:16px;right:16px;background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.4);color:#4ade80;font-size:0.75rem;font-weight:900;padding:5px 14px;border-radius:50px;letter-spacing:1px;">✓ بعد</div>
+        <!-- Fake CV good -->
+        <div style="background:#fff;border-radius:8px;padding:0;margin-top:10px;direction:ltr;overflow:hidden;">
+          <!-- Header bar -->
+          <div style="background:#1d4ed8;padding:14px 16px;">
+            <div style="height:9px;background:rgba(255,255,255,0.95);width:55%;border-radius:3px;margin-bottom:5px;"></div>
+            <div style="height:6px;background:rgba(255,255,255,0.6);width:35%;border-radius:3px;margin-bottom:5px;"></div>
+            <div style="display:flex;gap:10px;">
+              <div style="height:5px;background:rgba(255,255,255,0.4);width:28%;border-radius:2px;"></div>
+              <div style="height:5px;background:rgba(255,255,255,0.4);width:28%;border-radius:2px;"></div>
+            </div>
+          </div>
+          <div style="padding:14px 16px;">
+            <div style="height:7px;background:#1d4ed8;width:35%;border-radius:2px;margin-bottom:6px;"></div>
+            <div style="height:4px;background:#1d4ed8;opacity:0.2;width:100%;border-radius:2px;margin-bottom:6px;"></div>
+            <div style="height:4px;background:#ddd;width:95%;border-radius:2px;margin-bottom:4px;"></div>
+            <div style="height:4px;background:#ddd;width:88%;border-radius:2px;margin-bottom:10px;"></div>
+            <div style="height:7px;background:#1d4ed8;width:40%;border-radius:2px;margin-bottom:6px;"></div>
+            <div style="height:4px;background:#1a1a2e;width:55%;border-radius:2px;margin-bottom:4px;"></div>
+            <!-- bullet achievements with numbers -->
+            <div style="display:flex;align-items:center;gap:5px;margin-bottom:3px;"><div style="width:5px;height:5px;background:#1d4ed8;border-radius:1px;flex-shrink:0;"></div><div style="height:4px;background:#bbb;width:85%;border-radius:2px;"></div></div>
+            <div style="display:flex;align-items:center;gap:5px;margin-bottom:3px;"><div style="width:5px;height:5px;background:#1d4ed8;border-radius:1px;flex-shrink:0;"></div><div style="height:4px;background:#bbb;width:78%;border-radius:2px;"></div></div>
+            <!-- skills badges -->
+            <div style="display:flex;gap:4px;margin-top:8px;flex-wrap:wrap;">
+              <div style="height:11px;background:#dbeafe;border:1px solid #1d4ed8;border-radius:6px;width:40px;"></div>
+              <div style="height:11px;background:#dbeafe;border:1px solid #1d4ed8;border-radius:6px;width:48px;"></div>
+              <div style="height:11px;background:#dbeafe;border:1px solid #1d4ed8;border-radius:6px;width:36px;"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Good markers -->
+        <div style="margin-top:18px;display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;gap:8px;font-size:0.82rem;color:#4ade80;"><span>✓</span> كلمات مفتاحية لمجالك</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:0.82rem;color:#4ade80;"><span>✓</span> تنسيق نظيف يقرأه ATS</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:0.82rem;color:#4ade80;"><span>✓</span> إنجازات بأرقام واضحة</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:0.82rem;color:#4ade80;"><span>✓</span> ATS Score: 91%</div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:14px;color:#4ade80;font-weight:700;font-size:0.9rem;">✅ بيوصل لصاحب القرار</div>
+    </div>
+
+  </div>
+
+  <!-- Result stats -->
+  <div style="display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:50px;max-width:700px;margin-left:auto;margin-right:auto;" class="reveal">
+    <div style="text-align:center;">
+      <div style="font-family:'Tajawal',sans-serif;font-size:2.8rem;font-weight:900;color:#ff5050;">28%</div>
+      <div style="color:var(--gray);font-size:0.85rem;margin-top:4px;">متوسط ATS Score قبلنا</div>
+    </div>
+    <div style="font-size:2.5rem;align-self:center;">→</div>
+    <div style="text-align:center;">
+      <div style="font-family:'Tajawal',sans-serif;font-size:2.8rem;font-weight:900;color:#4ade80;">91%</div>
+      <div style="color:var(--gray);font-size:0.85rem;margin-top:4px;">متوسط ATS Score بعدنا</div>
+    </div>
+    <div style="font-size:2.5rem;align-self:center;">=</div>
+    <div style="text-align:center;">
+      <div style="font-family:'Tajawal',sans-serif;font-size:2.8rem;font-weight:900;color:var(--gold);">3x</div>
+      <div style="color:var(--gray);font-size:0.85rem;margin-top:4px;">زيادة في المقابلات</div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:40px;">
+    <a href="#cv-checker" class="btn-primary" style="display:inline-flex;">🔍 قيّم CV بتاعك دلوقتي — مجاناً</a>
+  </div>
+</section>
+
+<!-- CV CHECKER TOOL -->
+<section id="cv-checker" style="padding:90px 5%;background:var(--dark);border-top:1px solid rgba(201,168,76,0.1);">
+  <div style="text-align:center;margin-bottom:50px;">
+    <span class="section-label">✦ أداة مجانية</span>
+    <h2 class="section-title">قيّم CV بتاعك دلوقتي 🔍</h2>
+    <p class="section-desc" style="margin:0 auto;">اجاوب على 5 أسئلة سريعة وهنقولك فين المشكلة في ثواني</p>
+  </div>
+
+  <div style="max-width:680px;margin:0 auto;" class="reveal">
+    <div id="checker-box" style="background:var(--dark3);border:1px solid rgba(201,168,76,0.2);border-radius:24px;padding:40px 35px;">
+
+      <!-- Step indicator -->
+      <div style="display:flex;justify-content:center;gap:8px;margin-bottom:35px;" id="step-dots">
+        <div class="step-dot active" id="dot-1"></div>
+        <div class="step-dot" id="dot-2"></div>
+        <div class="step-dot" id="dot-3"></div>
+        <div class="step-dot" id="dot-4"></div>
+        <div class="step-dot" id="dot-5"></div>
+      </div>
+
+      <!-- Questions -->
+      <div id="checker-q1" class="checker-step">
+        <h3 style="font-family:'Tajawal',sans-serif;font-size:1.25rem;font-weight:800;margin-bottom:25px;text-align:center;">بعتّ كام CV في آخر شهر؟</h3>
+        <div class="checker-options">
+          <button class="checker-btn" onclick="checkerAnswer(1,'1-5')">1 — 5 CVs</button>
+          <button class="checker-btn" onclick="checkerAnswer(1,'6-15')">6 — 15 CV</button>
+          <button class="checker-btn" onclick="checkerAnswer(1,'16+')">أكتر من 15</button>
+          <button class="checker-btn" onclick="checkerAnswer(1,'0')">لسه مبعتش</button>
+        </div>
+      </div>
+
+      <div id="checker-q2" class="checker-step" style="display:none;">
+        <h3 style="font-family:'Tajawal',sans-serif;font-size:1.25rem;font-weight:800;margin-bottom:25px;text-align:center;">كام رد وصلك؟</h3>
+        <div class="checker-options">
+          <button class="checker-btn" onclick="checkerAnswer(2,'none')">ولا رد خالص 😔</button>
+          <button class="checker-btn" onclick="checkerAnswer(2,'few')">رد أو اتنين بس</button>
+          <button class="checker-btn" onclick="checkerAnswer(2,'some')">عدد كويس</button>
+        </div>
+      </div>
+
+      <div id="checker-q3" class="checker-step" style="display:none;">
+        <h3 style="font-family:'Tajawal',sans-serif;font-size:1.25rem;font-weight:800;margin-bottom:25px;text-align:center;">الـ CV بتاعك في أنهي شكل؟</h3>
+        <div class="checker-options">
+          <button class="checker-btn" onclick="checkerAnswer(3,'fancy')">تصميم ملوّن وفيه صور وجداول</button>
+          <button class="checker-btn" onclick="checkerAnswer(3,'simple')">بسيط بدون تصميم</button>
+          <button class="checker-btn" onclick="checkerAnswer(3,'template')">قالب من Canva أو Word</button>
+          <button class="checker-btn" onclick="checkerAnswer(3,'notsure')">مش عارف</button>
+        </div>
+      </div>
+
+      <div id="checker-q4" class="checker-step" style="display:none;">
+        <h3 style="font-family:'Tajawal',sans-serif;font-size:1.25rem;font-weight:800;margin-bottom:25px;text-align:center;">الخبرات مكتوبة ازاي؟</h3>
+        <div class="checker-options">
+          <button class="checker-btn" onclick="checkerAnswer(4,'duties')">بوصف المهام فقط</button>
+          <button class="checker-btn" onclick="checkerAnswer(4,'results')">بالإنجازات وأرقام واضحة</button>
+          <button class="checker-btn" onclick="checkerAnswer(4,'mixed')">خليط من الاتنين</button>
+        </div>
+      </div>
+
+      <div id="checker-q5" class="checker-step" style="display:none;">
+        <h3 style="font-family:'Tajawal',sans-serif;font-size:1.25rem;font-weight:800;margin-bottom:25px;text-align:center;">إيه اللي بتدور عليه؟</h3>
+        <div class="checker-options">
+          <button class="checker-btn" onclick="checkerAnswer(5,'new-job')">وظيفة جديدة</button>
+          <button class="checker-btn" onclick="checkerAnswer(5,'upgrade')">ترقية أو تطوير مسار</button>
+          <button class="checker-btn" onclick="checkerAnswer(5,'abroad')">فرصة برا مصر</button>
+          <button class="checker-btn" onclick="checkerAnswer(5,'fresh')">أول وظيفة (خريج)</button>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div id="checker-result" style="display:none;text-align:center;">
+        <div id="result-score-ring" style="width:130px;height:130px;border-radius:50%;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;position:relative;">
+          <div style="position:absolute;inset:0;border-radius:50%;background:conic-gradient(#ff5050 0% 30%, rgba(255,80,80,0.12) 30% 100%);"></div>
+          <div id="result-inner" style="position:relative;z-index:1;width:92px;height:92px;background:var(--dark3);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+            <strong id="result-score-num" style="font-family:'Tajawal',sans-serif;font-size:1.8rem;font-weight:900;color:#ff5050;">؟</strong>
+            <span style="font-size:0.65rem;color:var(--gray);">ATS Score</span>
+          </div>
+        </div>
+        <h3 id="result-title" style="font-family:'Tajawal',sans-serif;font-size:1.4rem;font-weight:900;margin-bottom:12px;"></h3>
+        <p id="result-desc" style="color:var(--gray);font-size:0.95rem;line-height:1.8;margin-bottom:28px;"></p>
+        <div id="result-issues" style="background:rgba(255,80,80,0.05);border:1px solid rgba(255,80,80,0.2);border-radius:14px;padding:18px 22px;margin-bottom:28px;text-align:right;"></div>
+        <a id="result-wa-btn" href="#" target="_blank" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:16px 36px;border-radius:14px;text-decoration:none;font-size:1rem;font-weight:800;font-family:'Cairo',sans-serif;box-shadow:0 8px 30px rgba(37,211,102,0.3);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.525 5.847L.057 23.547a.75.75 0 00.92.92l5.7-1.468A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.705 9.705 0 01-4.95-1.355l-.355-.212-3.683.948.966-3.584-.232-.369A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+          احصل على تقرير كامل مجاناً على واتساب
+        </a>
+        <p style="margin-top:14px;color:var(--gray);font-size:0.82rem;">هنرسلك تقرير مفصل وإيه اللي لازم تعمله بالظبط — مجاناً وبدون أي التزام</p>
+        <button onclick="resetChecker()" style="background:none;border:none;color:var(--gray);font-size:0.85rem;cursor:pointer;margin-top:10px;font-family:'Cairo',sans-serif;text-decoration:underline;">↩ ابدأ من أول</button>
+      </div>
+
+    </div>
+  </div>
+</section>
 <div class="trust-strip">
   <div class="trust-item"><span class="ti-icon">🛡️</span> ضمان استرداد كامل</div>
   <div class="trust-item"><span class="ti-icon">⚡</span> رد خلال ساعة</div>
@@ -1187,6 +1408,146 @@
   </div>
 </section>
 
+<!-- ABOUT US -->
+<section id="about" style="padding:100px 5%;background:var(--dark);">
+  <div style="max-width:1100px;margin:0 auto;">
+
+    <!-- Header -->
+    <div style="text-align:center;margin-bottom:70px;">
+      <span class="section-label">✦ من نحن</span>
+      <h2 class="section-title">مش مجرد خدمة — إحنا فريقك</h2>
+      <p class="section-desc" style="margin:0 auto;">CV Pro مش موقع أتوماتيكي أو أي حاجة — إحنا فريق من خبراء التوظيف والكتابة الاحترافية بنشتغل معاك شخصياً عشان توصل لوظيفتك المثالية</p>
+    </div>
+
+    <!-- Story block -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:80px;" class="reveal about-grid">
+      <div>
+        <span class="section-label">✦ قصتنا</span>
+        <h3 style="font-family:'Tajawal',sans-serif;font-size:2rem;font-weight:900;margin-bottom:20px;line-height:1.3;">بدأنا لأننا شفنا المشكلة بنفسنا</h3>
+        <p style="color:var(--gray);line-height:1.9;font-size:1rem;margin-bottom:18px;">
+          بدأت CV Pro لما لاحظنا إن ناس كتير بمؤهلات ممتازة بتبعت عشرات الـ CVs من غير أي رد — مش لأنهم مش كفاءة، لكن لأن CVs بتاعتهم بتتصفّى آلياً من نظام ATS قبل ما أي إنسان يشوفها.
+        </p>
+        <p style="color:var(--gray);line-height:1.9;font-size:1rem;margin-bottom:18px;">
+          قررنا نعمل حاجة — فريق من خبراء التوظيف والـ HR والكتابة بيشتغلوا سوا عشان يضمنوا إن كل CV بنعمله بيوصل لصاحب القرار فعلاً.
+        </p>
+        <p style="color:var(--gray);line-height:1.9;font-size:1rem;">
+          النهارده <strong style="color:var(--white);">+500 عميل</strong> من مصر والسعودية والإمارات وثقوا فينا، و<strong style="color:var(--white);">95% منهم عدّوا نظام ATS</strong> وحصلوا على مقابلات حقيقية.
+        </p>
+      </div>
+
+      <!-- Visual stats card -->
+      <div style="background:var(--dark3);border:1px solid rgba(201,168,76,0.2);border-radius:24px;padding:40px 35px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-30px;left:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(201,168,76,0.08),transparent 70%);border-radius:50%;"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+          <div style="text-align:center;padding:20px 10px;background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.12);border-radius:16px;">
+            <div style="font-family:'Tajawal',sans-serif;font-size:2.4rem;font-weight:900;color:var(--gold);">+500</div>
+            <div style="color:var(--gray);font-size:0.82rem;margin-top:4px;">عميل راضي</div>
+          </div>
+          <div style="text-align:center;padding:20px 10px;background:rgba(74,222,128,0.05);border:1px solid rgba(74,222,128,0.12);border-radius:16px;">
+            <div style="font-family:'Tajawal',sans-serif;font-size:2.4rem;font-weight:900;color:#4ade80;">95%</div>
+            <div style="color:var(--gray);font-size:0.82rem;margin-top:4px;">نجاح في ATS</div>
+          </div>
+          <div style="text-align:center;padding:20px 10px;background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.12);border-radius:16px;">
+            <div style="font-family:'Tajawal',sans-serif;font-size:2.4rem;font-weight:900;color:var(--gold);">48h</div>
+            <div style="color:var(--gray);font-size:0.82rem;margin-top:4px;">وقت التسليم</div>
+          </div>
+          <div style="text-align:center;padding:20px 10px;background:rgba(91,155,248,0.05);border:1px solid rgba(91,155,248,0.12);border-radius:16px;">
+            <div style="font-family:'Tajawal',sans-serif;font-size:2.4rem;font-weight:900;color:#5B9BF8;">3x</div>
+            <div style="color:var(--gray);font-size:0.82rem;margin-top:4px;">زيادة في المقابلات</div>
+          </div>
+        </div>
+        <div style="margin-top:24px;text-align:center;background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);border-radius:12px;padding:12px;">
+          <span style="color:var(--gold);font-weight:700;font-size:0.88rem;">🌍 نخدم مصر · السعودية · الإمارات · الكويت</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Team -->
+    <div style="margin-bottom:70px;" class="reveal">
+      <div style="text-align:center;margin-bottom:45px;">
+        <span class="section-label">✦ فريقنا</span>
+        <h3 style="font-family:'Tajawal',sans-serif;font-size:1.9rem;font-weight:900;">الناس اللي هتشتغل معاك</h3>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;">
+
+        <!-- Khaled -->
+        <div style="background:var(--dark3);border:1px solid rgba(37,99,235,0.2);border-radius:20px;padding:32px 26px;text-align:center;transition:all 0.3s;position:relative;overflow:hidden;" onmouseover="this.style.borderColor='rgba(37,99,235,0.5)';this.style.transform='translateY(-6px)'" onmouseout="this.style.borderColor='rgba(37,99,235,0.2)';this.style.transform='translateY(0)'">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1d4ed8,#3b82f6);"></div>
+          <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#1d4ed8,#2563eb);display:flex;align-items:center;justify-content:center;font-size:2.2rem;margin:0 auto 18px;box-shadow:0 8px 24px rgba(37,99,235,0.3);">👨‍💼</div>
+          <h4 style="font-weight:800;font-size:1.15rem;margin-bottom:5px;">خالد</h4>
+          <div style="color:#5B9BF8;font-size:0.82rem;font-weight:700;margin-bottom:14px;">خبير CV · تقنية وهندسة</div>
+          <p style="color:var(--gray);font-size:0.88rem;line-height:1.7;margin-bottom:18px;">متخصص في مجالات الـ IT والهندسة والمالية. خبرة في صياغة CVs تجتاز أنظمة ATS لكبرى الشركات التقنية في مصر والخليج.</p>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="display:flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--gray);"><span style="color:#4ade80;">✓</span> +200 CV في المجال التقني</div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--gray);"><span style="color:#4ade80;">✓</span> خبرة في سوق الخليج والعالمي</div>
+          </div>
+          <a href="https://wa.me/201068204700?text=السلام عليكم خالد 👋 عايز أتواصل معاك بخصوص CV" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:7px;margin-top:20px;background:rgba(37,99,235,0.12);border:1px solid rgba(37,99,235,0.35);color:#5B9BF8;padding:10px;border-radius:10px;text-decoration:none;font-size:0.85rem;font-weight:700;transition:all 0.2s;" onmouseover="this.style.background='rgba(37,99,235,0.22)'" onmouseout="this.style.background='rgba(37,99,235,0.12)'">💬 تواصل مع خالد</a>
+        </div>
+
+        <!-- Norhan -->
+        <div style="background:var(--dark3);border:1px solid rgba(190,24,93,0.2);border-radius:20px;padding:32px 26px;text-align:center;transition:all 0.3s;position:relative;overflow:hidden;" onmouseover="this.style.borderColor='rgba(190,24,93,0.5)';this.style.transform='translateY(-6px)'" onmouseout="this.style.borderColor='rgba(190,24,93,0.2)';this.style.transform='translateY(0)'">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#be185d,#ec4899);"></div>
+          <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#be185d,#9d174d);display:flex;align-items:center;justify-content:center;font-size:2.2rem;margin:0 auto 18px;box-shadow:0 8px 24px rgba(190,24,93,0.3);">👩‍💼</div>
+          <h4 style="font-weight:800;font-size:1.15rem;margin-bottom:5px;">نورهان</h4>
+          <div style="color:#f472b6;font-size:0.82rem;font-weight:700;margin-bottom:14px;">خبيرة CV · إدارة وطب وإبداعية</div>
+          <p style="color:var(--gray);font-size:0.88rem;line-height:1.7;margin-bottom:18px;">متخصصة في المجالات الإدارية والطبية والقانونية والإبداعية. خبرة واسعة في صياغة CVs بالعربي والإنجليزي لأسواق مختلفة.</p>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="display:flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--gray);"><span style="color:#4ade80;">✓</span> +300 CV في التخصصات الإدارية</div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--gray);"><span style="color:#4ade80;">✓</span> خبرة في CV الأطباء والمحامين</div>
+          </div>
+          <a href="https://wa.me/201126104846?text=السلام عليكم نورهان 👋 عايزة أتواصل معاكي بخصوص CV" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:7px;margin-top:20px;background:rgba(190,24,93,0.12);border:1px solid rgba(190,24,93,0.35);color:#f472b6;padding:10px;border-radius:10px;text-decoration:none;font-size:0.85rem;font-weight:700;transition:all 0.2s;" onmouseover="this.style.background='rgba(190,24,93,0.22)'" onmouseout="this.style.background='rgba(190,24,93,0.12)'">💬 تواصل مع نورهان</a>
+        </div>
+
+        <!-- Support team card -->
+        <div style="background:var(--dark3);border:1px solid rgba(201,168,76,0.2);border-radius:20px;padding:32px 26px;text-align:center;transition:all 0.3s;position:relative;overflow:hidden;" onmouseover="this.style.borderColor='rgba(201,168,76,0.45)';this.style.transform='translateY(-6px)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.2)';this.style.transform='translateY(0)'">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));"></div>
+          <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-size:2.2rem;margin:0 auto 18px;box-shadow:0 8px 24px rgba(201,168,76,0.3);">🤝</div>
+          <h4 style="font-weight:800;font-size:1.15rem;margin-bottom:5px;">فريق المتابعة</h4>
+          <div style="color:var(--gold);font-size:0.82rem;font-weight:700;margin-bottom:14px;">دعم · متابعة · جودة</div>
+          <p style="color:var(--gray);font-size:0.88rem;line-height:1.7;margin-bottom:18px;">فريق كامل بيضمن جودة كل CV قبل التسليم، ومتاح للرد على أسئلتك ومتابعتك في كل خطوة من خطوات طلبك.</p>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="display:flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--gray);"><span style="color:#4ade80;">✓</span> رد في أقل من ساعة</div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--gray);"><span style="color:#4ade80;">✓</span> مراجعة جودة قبل كل تسليم</div>
+          </div>
+          <a href="#contact-form" style="display:flex;align-items:center;justify-content:center;gap:7px;margin-top:20px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold);padding:10px;border-radius:10px;text-decoration:none;font-size:0.85rem;font-weight:700;transition:all 0.2s;" onmouseover="this.style.background='rgba(201,168,76,0.2)'" onmouseout="this.style.background='rgba(201,168,76,0.1)'">🚀 اطلب خدمتك دلوقتي</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Why us values -->
+    <div class="reveal">
+      <div style="text-align:center;margin-bottom:40px;">
+        <span class="section-label">✦ ليه CV Pro؟</span>
+        <h3 style="font-family:'Tajawal',sans-serif;font-size:1.9rem;font-weight:900;">اللي بيميّزنا عن غيرنا</h3>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;">
+        <div style="background:var(--dark3);border:1px solid rgba(201,168,76,0.1);border-radius:16px;padding:26px 22px;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.35)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.1)'">
+          <div style="font-size:2rem;margin-bottom:14px;">🎯</div>
+          <h4 style="font-weight:800;margin-bottom:8px;font-size:1rem;">شغل شخصي مش أتوماتيكي</h4>
+          <p style="color:var(--gray);font-size:0.85rem;line-height:1.7;">كل CV بيتكتب بإيدي خبير حقيقي بيفهم مجالك ويعرف يبرز نقاط قوتك بالشكل الصح.</p>
+        </div>
+        <div style="background:var(--dark3);border:1px solid rgba(201,168,76,0.1);border-radius:16px;padding:26px 22px;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.35)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.1)'">
+          <div style="font-size:2rem;margin-bottom:14px;">💰</div>
+          <h4 style="font-weight:800;margin-bottom:8px;font-size:1rem;">أفضل سعر في مصر</h4>
+          <p style="color:var(--gray);font-size:0.85rem;line-height:1.7;">خدمة احترافية بأسعار مناسبة للسوق المصري — بدون مفاجآت، الدفع بعد الاتفاق على كل حاجة.</p>
+        </div>
+        <div style="background:var(--dark3);border:1px solid rgba(201,168,76,0.1);border-radius:16px;padding:26px 22px;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.35)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.1)'">
+          <div style="font-size:2rem;margin-bottom:14px;">🛡️</div>
+          <h4 style="font-weight:800;margin-bottom:8px;font-size:1rem;">ضمان استرداد كامل</h4>
+          <p style="color:var(--gray);font-size:0.85rem;line-height:1.7;">لو مش راضي بعد التعديلات المجانية، هنرجعلك فلوسك بالكامل — من غير أسئلة ومن غير تعقيد.</p>
+        </div>
+        <div style="background:var(--dark3);border:1px solid rgba(201,168,76,0.1);border-radius:16px;padding:26px 22px;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.35)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.1)'">
+          <div style="font-size:2rem;margin-bottom:14px;">⚡</div>
+          <h4 style="font-weight:800;margin-bottom:8px;font-size:1rem;">سرعة في التسليم</h4>
+          <p style="color:var(--gray);font-size:0.85rem;line-height:1.7;">CV جاهز خلال 48 ساعة — لو عندك مقابلة مستعجلة نقدر نتعاون معاك على تسليم أسرع.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-section" id="contact">
   <div style="position:relative;z-index:1;">
@@ -1479,7 +1840,105 @@
     });
   }
 
-  // ===================== COUNTDOWN TIMER =====================
+  // ===================== CV CHECKER =====================
+  const checkerAnswers = {};
+  function checkerAnswer(step, val) {
+    checkerAnswers[step] = val;
+    // Mark dot done
+    const dot = document.getElementById('dot-' + step);
+    if (dot) { dot.classList.remove('active'); dot.classList.add('done'); }
+    // Highlight selected btn
+    const btns = document.querySelectorAll('#checker-q' + step + ' .checker-btn');
+    btns.forEach(b => b.classList.remove('selected'));
+    event.target.classList.add('selected');
+
+    setTimeout(() => {
+      document.getElementById('checker-q' + step).style.display = 'none';
+      if (step < 5) {
+        const next = document.getElementById('checker-q' + (step+1));
+        next.style.display = 'block';
+        const nextDot = document.getElementById('dot-' + (step+1));
+        if (nextDot) nextDot.classList.add('active');
+      } else {
+        showCheckerResult();
+      }
+    }, 350);
+  }
+
+  function showCheckerResult() {
+    document.getElementById('checker-result').style.display = 'block';
+
+    // Score calculation
+    let score = 65;
+    let issues = [];
+
+    if (checkerAnswers[1] === '16+' && checkerAnswers[2] === 'none') score -= 30;
+    else if (checkerAnswers[2] === 'none') { score -= 20; issues.push('❌ CV بيتصفّى آلياً قبل ما يوصل لحد'); }
+    else if (checkerAnswers[2] === 'few') { score -= 10; }
+
+    if (checkerAnswers[3] === 'fancy') { score -= 25; issues.push('❌ التصميم الملوّن والصور بتربك نظام ATS'); }
+    else if (checkerAnswers[3] === 'template') { score -= 15; issues.push('⚠️ قوالب Canva غالباً مش متوافقة مع ATS'); }
+    else if (checkerAnswers[3] === 'notsure') { score -= 10; issues.push('⚠️ مش واضح هل CV متوافق مع ATS ولا لأ'); }
+
+    if (checkerAnswers[4] === 'duties') { score -= 15; issues.push('❌ الخبرات مكتوبة كمهام — مش كإنجازات بأرقام'); }
+    else if (checkerAnswers[4] === 'mixed') { score -= 5; issues.push('⚠️ بعض الخبرات محتاجة تتحسن بأرقام واضحة'); }
+
+    score = Math.max(15, Math.min(85, score));
+
+    // Update ring
+    const ring = document.getElementById('result-score-ring');
+    const scoreNum = document.getElementById('result-score-num');
+    const color = score < 50 ? '#ff5050' : score < 70 ? '#f59e0b' : '#4ade80';
+    ring.innerHTML = '';
+    ring.style.background = `conic-gradient(${color} 0% ${score}%, rgba(255,255,255,0.06) ${score}% 100%)`;
+    const inner = document.createElement('div');
+    inner.id = 'result-inner';
+    inner.style.cssText = `position:relative;z-index:1;width:92px;height:92px;background:var(--dark3);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;`;
+    inner.innerHTML = `<strong style="font-family:'Tajawal',sans-serif;font-size:1.8rem;font-weight:900;color:${color};">${score}%</strong><span style="font-size:0.65rem;color:#8888AA;">ATS Score</span>`;
+    ring.appendChild(inner);
+
+    // Title & desc
+    let title, desc;
+    if (score < 40) {
+      title = '⚠️ CV بيترفض آلياً!';
+      desc = 'نظام ATS بيصفّيه قبل ما يوصل لأي إنسان. ده بيفسر ليه مش بيجيلك ردود. المشكلة مش في خبراتك — في طريقة كتابة الـ CV.';
+    } else if (score < 65) {
+      title = '😐 CV محتاج تحسين كبير';
+      desc = 'CV بيعدي بعض الفلاتر بس مش بيوصل للناس الصح. في مشاكل أساسية لازم تتحل عشان تزيد فرصك بشكل ملحوظ.';
+    } else {
+      title = '✅ CV كويس — بس ممكن يبقى أحسن';
+      desc = 'CV عندك أساس كويس بس في تفاصيل ممكن تحسّنها عشان تزيد نسبة ردودك أكتر.';
+    }
+
+    document.getElementById('result-title').textContent = title;
+    document.getElementById('result-desc').textContent = desc;
+
+    // Issues
+    if (issues.length > 0) {
+      const issueBox = document.getElementById('result-issues');
+      issueBox.innerHTML = '<div style="font-weight:800;color:var(--white);margin-bottom:10px;font-size:0.9rem;">المشاكل اللي لقيناها:</div>' +
+        issues.map(i => `<div style="color:#ff9090;font-size:0.85rem;padding:5px 0;border-bottom:1px solid rgba(255,80,80,0.1);">${i}</div>`).join('');
+    } else {
+      document.getElementById('result-issues').style.display = 'none';
+    }
+
+    // WhatsApp message
+    const serviceMap = { 'new-job': 'وظيفة جديدة', 'upgrade': 'ترقية / تطوير مسار', 'abroad': 'فرصة برا مصر', 'fresh': 'أول وظيفة (خريج)' };
+    const goal = serviceMap[checkerAnswers[5]] || 'وظيفة';
+    const waText = `السلام عليكم 👋\nعملت تقييم CV على الموقع وطلع score ${score}%\nبدور على ${goal}\n\nعايز تقرير مفصل وأعرف أحسّن CV بتاعي ✅`;
+    document.getElementById('result-wa-btn').href = `https://wa.me/201126104846?text=${encodeURIComponent(waText)}`;
+  }
+
+  function resetChecker() {
+    Object.keys(checkerAnswers).forEach(k => delete checkerAnswers[k]);
+    for (let i = 1; i <= 5; i++) {
+      const q = document.getElementById('checker-q' + i);
+      const dot = document.getElementById('dot-' + i);
+      if (q) { q.style.display = i === 1 ? 'block' : 'none'; q.querySelectorAll('.checker-btn').forEach(b => b.classList.remove('selected')); }
+      if (dot) { dot.className = 'step-dot' + (i === 1 ? ' active' : ''); }
+    }
+    document.getElementById('checker-result').style.display = 'none';
+  }
   (function() {
     let totalSeconds = 23 * 3600 + 59 * 60 + 59;
     function tick() {
