@@ -81,7 +81,31 @@
   #urgencyBar { position:fixed; top:0; left:0; right:0; z-index:500; background:linear-gradient(90deg,#C9A84C,#E8C97A,#C9A84C); background-size:200% 100%; animation:shimmer 3s infinite linear; padding:4px 14px; font-family:'Cairo',sans-serif; font-size:0.76rem; font-weight:700; color:#0A0A0F; display:flex; align-items:center; justify-content:center; gap:8px; height:28px; overflow:hidden; }
   @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 
-  /* NAV */
+  /* STICKY MOBILE CTA */
+  #stickyMobileCta { display:none; position:fixed; bottom:0; left:0; right:0; z-index:600; background:linear-gradient(135deg,#25D366,#128C7E); padding:12px 20px; box-shadow:0 -4px 20px rgba(37,211,102,0.4); }
+  #stickyMobileCta a { display:flex; align-items:center; justify-content:center; gap:10px; color:white; text-decoration:none; font-family:'Cairo',sans-serif; font-weight:800; font-size:1rem; }
+  @media(max-width:768px){ #stickyMobileCta { display:block; } body { padding-bottom:62px; } }
+
+  /* TRUST STRIP */
+  .trust-strip { display:flex; justify-content:center; gap:30px; flex-wrap:wrap; padding:22px 5%; background:rgba(201,168,76,0.04); border-bottom:1px solid rgba(201,168,76,0.08); }
+  .trust-item { display:flex; align-items:center; gap:8px; font-size:0.85rem; font-weight:700; color:var(--gray); }
+  .trust-item .ti-icon { font-size:1.1rem; }
+
+  /* GUARANTEE BANNER */
+  .guarantee-banner { background:linear-gradient(135deg,rgba(74,222,128,0.08),rgba(201,168,76,0.08)); border:1px solid rgba(74,222,128,0.25); border-radius:16px; padding:22px 30px; display:flex; align-items:center; gap:20px; max-width:800px; margin:40px auto 0; }
+  .guarantee-icon { font-size:2.5rem; flex-shrink:0; }
+  .guarantee-text h4 { font-weight:800; color:#4ade80; margin-bottom:5px; font-size:1rem; }
+  .guarantee-text p { color:var(--gray); font-size:0.88rem; line-height:1.6; }
+
+  /* QUICK ORDER PANEL */
+  .quick-order-panel { position:fixed; top:50%; right:0; transform:translateY(-50%); z-index:250; display:flex; flex-direction:column; }
+  .quick-order-tab { writing-mode:vertical-rl; background:var(--gold); color:var(--dark); font-weight:900; font-size:0.78rem; padding:16px 10px; cursor:pointer; border-radius:12px 0 0 12px; transition:all 0.3s; letter-spacing:1px; border:none; font-family:'Cairo',sans-serif; }
+  .quick-order-tab:hover { background:var(--gold-light); padding-right:14px; }
+  @media(max-width:768px){ .quick-order-panel { display:none; } }
+
+  /* SOCIAL PROOF COUNTER */
+  .live-counter { display:inline-flex; align-items:center; gap:8px; background:rgba(74,222,128,0.1); border:1px solid rgba(74,222,128,0.3); border-radius:50px; padding:6px 16px; font-size:0.82rem; font-weight:700; color:#4ade80; margin-bottom:20px; }
+  .live-dot { width:8px; height:8px; border-radius:50%; background:#4ade80; animation:notifPulse 1.5s infinite; flex-shrink:0; }
   nav {
     position: fixed; top: 0; width: 100%; z-index: 100;
     padding: 16px 5%;
@@ -307,17 +331,21 @@
 <div class="copy-toast" id="copyToast">✓ تم النسخ!</div>
 
 
+<div id="urgencyBar">
+  🔥 خصم 30% لفترة محدودة — العرض بينتهي بعد: <strong id="urgencyCountdown" style="font-family:monospace;letter-spacing:1px;background:rgba(0,0,0,0.15);padding:2px 8px;border-radius:4px;">23:59:59</strong> ⚡ اطلب دلوقتي قبل ما يخلص!
+</div>
+
 <nav>
   <div>
     <div class="logo">CV<span>Pro</span></div>
   </div>
   <ul class="nav-links">
     <li><a href="#services">خدماتنا</a></li>
+    <li><a href="#portfolio">نماذج أعمالنا</a></li>
     <li><a href="#pricing">الأسعار</a></li>
-    <li><a href="#ats">نظام ATS</a></li>
+    <li><a href="#testimonials">آراء العملاء</a></li>
     <li><a href="#faq">الأسئلة</a></li>
-    <li><a href="#process">كيف نعمل</a></li>
-    <li><a href="#contact-form" class="nav-cta">اتصل بنا</a></li>
+    <li><a href="#contact-form" class="nav-cta">🚀 اطلب الآن</a></li>
     <li>
       <a href="https://www.facebook.com/cvegyptats" target="_blank" title="صفحتنا على فيسبوك" style="display:flex;align-items:center;">
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
@@ -335,15 +363,14 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#services" onclick="closeMenu()">🎯 خدماتنا</a>
+  <a href="#portfolio" onclick="closeMenu()">🖼️ نماذج أعمالنا</a>
   <a href="#pricing" onclick="closeMenu()">💰 الأسعار</a>
-  <a href="#ats" onclick="closeMenu()">🤖 نظام ATS</a>
-  <a href="#faq" onclick="closeMenu()">❓ الأسئلة الشائعة</a>
-  <a href="#process" onclick="closeMenu()">⚡ كيف نعمل</a>
   <a href="#testimonials" onclick="closeMenu()">⭐ آراء العملاء</a>
-  <a href="#contact-form" onclick="closeMenu()" style="background:var(--gold);color:var(--dark);padding:14px 40px;border-radius:12px;margin-top:10px;">تواصل معنا</a>
+  <a href="#faq" onclick="closeMenu()">❓ الأسئلة الشائعة</a>
+  <a href="#contact-form" onclick="closeMenu()" style="background:var(--gold);color:var(--dark);padding:14px 40px;border-radius:12px;margin-top:10px;font-weight:900;">🚀 اطلب CV دلوقتي</a>
   <div style="display:flex;gap:15px;margin-top:10px;">
-    <a href="https://wa.me/201126104846" target="_blank" style="background:rgba(37,211,102,0.15);border:1px solid #25D366;color:#25D366;padding:10px 20px;border-radius:10px;">💬 نورهان</a>
-    <a href="https://wa.me/201068204700" target="_blank" style="background:rgba(37,99,235,0.15);border:1px solid #2563eb;color:#5B9BF8;padding:10px 20px;border-radius:10px;">💬 خالد</a>
+    <a href="https://wa.me/201126104846?text=السلام عليكم نورهان 👋 عايز أستفسر عن خدمات CV Pro" target="_blank" style="background:rgba(37,211,102,0.15);border:1px solid #25D366;color:#25D366;padding:10px 20px;border-radius:10px;font-weight:700;">💬 نورهان</a>
+    <a href="https://wa.me/201068204700?text=السلام عليكم خالد 👋 عايز أستفسر عن خدمات CV Pro" target="_blank" style="background:rgba(37,99,235,0.15);border:1px solid #2563eb;color:#5B9BF8;padding:10px 20px;border-radius:10px;font-weight:700;">💬 خالد</a>
   </div>
 </div>
 
@@ -351,14 +378,21 @@
 <section class="hero">
   <div class="hero-grid"></div>
   <div>
-    <div class="badge">✦ خبراء السيرة الذاتية الاحترافية</div>
+    <div class="live-counter"><span class="live-dot"></span> <span id="liveViewers">17</span> شخص بيشوف الموقع دلوقتي</div>
+    <div class="badge">✦ خبراء السيرة الذاتية الاحترافية — +500 عميل راضي</div>
     <h1>سيرتك الذاتية<br><span class="gold">بوابتك للوظيفة</span></h1>
-    <p>نصمم لك CV احترافي يتجاوز نظام ATS ويجذب انتباه المسؤول عن التوظيف في ثوانٍ</p>
+    <p>نصمم لك CV احترافي يتجاوز نظام ATS ويجذب انتباه المسؤول عن التوظيف في ثوانٍ — <strong style="color:var(--white);">ضمان استرداد كامل لو مش راضي</strong></p>
     <div class="hero-btns">
-      <a href="https://wa.me/201126104846?text=السلام عليكم، عايز أعمل CV احترافي" target="_blank" class="btn-primary">
-        <span>📱</span> تواصل معنا الآن
+      <a href="#contact-form" class="btn-primary" style="font-size:1.15rem;padding:20px 42px;">
+        <span>🚀</span> اطلب CV احترافي الآن
       </a>
-      <a href="#services" class="btn-secondary">اعرف أكتر ↓</a>
+      <a href="#pricing" class="btn-secondary">شوف الأسعار ↓</a>
+    </div>
+    <div style="margin-top:25px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+      <span style="color:var(--gray);font-size:0.85rem;display:flex;align-items:center;gap:6px;"><span style="color:#4ade80;">✓</span> تسليم خلال 48 ساعة</span>
+      <span style="color:var(--gray);font-size:0.85rem;display:flex;align-items:center;gap:6px;"><span style="color:#4ade80;">✓</span> عربي وإنجليزي</span>
+      <span style="color:var(--gray);font-size:0.85rem;display:flex;align-items:center;gap:6px;"><span style="color:#4ade80;">✓</span> ضمان استرداد</span>
+      <span style="color:var(--gray);font-size:0.85rem;display:flex;align-items:center;gap:6px;"><span style="color:#4ade80;">✓</span> بدون تعقيد</span>
     </div>
   </div>
 </section>
@@ -369,6 +403,16 @@
   <div class="stat-item"><strong class="stat-num">95%</strong><div class="stat-label">نسبة تجاوز ATS</div></div>
   <div class="stat-item"><strong class="stat-num">48h</strong><div class="stat-label">وقت التسليم</div></div>
   <div class="stat-item"><strong class="stat-num">3x</strong><div class="stat-label">زيادة في المقابلات</div></div>
+</div>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-item"><span class="ti-icon">🛡️</span> ضمان استرداد كامل</div>
+  <div class="trust-item"><span class="ti-icon">⚡</span> رد خلال ساعة</div>
+  <div class="trust-item"><span class="ti-icon">🔒</span> بياناتك سرية 100%</div>
+  <div class="trust-item"><span class="ti-icon">✅</span> +500 عميل راضي</div>
+  <div class="trust-item"><span class="ti-icon">📱</span> دفع بعد الاتفاق فقط</div>
+  <div class="trust-item"><span class="ti-icon">🌍</span> مصر · السعودية · الإمارات</div>
 </div>
 
 <!-- SERVICES -->
@@ -1117,12 +1161,29 @@
 
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">
+        <span>🤫 هل هيعرفوا إني استخدمت خدمة خارجية؟</span>
+        <span class="faq-arrow">▾</span>
+      </div>
+      <div class="faq-a">لأ خالص! الـ CV بيتكتب بناءً على خبراتك وبياناتك الحقيقية — إحنا بس بنصوغها بأسلوب احترافي. النتيجة النهائية هي سيرتك الذاتية بشكل أحسن، مش حاجة مختلفة عنك. مفيش أي شركة تقدر تعرف، لأن المعلومات كلها بتيجي منك.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
         <span>🤝 إيه الضمانات اللي بتقدموها؟</span>
         <span class="faq-arrow">▾</span>
       </div>
       <div class="faq-a">بنضمن تسليم CV متوافق مع نظام ATS، وإذا مكنتش راضي بعد التعديلات المجانية هنرجعلك فلوسك. +500 عميل راضي و95% نسبة تجاوز ATS دي مش كلام — دي نتايج حقيقية.</div>
     </div>
 
+  </div>
+
+  <!-- GUARANTEE BANNER -->
+  <div class="guarantee-banner reveal">
+    <span class="guarantee-icon">🛡️</span>
+    <div class="guarantee-text">
+      <h4>ضمان استرداد كامل — بدون أسئلة</h4>
+      <p>لو مش راضي عن الشغل بعد التعديلات المجانية، هنرجعلك فلوسك بالكامل. ما عندناش خسارة — خسارتنا الوحيدة هي إنك مش راضي.</p>
+    </div>
   </div>
 </section>
 
@@ -1131,19 +1192,23 @@
   <div style="position:relative;z-index:1;">
     <span class="section-label">✦ ابدأ الآن</span>
     <h2>جاهز تغير مسارك المهني؟</h2>
-    <p>تواصل معنا الآن عبر واتساب وابدأ رحلتك نحو الوظيفة المثالية</p>
+    <p>اتواصل مع خبيرنا المتخصص في مجالك — ردنا مضمون في أقل من ساعة</p>
+    <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:12px 24px;display:inline-block;margin-bottom:30px;">
+      <span style="color:var(--gray);font-size:0.88rem;">💡 <strong style="color:var(--gold);">ليه فيه خبيرين؟</strong> — كل خبير متخصص في مجال مختلف عشان يقدملك أحسن خدمة</span>
+    </div>
     <div style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap;position:relative;">
       <a href="https://wa.me/201126104846?text=السلام عليكم نورهان 👋 عايز أستفسر عن خدمات CV Pro وأعرف الأسعار والتفاصيل" target="_blank" class="whatsapp-btn" style="flex:1;min-width:220px;max-width:320px;flex-direction:column;gap:5px;padding:20px 30px;">
         <div style="display:flex;align-items:center;gap:10px;font-size:1.15rem;"><span class="wa-icon">💬</span> تواصل مع <strong>نورهان</strong></div>
         <div style="font-size:0.78rem;opacity:0.85;font-weight:500;direction:ltr;">+20 112 610 4846</div>
-        <div style="font-size:0.74rem;opacity:0.65;">إدارة · طب · قانون · إبداعية</div>
+        <div style="font-size:0.74rem;opacity:0.65;">إدارة · طب · قانون · إبداعية · تسويق</div>
       </a>
       <a href="https://wa.me/201068204700?text=السلام عليكم خالد 👋 عايز أستفسر عن خدمات CV Pro وأعرف الأسعار والتفاصيل" target="_blank" class="whatsapp-btn" style="flex:1;min-width:220px;max-width:320px;flex-direction:column;gap:5px;padding:20px 30px;background:linear-gradient(135deg,#1d4ed8,#2563eb);box-shadow:0 10px 40px rgba(37,99,235,0.25);">
         <div style="display:flex;align-items:center;gap:10px;font-size:1.15rem;"><span class="wa-icon">💬</span> تواصل مع <strong>خالد</strong></div>
         <div style="font-size:0.78rem;opacity:0.85;font-weight:500;direction:ltr;">+20 106 820 4700</div>
-        <div style="font-size:0.74rem;opacity:0.65;">تقنية · هندسة · IT · علوم</div>
+        <div style="font-size:0.74rem;opacity:0.65;">تقنية · هندسة · IT · علوم · مالية</div>
       </a>
     </div>
+    <p style="margin-top:22px;color:var(--gray);font-size:0.85rem;">🤷 مش متأكد تختار مين؟ <a href="#contact-form" style="color:var(--gold);font-weight:700;text-decoration:none;">املي الفورم وهنوجهك ←</a></p>
   </div>
 </section>
 
@@ -1194,9 +1259,14 @@
 <!-- CONTACT FORM -->
 <section id="contact-form" style="padding:100px 5%;background:var(--dark);">
   <div style="text-align:center;margin-bottom:60px;">
-    <span class="section-label">✦ تواصل معنا</span>
-    <h2 class="section-title">ابعتلنا رسالة دلوقتي 💬</h2>
-    <p class="section-desc" style="margin:0 auto;">اختار خبيرك، اكتب بياناتك، وهنرد عليك في أقرب وقت</p>
+    <span class="section-label">✦ ابدأ دلوقتي</span>
+    <h2 class="section-title">اطلب خدمتك في دقيقتين 🚀</h2>
+    <p class="section-desc" style="margin:0 auto;">اكتب بياناتك وهنتواصل معاك على واتساب فوراً — رد مضمون في أقل من ساعة</p>
+    <div style="display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin-top:20px;">
+      <div style="display:flex;align-items:center;gap:7px;font-size:0.85rem;color:#4ade80;font-weight:700;"><span>✓</span> دفع بعد الاتفاق فقط</div>
+      <div style="display:flex;align-items:center;gap:7px;font-size:0.85rem;color:#4ade80;font-weight:700;"><span>✓</span> رد خلال أقل من ساعة</div>
+      <div style="display:flex;align-items:center;gap:7px;font-size:0.85rem;color:#4ade80;font-weight:700;"><span>✓</span> استشارة مجانية</div>
+    </div>
   </div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:30px;max-width:1100px;margin:0 auto;align-items:start;" class="contact-grid reveal">
     <div style="background:var(--dark3);border:1px solid rgba(201,168,76,0.2);border-radius:24px;padding:40px 35px;">
@@ -1257,33 +1327,51 @@
         <label style="display:block;color:var(--gold);font-weight:700;font-size:0.88rem;margin-bottom:7px;">💬 رسالتك <span style="color:var(--gray);font-weight:400;">(اختياري)</span></label>
         <textarea id="cf-msg" rows="3" placeholder="أي تفاصيل أو أسئلة إضافية..." style="width:100%;background:var(--dark2);border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:13px 16px;color:var(--white);font-family:'Cairo',sans-serif;font-size:0.95rem;outline:none;transition:border 0.3s;resize:vertical;" onfocus="this.style.borderColor='rgba(201,168,76,0.6)'" onblur="this.style.borderColor='rgba(201,168,76,0.2)'"></textarea>
       </div>
-      <button onclick="sendToWhatsApp()" style="width:100%;background:linear-gradient(135deg,#25D366,#128C7E);color:white;border:none;border-radius:14px;padding:17px;font-family:'Cairo',sans-serif;font-size:1.05rem;font-weight:700;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;justify-content:center;gap:10px;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 15px 40px rgba(37,211,102,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.525 5.847L.057 23.547a.75.75 0 00.92.92l5.7-1.468A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.705 9.705 0 01-4.95-1.355l-.355-.212-3.683.948.966-3.584-.232-.369A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
-        ابعت الرسالة على واتساب ←
+      <button onclick="sendToWhatsApp()" style="width:100%;background:linear-gradient(135deg,#25D366,#128C7E);color:white;border:none;border-radius:14px;padding:19px;font-family:'Cairo',sans-serif;font-size:1.1rem;font-weight:800;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 8px 30px rgba(37,211,102,0.3);" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 15px 40px rgba(37,211,102,0.5)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 8px 30px rgba(37,211,102,0.3)'">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.525 5.847L.057 23.547a.75.75 0 00.92.92l5.7-1.468A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.705 9.705 0 01-4.95-1.355l-.355-.212-3.683.948.966-3.584-.232-.369A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+        🚀 ابعت الطلب على واتساب دلوقتي
       </button>
       <div id="cf-error" style="display:none;margin-top:14px;color:#ff6b6b;font-size:0.88rem;font-weight:600;text-align:center;"></div>
+      <p style="text-align:center;color:var(--gray);font-size:0.8rem;margin-top:14px;">💡 مش عارف تختار؟ <a href="https://wa.me/201126104846?text=السلام عليكم 👋 عايز استشارة مجانية عشان أعرف أنسب خدمة ليا" target="_blank" style="color:var(--gold);font-weight:700;text-decoration:none;">كلمنا واتساب مباشرة ←</a></p>
     </div>
   </div>
 </section>
 
+<!-- STICKY MOBILE CTA -->
+<div id="stickyMobileCta">
+  <a href="#contact-form">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.525 5.847L.057 23.547a.75.75 0 00.92.92l5.7-1.468A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.705 9.705 0 01-4.95-1.355l-.355-.212-3.683.948.966-3.584-.232-.369A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+    🚀 اطلب CV احترافي دلوقتي — خصم 30%
+  </a>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="logo-footer">CV Pro</div>
-  <p>خدمات احترافية للسيرة الذاتية ونظام ATS والتحضير للمقابلات</p>
-  <div style="margin-top:20px;display:flex;justify-content:center;align-items:center;gap:15px;">
+  <p>خبراء كتابة السيرة الذاتية الاحترافية — ATS · CV · Cover Letter · LinkedIn · Interview</p>
+  <div style="margin-top:16px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;">
+    <span style="color:#4ade80;font-size:0.82rem;font-weight:700;">🛡️ ضمان استرداد كامل</span>
+    <span style="color:var(--gray);font-size:0.82rem;">|</span>
+    <span style="color:#4ade80;font-size:0.82rem;font-weight:700;">⚡ رد خلال ساعة</span>
+    <span style="color:var(--gray);font-size:0.82rem;">|</span>
+    <span style="color:#4ade80;font-size:0.82rem;font-weight:700;">🔒 بياناتك سرية 100%</span>
+  </div>
+  <div style="margin-top:20px;display:flex;justify-content:center;align-items:center;gap:15px;flex-wrap:wrap;">
     <a href="https://www.facebook.com/cvegyptats" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(24,119,242,0.12);border:1px solid rgba(24,119,242,0.35);color:#5B9BF8;padding:10px 20px;border-radius:10px;text-decoration:none;font-size:0.9rem;font-weight:700;transition:all 0.3s;" onmouseover="this.style.background='rgba(24,119,242,0.22)'" onmouseout="this.style.background='rgba(24,119,242,0.12)'">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#5B9BF8"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
-      صفحتنا على فيسبوك
+      فيسبوك
     </a>
     <a href="https://www.instagram.com/cvpr_oo/" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(220,39,67,0.12);border:1px solid rgba(220,39,67,0.35);color:#e6683c;padding:10px 20px;border-radius:10px;text-decoration:none;font-size:0.9rem;font-weight:700;transition:all 0.3s;" onmouseover="this.style.background='rgba(220,39,67,0.22)'" onmouseout="this.style.background='rgba(220,39,67,0.12)'">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#e6683c"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
       انستجرام
     </a>
-    <a href="https://wa.me/201126104846" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.35);color:#25D366;padding:10px 20px;border-radius:10px;text-decoration:none;font-size:0.9rem;font-weight:700;transition:all 0.3s;" onmouseover="this.style.background='rgba(37,211,102,0.22)'" onmouseout="this.style.background='rgba(37,211,102,0.12)'">
+    <a href="https://wa.me/201126104846?text=السلام عليكم 👋 عايز أستفسر عن خدمات CV Pro" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.35);color:#25D366;padding:10px 20px;border-radius:10px;text-decoration:none;font-size:0.9rem;font-weight:700;transition:all 0.3s;" onmouseover="this.style.background='rgba(37,211,102,0.22)'" onmouseout="this.style.background='rgba(37,211,102,0.12)'">
       💬 واتساب
     </a>
+    <a href="#contact-form" style="display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.35);color:var(--gold);padding:10px 20px;border-radius:10px;text-decoration:none;font-size:0.9rem;font-weight:700;transition:all 0.3s;" onmouseover="this.style.background='rgba(201,168,76,0.22)'" onmouseout="this.style.background='rgba(201,168,76,0.12)'">
+      🚀 اطلب دلوقتي
+    </a>
   </div>
-  <p style="margin-top:15px;font-size:0.8rem;opacity:0.5;">© 2026 CV Pro. جميع الحقوق محفوظة.</p>
+  <p style="margin-top:18px;font-size:0.8rem;opacity:0.5;">© 2026 CV Pro. جميع الحقوق محفوظة.</p>
   <p style="margin-top:8px;font-size:0.78rem;opacity:0.4;">
     <a href="#faq" style="color:var(--gray);text-decoration:none;margin:0 8px;">الأسئلة الشائعة</a> ·
     <a href="#pricing" style="color:var(--gray);text-decoration:none;margin:0 8px;">الأسعار</a> ·
@@ -1393,19 +1481,33 @@
 
   // ===================== COUNTDOWN TIMER =====================
   (function() {
-    // 23 hours 59 minutes from page load
     let totalSeconds = 23 * 3600 + 59 * 60 + 59;
     function tick() {
-      const el = document.getElementById('countdownTimer');
-      if (!el || totalSeconds <= 0) { if(el) el.textContent = 'انتهى!'; return; }
       const h = Math.floor(totalSeconds / 3600);
       const m = Math.floor((totalSeconds % 3600) / 60);
       const s = totalSeconds % 60;
-      el.textContent = String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
-      totalSeconds--;
+      const fmt = String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+      const el = document.getElementById('countdownTimer');
+      const urgEl = document.getElementById('urgencyCountdown');
+      if (el) el.textContent = totalSeconds > 0 ? fmt : 'انتهى!';
+      if (urgEl) urgEl.textContent = totalSeconds > 0 ? fmt : 'انتهى!';
+      if (totalSeconds > 0) totalSeconds--;
     }
     tick();
     setInterval(tick, 1000);
+  })();
+
+  // ===================== LIVE VIEWERS COUNTER =====================
+  (function() {
+    const el = document.getElementById('liveViewers');
+    if (!el) return;
+    let base = 12 + Math.floor(Math.random() * 10);
+    el.textContent = base;
+    setInterval(() => {
+      const delta = Math.floor(Math.random() * 5) - 2;
+      base = Math.max(8, Math.min(35, base + delta));
+      el.textContent = base;
+    }, 7000);
   })();
 
   // ===================== LIVE NOTIFICATIONS =====================
@@ -1542,5 +1644,10 @@
   });
 
 </script>
+<!-- QUICK ORDER SIDE TAB -->
+<div class="quick-order-panel">
+  <a href="#contact-form" class="quick-order-tab" style="text-decoration:none;display:flex;align-items:center;justify-content:center;">⚡ اطلب دلوقتي</a>
+</div>
+
 </body>
 </html>
