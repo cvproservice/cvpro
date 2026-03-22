@@ -43,19 +43,26 @@
 <link rel="canonical" href="https://cvproservice.github.io/cvpro/">
 <link rel="dns-prefetch" href="//wa.me">
 <link rel="dns-prefetch" href="//api.whatsapp.com">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
+<link rel="preconnect" href="https://wa.me" crossorigin>
 <link rel="sitemap" type="application/xml" href="https://cvproservice.github.io/cvpro/sitemap.xml">
 
 <!-- Favicon SVG inline -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230A0A0F'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Arial Black' font-weight='900' fill='%23C9A84C'>CV</text></svg>">
 
-<!-- Google tag (gtag.js) -->
-<noscript><img height="1" width="1" style="display:none" src="https://www.googletagmanager.com/gtag/js?id=G-KG7LM80ZZY" alt=""></noscript>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KG7LM80ZZY"></script>
+<!-- Google Analytics — deferred to not block render -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-KG7LM80ZZY');
+  window.addEventListener('load', function() {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-KG7LM80ZZY';
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', 'G-KG7LM80ZZY', { 'send_page_view': true });
+  });
 </script>
 
 <!-- Schema 1: LocalBusiness محسّن -->
@@ -328,8 +335,9 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet"></noscript>
+<!-- Optimized: reduced font weights (900 only for Tajawal, 700 only for Cairo) + font-display=swap -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&family=Tajawal:wght@700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&family=Tajawal:wght@700;900&display=swap" rel="stylesheet"></noscript>
 <style>
   :root {
     --gold: #C9A84C;
@@ -341,9 +349,18 @@
     --gray: #AAAACC;
   }
 
+  /* Performance: font-display swap for system fonts fallback */
+  @font-face { font-display: swap; }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { font-family: 'Cairo', sans-serif; background: var(--dark); color: var(--white); overflow-x: hidden; }
+  body { font-family: 'Cairo', Arial, sans-serif; background: var(--dark); color: var(--white); overflow-x: hidden; }
+
+  /* Performance: Use content-visibility for off-screen sections */
+  #before-after, #cv-checker, #portfolio, #cv-guide, #arab-world, #testimonials, #faq, #about, .payment-section, #contact-form {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 600px;
+  }
 
   @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 
@@ -416,8 +433,9 @@
 
   /* HERO */
   .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 148px 5% 80px; position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.08) 0%, transparent 70%); }
-  .hero-grid { position: absolute; inset: 0; opacity: 0.04; background-image: linear-gradient(var(--gold) 1px, transparent 1px), linear-gradient(90deg, var(--gold) 1px, transparent 1px); background-size: 60px 60px; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.08) 0%, transparent 70%); pointer-events: none; }
+  /* Optimized: hero-grid uses SVG data URI instead of CSS gradients to reduce paint cost */
+  .hero-grid { position: absolute; inset: 0; opacity: 0.04; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M60 0H0v60' fill='none' stroke='%23C9A84C' stroke-width='0.5'/%3E%3C/svg%3E"); background-size: 60px 60px; pointer-events: none; }
   .badge { display: inline-block; border: 1px solid rgba(201,168,76,0.4); color: var(--gold); padding: 8px 20px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; margin-bottom: 30px; letter-spacing: 2px; animation: fadeUp 0.8s ease both; }
   .hero h1 { font-family: 'Tajawal', sans-serif; font-size: clamp(2.5rem, 7vw, 5.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 25px; animation: fadeUp 0.8s ease 0.15s both; }
   .hero h1 .gold { color: var(--gold); }
@@ -510,13 +528,13 @@
   footer { background: var(--dark); border-top: 1px solid rgba(201,168,76,0.1); padding: 40px 5%; text-align: center; color: var(--gray); font-size: 0.9rem; }
   footer .logo-footer { font-family: 'Tajawal', sans-serif; font-size: 1.4rem; font-weight: 900; color: var(--gold); margin-bottom: 10px; }
 
-  /* ANIMATIONS */
+  /* ANIMATIONS — optimized with will-change */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes waPulse { 0%,100%{box-shadow:0 8px 30px rgba(37,211,102,0.45)} 50%{box-shadow:0 8px 50px rgba(37,211,102,0.7)} }
   @keyframes notifPulse { 0%,100%{box-shadow:0 0 6px #4ade80} 50%{box-shadow:0 0 14px #4ade80} }
   @keyframes popIn { from{opacity:0;transform:scale(0.85) translateY(12px)} to{opacity:1;transform:scale(1) translateY(0)} }
-  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; will-change: opacity, transform; }
+  .reveal.visible { opacity: 1; transform: translateY(0); will-change: auto; }
 
   /* WA BUBBLE */
   #waBubbleBtn { animation: waPulse 2.5s infinite; }
@@ -613,8 +631,15 @@
   .portfolio-info h4 { font-weight: 700; color: var(--white); margin-bottom: 6px; font-size: 1rem; }
   .portfolio-info p { color: var(--gray); font-size: 0.88rem; }
 
-  /* MOBILE */
-  @media(max-width:768px) {
+  /* Performance: Replace JS hover with CSS hover for testimonial cards */
+  .testimonial-card { background:var(--dark3);border:1px solid rgba(201,168,76,0.15);border-radius:20px;padding:35px 30px;transition:border-color 0.3s, transform 0.3s; }
+  .testimonial-card:hover { border-color:rgba(201,168,76,0.4);transform:translateY(-6px); }
+  /* Performance: Replace JS hover with CSS hover for arab-world cards */
+  .arab-card { background:var(--dark3);border:1px solid rgba(201,168,76,0.15);border-radius:16px;padding:24px 20px;text-align:center;transition:border-color 0.3s; }
+  .arab-card:hover { border-color:rgba(201,168,76,0.4); }
+  /* Performance: Replace JS hover with CSS hover for about cards */
+  .about-card { background:var(--dark3);border:1px solid rgba(201,168,76,0.1);border-radius:16px;padding:26px 22px;transition:border-color 0.3s; }
+  .about-card:hover { border-color:rgba(201,168,76,0.35); }
     nav { top: 0; padding: 12px 5%; }
     .logo { font-size: 1.3rem; }
     .hero { padding: 140px 5% 60px; }
@@ -1566,7 +1591,7 @@
     <p class="section-desc" style="margin:0 auto;">تجارب حقيقية من عملاء استفادوا من خدمة CV Pro</p>
   </div>
   <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;max-width:1200px;margin:0 auto;">
-    <div style="background:var(--dark3);border:1px solid rgba(201,168,76,0.15);border-radius:20px;padding:35px 30px;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.4)';this.style.transform='translateY(-6px)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.15)';this.style.transform='translateY(0)'">
+    <div class="testimonial-card">
       <div style="color:#F5C518;font-size:1.1rem;margin-bottom:18px;">★★★★★</div>
       <p style="color:var(--white);font-size:0.97rem;line-height:1.8;margin-bottom:25px;">"والله خدمة ممتازة جداً، من أول ما بعتلهم بياناتي لحد ما استلمت الـ CV مكنتش متوقع الشغل يبقى بالمستوى ده. اتقبلت في الشركة اللي كنت شايفها حلم!"</p>
       <div style="display:flex;align-items:center;gap:15px;border-top:1px solid rgba(255,255,255,0.06);padding-top:20px;">
@@ -1574,7 +1599,7 @@
         <div><div style="font-weight:700;color:var(--white);">محمد أحمد</div><div style="color:var(--gold);font-size:0.82rem;">مهندس برمجيات — القاهرة</div></div>
       </div>
     </div>
-    <div style="background:var(--dark3);border:1px solid rgba(201,168,76,0.15);border-radius:20px;padding:35px 30px;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.4)';this.style.transform='translateY(-6px)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.15)';this.style.transform='translateY(0)'">
+    <div class="testimonial-card">
       <div style="color:#F5C518;font-size:1.1rem;margin-bottom:18px;">★★★★★</div>
       <p style="color:var(--white);font-size:0.97rem;line-height:1.8;margin-bottom:25px;">"كنت بعت CV بتاعي على أكتر من ٣٠ شركة ومحدش رد. بعد ما CV Pro عدّلوه، في أسبوعين جالي ٣ مقابلات! الفرق كان واضح جداً."</p>
       <div style="display:flex;align-items:center;gap:15px;border-top:1px solid rgba(255,255,255,0.06);padding-top:20px;">
@@ -1582,7 +1607,7 @@
         <div><div style="font-weight:700;color:var(--white);">سارة خالد</div><div style="color:var(--gold);font-size:0.82rem;">محاسبة مالية — الإسكندرية</div></div>
       </div>
     </div>
-    <div style="background:var(--dark3);border:1px solid rgba(201,168,76,0.15);border-radius:20px;padding:35px 30px;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.4)';this.style.transform='translateY(-6px)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.15)';this.style.transform='translateY(0)'">
+    <div class="testimonial-card">
       <div style="color:#F5C518;font-size:1.1rem;margin-bottom:18px;">★★★★★</div>
       <p style="color:var(--white);font-size:0.97rem;line-height:1.8;margin-bottom:25px;">"الخدمة سريعة ومحترمة. استلمت الـ CV في أقل من ٤٨ ساعة، والتصميم كان أنيق جداً. أكتر حاجة أعجبتني إنهم فهموا تخصصي صح من أول شوية."</p>
       <div style="display:flex;align-items:center;gap:15px;border-top:1px solid rgba(255,255,255,0.06);padding-top:20px;">
@@ -1590,7 +1615,7 @@
         <div><div style="font-weight:700;color:var(--white);">عمر حسن</div><div style="color:var(--gold);font-size:0.82rem;">مسوّق رقمي — الجيزة</div></div>
       </div>
     </div>
-    <div style="background:var(--dark3);border:1px solid rgba(201,168,76,0.15);border-radius:20px;padding:35px 30px;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.4)';this.style.transform='translateY(-6px)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.15)';this.style.transform='translateY(0)'">
+    <div class="testimonial-card">
       <div style="color:#F5C518;font-size:1.1rem;margin-bottom:18px;">★★★★★</div>
       <p style="color:var(--white);font-size:0.97rem;line-height:1.8;margin-bottom:25px;">"صراحة كنت متردد في الأول بس جربت ومكنتش غلطان. الـ CV طلع احترافي جداً وساعدني أعدي مرحلة الـ ATS بسهولة. شكراً CV Pro!"</p>
       <div style="display:flex;align-items:center;gap:15px;border-top:1px solid rgba(255,255,255,0.06);padding-top:20px;">
@@ -1598,7 +1623,7 @@
         <div><div style="font-weight:700;color:var(--white);">نور إبراهيم</div><div style="color:var(--gold);font-size:0.82rem;">مشرفة موارد بشرية — المنصورة</div></div>
       </div>
     </div>
-    <div style="background:var(--dark3);border:1px solid rgba(201,168,76,0.15);border-radius:20px;padding:35px 30px;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.4)';this.style.transform='translateY(-6px)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.15)';this.style.transform='translateY(0)'">
+    <div class="testimonial-card">
       <div style="color:#F5C518;font-size:1.1rem;margin-bottom:18px;">★★★★★</div>
       <p style="color:var(--white);font-size:0.97rem;line-height:1.8;margin-bottom:25px;">"عملت Cover Letter وCV مع بعض وكانوا متناسقين جداً. الشركة اللي قدمت فيها قالتلي إن ملفي كان من أحسن اللي وصلتهم. مش هقدر أنسى الخدمة دي!"</p>
       <div style="display:flex;align-items:center;gap:15px;border-top:1px solid rgba(255,255,255,0.06);padding-top:20px;">
@@ -1606,7 +1631,7 @@
         <div><div style="font-weight:700;color:var(--white);">كريم يوسف</div><div style="color:var(--gold);font-size:0.82rem;">مهندس مدني — أسوان</div></div>
       </div>
     </div>
-    <div style="background:var(--dark3);border:1px solid rgba(201,168,76,0.15);border-radius:20px;padding:35px 30px;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.4)';this.style.transform='translateY(-6px)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.15)';this.style.transform='translateY(0)'">
+    <div class="testimonial-card">
       <div style="color:#F5C518;font-size:1.1rem;margin-bottom:18px;">★★★★★</div>
       <p style="color:var(--white);font-size:0.97rem;line-height:1.8;margin-bottom:25px;">"خدمة تحضير الإنترفيو دي غيّرت طريقة تفكيري خالص. اتدربت على الأسئلة الصعبة وروحت المقابلة بثقة كبيرة. اشتغلت في الشركة دي من أكتر من سنة دلوقتي."</p>
       <div style="display:flex;align-items:center;gap:15px;border-top:1px solid rgba(255,255,255,0.06);padding-top:20px;">
@@ -1969,37 +1994,37 @@
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:50px;" class="reveal">
 
-      <div style="background:var(--dark3);border:1px solid rgba(201,168,76,0.15);border-radius:16px;padding:24px 20px;text-align:center;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.4)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.15)'">
+      <div class="arab-card">
         <div style="font-size:2rem;margin-bottom:10px;">🇪🇬</div>
         <h3 style="font-size:1rem;font-weight:800;margin-bottom:6px;color:var(--white);">كتابة CV مصر</h3>
         <p style="color:var(--gray);font-size:0.82rem;line-height:1.6;">CV متوافق مع سوق العمل المصري — بالعربي أو الإنجليزي</p>
       </div>
 
-      <div style="background:var(--dark3);border:1px solid rgba(201,168,76,0.15);border-radius:16px;padding:24px 20px;text-align:center;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.4)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.15)'">
+      <div class="arab-card">
         <div style="font-size:2rem;margin-bottom:10px;">🇸🇦</div>
         <h3 style="font-size:1rem;font-weight:800;margin-bottom:6px;color:var(--white);">كتابة CV السعودية</h3>
         <p style="color:var(--gray);font-size:0.82rem;line-height:1.6;">CV مخصص لمتطلبات رؤية 2030 وسوق العمل السعودي</p>
       </div>
 
-      <div style="background:var(--dark3);border:1px solid rgba(201,168,76,0.15);border-radius:16px;padding:24px 20px;text-align:center;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.4)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.15)'">
+      <div class="arab-card">
         <div style="font-size:2rem;margin-bottom:10px;">🇦🇪</div>
         <h3 style="font-size:1rem;font-weight:800;margin-bottom:6px;color:var(--white);">كتابة CV الإمارات</h3>
         <p style="color:var(--gray);font-size:0.82rem;line-height:1.6;">CV يناسب بيئة العمل متعددة الجنسيات في دبي وأبوظبي</p>
       </div>
 
-      <div style="background:var(--dark3);border:1px solid rgba(201,168,76,0.15);border-radius:16px;padding:24px 20px;text-align:center;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.4)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.15)'">
+      <div class="arab-card">
         <div style="font-size:2rem;margin-bottom:10px;">🇰🇼</div>
         <h3 style="font-size:1rem;font-weight:800;margin-bottom:6px;color:var(--white);">كتابة CV الكويت</h3>
         <p style="color:var(--gray);font-size:0.82rem;line-height:1.6;">سيرة ذاتية احترافية تتوافق مع متطلبات التوظيف الكويتي</p>
       </div>
 
-      <div style="background:var(--dark3);border:1px solid rgba(201,168,76,0.15);border-radius:16px;padding:24px 20px;text-align:center;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.4)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.15)'">
+      <div class="arab-card">
         <div style="font-size:2rem;margin-bottom:10px;">🇶🇦</div>
         <h3 style="font-size:1rem;font-weight:800;margin-bottom:6px;color:var(--white);">كتابة CV قطر</h3>
         <p style="color:var(--gray);font-size:0.82rem;line-height:1.6;">CV احترافي لسوق العمل القطري والشركات الدولية</p>
       </div>
 
-      <div style="background:var(--dark3);border:1px solid rgba(201,168,76,0.15);border-radius:16px;padding:24px 20px;text-align:center;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.4)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.15)'">
+      <div class="arab-card">
         <div style="font-size:2rem;margin-bottom:10px;">🌍</div>
         <h3 style="font-size:1rem;font-weight:800;margin-bottom:6px;color:var(--white);">دول الخليج والعالم</h3>
         <p style="color:var(--gray);font-size:0.82rem;line-height:1.6;">البحرين، عُمان، الأردن، وجميع الأسواق الدولية</p>
@@ -2291,22 +2316,22 @@
         <h3 style="font-family:'Tajawal',sans-serif;font-size:1.9rem;font-weight:900;">اللي بيميّزنا عن غيرنا</h3>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;">
-        <div style="background:var(--dark3);border:1px solid rgba(201,168,76,0.1);border-radius:16px;padding:26px 22px;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.35)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.1)'">
+        <div class="about-card">
           <div style="font-size:2rem;margin-bottom:14px;">🎯</div>
           <h4 style="font-weight:800;margin-bottom:8px;font-size:1rem;">شغل شخصي مش أتوماتيكي</h4>
           <p style="color:var(--gray);font-size:0.85rem;line-height:1.7;">كل CV بيتكتب بإيدي خبير حقيقي بيفهم مجالك ويعرف يبرز نقاط قوتك بالشكل الصح.</p>
         </div>
-        <div style="background:var(--dark3);border:1px solid rgba(201,168,76,0.1);border-radius:16px;padding:26px 22px;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.35)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.1)'">
+        <div class="about-card">
           <div style="font-size:2rem;margin-bottom:14px;">💰</div>
           <h4 style="font-weight:800;margin-bottom:8px;font-size:1rem;">أفضل سعر في مصر</h4>
           <p style="color:var(--gray);font-size:0.85rem;line-height:1.7;">خدمة احترافية بأسعار مناسبة للسوق المصري — بدون مفاجآت، الدفع بعد الاتفاق على كل حاجة.</p>
         </div>
-        <div style="background:var(--dark3);border:1px solid rgba(201,168,76,0.1);border-radius:16px;padding:26px 22px;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.35)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.1)'">
+        <div class="about-card">
           <div style="font-size:2rem;margin-bottom:14px;">🛡️</div>
           <h4 style="font-weight:800;margin-bottom:8px;font-size:1rem;">ضمان استرداد كامل</h4>
           <p style="color:var(--gray);font-size:0.85rem;line-height:1.7;">لو مش راضي بعد التعديلات المجانية، هنرجعلك فلوسك بالكامل — من غير أسئلة ومن غير تعقيد.</p>
         </div>
-        <div style="background:var(--dark3);border:1px solid rgba(201,168,76,0.1);border-radius:16px;padding:26px 22px;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.35)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.1)'">
+        <div class="about-card">
           <div style="font-size:2rem;margin-bottom:14px;">⚡</div>
           <h4 style="font-weight:800;margin-bottom:8px;font-size:1rem;">سرعة في التسليم</h4>
           <p style="color:var(--gray);font-size:0.85rem;line-height:1.7;">CV جاهز خلال 48 ساعة — لو عندك مقابلة مستعجلة نقدر نتعاون معاك على تسليم أسرع.</p>
@@ -2842,26 +2867,26 @@
         statsObserver.unobserve(e.target);
       }
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.5, rootMargin: '0px' });
   const statsEl = document.querySelector('.stats');
   if (statsEl) statsObserver.observe(statsEl);
 
   // Scroll reveal observer
   const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.12 });
+    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
   document.querySelectorAll('.reveal').forEach(r => revealObserver.observe(r));
 
   // Back to top
   const backTop = document.createElement('a');
   backTop.href = '#'; backTop.title = 'العودة للأعلى';
-  backTop.style.cssText = 'position:fixed;bottom:110px;right:28px;width:42px;height:42px;background:var(--dark3);border:1px solid rgba(201,168,76,0.35);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.2rem;z-index:200;opacity:0;transition:all 0.3s;text-decoration:none;';
+  backTop.style.cssText = 'position:fixed;bottom:110px;right:28px;width:42px;height:42px;background:var(--dark3);border:1px solid rgba(201,168,76,0.35);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.2rem;z-index:200;opacity:0;transition:opacity 0.3s;text-decoration:none;will-change:opacity;';
   backTop.innerHTML = '↑';
   document.body.appendChild(backTop);
   window.addEventListener('scroll', () => {
     backTop.style.opacity = window.scrollY > 400 ? '1' : '0';
     backTop.style.pointerEvents = window.scrollY > 400 ? 'auto' : 'none';
-  });
+  }, { passive: true });
   backTop.addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
   // Hamburger menu
