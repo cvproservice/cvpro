@@ -50,7 +50,7 @@
 <link rel="sitemap" type="application/xml" href="https://cvproservice.github.io/cvpro/sitemap.xml">
 
 <!-- Favicon SVG inline -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230A0A0F'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Arial Black' font-weight='900' fill='%23C9A84C'>CV</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%230A0A0F'/><rect x='2' y='2' width='96' height='96' rx='16' stroke='%23C9A84C' stroke-width='2' fill='none'/><rect x='22' y='18' width='38' height='6' rx='3' fill='%23C9A84C'/><rect x='22' y='30' width='56' height='4' rx='2' fill='%23C9A84C' opacity='.5'/><rect x='22' y='40' width='48' height='4' rx='2' fill='%23C9A84C' opacity='.5'/><circle cx='68' cy='72' r='18' fill='%230A0A0F' stroke='%23C9A84C' stroke-width='3'/><polyline points='59,72 65,78 78,62' stroke='%23C9A84C' stroke-width='4' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
 
 <!-- Google Analytics — deferred to not block render -->
 <script>
@@ -417,9 +417,10 @@
   nav {
     position: fixed; top: 0; width: 100%; z-index: 100;
     padding: 16px 5%;
-    background: rgba(10,10,15,0.95);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(201,168,76,0.15);
+    background: rgba(10,10,15,0.96);
+    backdrop-filter: blur(24px) saturate(180%);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    box-shadow: 0 1px 0 rgba(201,168,76,0.06), 0 4px 20px rgba(0,0,0,0.3);
     display: flex; align-items: center; justify-content: space-between;
     transition: top 0.3s;
   }
@@ -436,8 +437,8 @@
   .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 148px 5% 80px; position: relative; overflow: hidden; }
   .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.08) 0%, transparent 70%); pointer-events: none; }
   /* Optimized: hero-grid uses SVG data URI instead of CSS gradients to reduce paint cost */
-  .hero-grid { position: absolute; inset: 0; opacity: 0.04; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M60 0H0v60' fill='none' stroke='%23C9A84C' stroke-width='0.5'/%3E%3C/svg%3E"); background-size: 60px 60px; pointer-events: none; }
-  .badge { display: inline-block; border: 1px solid rgba(201,168,76,0.4); color: var(--gold); padding: 8px 20px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; margin-bottom: 30px; letter-spacing: 2px; animation: fadeUp 0.8s ease both; }
+  .hero-grid { position: absolute; inset: 0; opacity: 0.06; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M40 0H0v40' fill='none' stroke='%23C9A84C' stroke-width='0.4'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect x='98' y='98' width='4' height='4' rx='1' fill='%23C9A84C' opacity='0.6'/%3E%3C/svg%3E"); background-size: 40px 40px, 200px 200px; pointer-events: none; }
+  .badge { display: inline-flex; align-items:center; gap:8px; border: 1px solid rgba(201,168,76,0.35); background: rgba(201,168,76,0.05); color: var(--gold); padding: 8px 20px; border-radius: 8px; font-size: 0.82rem; font-weight: 700; margin-bottom: 30px; letter-spacing: 1.5px; animation: fadeUp 0.8s ease both; }
   .hero h1 { font-family: 'Tajawal', sans-serif; font-size: clamp(2.5rem, 7vw, 5.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 25px; animation: fadeUp 0.8s ease 0.15s both; }
   .hero h1 .gold { color: var(--gold); }
   .hero p { font-size: clamp(1rem, 2vw, 1.25rem); color: var(--gray); max-width: 650px; margin: 0 auto 45px; line-height: 1.8; animation: fadeUp 0.8s ease 0.3s both; }
@@ -455,22 +456,30 @@
 
   /* SECTION */
   section { padding: 100px 5%; }
-  .section-label { display: inline-block; color: var(--gold); font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; }
+  .section-label { display: inline-flex; align-items:center; gap:8px; color: var(--gold); font-size: 0.75rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; padding: 5px 12px; background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.18); border-radius: 6px; }
   .section-title { font-family: 'Tajawal', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
   .section-desc { color: var(--gray); font-size: 1.05rem; line-height: 1.8; max-width: 600px; }
 
   /* SERVICES */
-  #services { background: var(--dark2); }
-  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 60px; }
-  .service-card { background: var(--dark3); border: 1px solid rgba(201,168,76,0.1); border-radius: 20px; padding: 40px 30px; transition: all 0.4s; position: relative; overflow: hidden; }
-  .service-card::before { content: ''; position: absolute; top: 0; right: 0; width: 100px; height: 100px; background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%); border-radius: 50%; }
-  .service-card:hover { border-color: rgba(201,168,76,0.35); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
-  .service-icon { font-size: 2.5rem; margin-bottom: 20px; display: block; }
-  .service-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 12px; color: var(--white); }
-  .service-card p { color: var(--gray); line-height: 1.7; font-size: 0.95rem; }
-  .service-wa-btn { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 22px; background: linear-gradient(135deg, #25D366, #128C7E); color: white; padding: 12px 20px; border-radius: 10px; text-decoration: none; font-size: 0.9rem; font-weight: 700; transition: all 0.3s; box-shadow: 0 4px 15px rgba(37,211,102,0.2); }
-  .service-wa-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37,211,102,0.35); }
-  .service-badge { display: inline-block; margin-top: 20px; background: rgba(201,168,76,0.1); color: var(--gold); padding: 5px 14px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; }
+  #services { background: var(--dark2); position: relative; overflow: hidden; }
+  #services::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(201,168,76,0.04) 0%, transparent 60%); pointer-events:none; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; margin-top: 60px; }
+  .service-card { background: linear-gradient(145deg, var(--dark3), rgba(10,10,15,0.9)); border: 1px solid rgba(201,168,76,0.12); border-radius: 16px; padding: 32px 26px 26px; transition: all 0.4s cubic-bezier(0.23,1,0.32,1); position: relative; overflow: hidden; }
+  .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0; transition: opacity 0.4s; }
+  .service-card::after { content: ''; position: absolute; top: 14px; left: 14px; width: 5px; height: 5px; border-radius: 50%; background: rgba(201,168,76,0.3); box-shadow: 0 0 8px rgba(201,168,76,0.2); transition: all 0.4s; }
+  .service-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-8px); box-shadow: 0 24px 60px rgba(0,0,0,0.45), 0 0 0 1px rgba(201,168,76,0.08) inset; background: linear-gradient(145deg, #1f1f2e, #12121a); }
+  .service-card:hover::before { opacity: 1; }
+  .service-card:hover::after { background: var(--gold); box-shadow: 0 0 12px rgba(201,168,76,0.5); }
+  .service-icon-wrap { display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 12px; background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.18); margin-bottom: 20px; transition: all 0.3s; }
+  .service-card:hover .service-icon-wrap { background: rgba(201,168,76,0.14); border-color: rgba(201,168,76,0.4); box-shadow: 0 0 20px rgba(201,168,76,0.1); }
+  .service-icon { font-size: 1.7rem; display: block; line-height: 1; }
+  .service-card h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 10px; color: var(--white); letter-spacing: -0.3px; }
+  .service-card p { color: var(--gray); line-height: 1.75; font-size: 0.91rem; }
+  .service-sep { height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.15), transparent); margin: 18px 0; }
+  .service-wa-btn { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 4px; background: rgba(37,211,102,0.06); border: 1px solid rgba(37,211,102,0.25); color: #4ade80; padding: 11px 20px; border-radius: 10px; text-decoration: none; font-size: 0.87rem; font-weight: 700; transition: all 0.3s; }
+  .service-wa-btn:hover { background: rgba(37,211,102,0.14); border-color: rgba(37,211,102,0.55); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.12); }
+  .service-badge { display: inline-flex; align-items: center; gap: 5px; margin-top: 16px; background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.2); color: var(--gold); padding: 4px 10px; border-radius: 6px; font-size: 0.73rem; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; }
+  .service-badge::before { content:''; display:inline-block; width:5px; height:5px; border-radius:50%; background:var(--gold); box-shadow: 0 0 6px rgba(201,168,76,0.6); }
 
   /* ATS */
   .ats-section { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
@@ -528,6 +537,17 @@
   /* FOOTER */
   footer { background: var(--dark); border-top: 1px solid rgba(201,168,76,0.1); padding: 40px 5%; text-align: center; color: var(--gray); font-size: 0.9rem; }
   footer .logo-footer { font-family: 'Tajawal', sans-serif; font-size: 1.4rem; font-weight: 900; color: var(--gold); margin-bottom: 10px; }
+
+
+  /* TECH SCAN LINE */
+  @keyframes scanLine { 0%{top:-5%} 100%{top:105%} }
+  .hero-scan { position:absolute; inset:0; pointer-events:none; overflow:hidden; z-index:0; }
+  .hero-scan::after { content:''; position:absolute; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,rgba(201,168,76,0.15),transparent); animation:scanLine 8s linear infinite; }
+
+  /* TECH CORNER - decorative */
+  .tech-corner { position:absolute; width:60px; height:60px; border-color:rgba(201,168,76,0.25); border-style:solid; border-width:0; }
+  .tc-tl { top:20px; right:20px; border-top-width:1.5px; border-right-width:1.5px; }
+  .tc-br { bottom:20px; left:20px; border-bottom-width:1.5px; border-left-width:1.5px; }
 
   /* ANIMATIONS — optimized with will-change */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
@@ -677,7 +697,21 @@
 
 <nav role="navigation" aria-label="القائمة الرئيسية">
   <div>
-    <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'});setTimeout(()=>location.reload(),400);" title="الرجوع للبداية">CV<span>Pro</span></div>
+    <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'});setTimeout(()=>location.reload(),400);" title="الرجوع للبداية">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;margin-left:8px;">
+        <rect width="36" height="36" rx="8" fill="#C9A84C" opacity="0.12"/>
+        <rect x="1" y="1" width="34" height="34" rx="7" stroke="#C9A84C" stroke-width="1.2" stroke-dasharray="3 2"/>
+        <!-- Document lines -->
+        <rect x="9" y="8" width="14" height="2" rx="1" fill="#C9A84C"/>
+        <rect x="9" y="12" width="18" height="1.5" rx="0.75" fill="#C9A84C" opacity="0.5"/>
+        <rect x="9" y="15.5" width="16" height="1.5" rx="0.75" fill="#C9A84C" opacity="0.5"/>
+        <rect x="9" y="19" width="13" height="1.5" rx="0.75" fill="#C9A84C" opacity="0.35"/>
+        <!-- ATS check mark circle -->
+        <circle cx="24" cy="25" r="7" fill="#0A0A0F" stroke="#C9A84C" stroke-width="1.2"/>
+        <polyline points="21,25 23,27 27,22" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span style="font-family:'Tajawal',sans-serif;font-size:1.1rem;font-weight:900;color:var(--gold);vertical-align:middle;">CV Pro</span><span style="font-family:'Tajawal',sans-serif;font-size:1.1rem;font-weight:700;color:var(--white);vertical-align:middle;margin-right:2px;"> Egypt</span>
+    </div>
   </div>
   <ul class="nav-links">
     <li><a href="#services">خدماتنا</a></li>
@@ -714,7 +748,7 @@
   <a href="#faq" onclick="closeMenu()">❓ الأسئلة الشائعة</a>
   <a href="#contact-form" onclick="closeMenu()" style="background:var(--gold);color:var(--dark);padding:14px 40px;border-radius:12px;margin-top:10px;font-weight:900;">🚀 اطلب CV دلوقتي</a>
   <div style="display:flex;gap:15px;margin-top:10px;">
-    <a href="https://wa.me/201126104846?text=السلام عليكم نورهان 👋 عايز أستفسر عن خدمات CV Pro" target="_blank" rel="noopener noreferrer" style="background:rgba(37,211,102,0.15);border:1px solid #25D366;color:#25D366;padding:10px 20px;border-radius:10px;font-weight:700;">💬 نورهان</a>
+    <div class="service-sep"></div><a href="https://wa.me/201126104846?text=السلام عليكم نورهان 👋 عايز أستفسر عن خدمات CV Pro" target="_blank" rel="noopener noreferrer" style="background:rgba(37,211,102,0.15);border:1px solid #25D366;color:#25D366;padding:10px 20px;border-radius:10px;font-weight:700;">💬 نورهان</a>
     <a href="https://wa.me/201068204700?text=السلام عليكم خالد 👋 عايز أستفسر عن خدمات CV Pro" target="_blank" rel="noopener noreferrer" style="background:rgba(37,99,235,0.15);border:1px solid #2563eb;color:#5B9BF8;padding:10px 20px;border-radius:10px;font-weight:700;">💬 خالد</a>
   </div>
 </div>
@@ -723,6 +757,9 @@
 <main id="main-content">
 <section class="hero">
   <div class="hero-grid"></div>
+  <div class="hero-scan"></div>
+  <div class="tech-corner tc-tl"></div>
+  <div class="tech-corner tc-br"></div>
   <div>
     <div class="badge">✦ +500 عميل — 95% منهم عدّوا نظام ATS</div>
     <h1><span class="gold">كتابة CV احترافي</span><br>بيتجاوز ATS ويوصلك للوظيفة</h1>
@@ -981,61 +1018,61 @@
   </div>
   <div class="services-grid reveal">
     <div class="service-card">
-      <span class="service-icon">📄</span>
+      <div class="service-icon-wrap"><span class="service-icon">📄</span></div>
       <h3>CV احترافي من الصفر</h3>
       <p>نبني سيرتك الذاتية بالكامل بأسلوب احترافي يبرز نقاط قوتك ويناسب المجال الوظيفي المستهدف</p>
       <span class="service-badge">الأكثر طلباً</span>
-      <a href="https://wa.me/201126104846?text=السلام عليكم 👋 أنا مهتم بخدمة (CV احترافي من الصفر) وعايز أعرف التفاصيل والأسعار" target="_blank" rel="noopener noreferrer" class="service-wa-btn">
+      <div class="service-sep"></div><a href="https://wa.me/201126104846?text=السلام عليكم 👋 أنا مهتم بخدمة (CV احترافي من الصفر) وعايز أعرف التفاصيل والأسعار" target="_blank" rel="noopener noreferrer" class="service-wa-btn">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.525 5.847L.057 23.547a.75.75 0 00.92.92l5.7-1.468A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.705 9.705 0 01-4.95-1.355l-.355-.212-3.683.948.966-3.584-.232-.369A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
         اطلب الخدمة دي
       </a>
     </div>
     <div class="service-card">
-      <span class="service-icon">🎯</span>
+      <div class="service-icon-wrap"><span class="service-icon">🎯</span></div>
       <h3>تحسين CV لنظام ATS</h3>
       <p>نعيد صياغة وتنسيق سيرتك الذاتية لتجتاز فلاتر ATS الآلية وتصل لأيدي المحكمين البشريين</p>
       <span class="service-badge">ATS Optimized</span>
-      <a href="https://wa.me/201126104846?text=السلام عليكم 👋 عندي CV وعايز أحسّنه لنظام ATS عشان يعدي الفلاتر الآلية، ممكن تساعدني؟" target="_blank" rel="noopener noreferrer" class="service-wa-btn">
+      <div class="service-sep"></div><a href="https://wa.me/201126104846?text=السلام عليكم 👋 عندي CV وعايز أحسّنه لنظام ATS عشان يعدي الفلاتر الآلية، ممكن تساعدني؟" target="_blank" rel="noopener noreferrer" class="service-wa-btn">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.525 5.847L.057 23.547a.75.75 0 00.92.92l5.7-1.468A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.705 9.705 0 01-4.95-1.355l-.355-.212-3.683.948.966-3.584-.232-.369A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
         اطلب الخدمة دي
       </a>
     </div>
     <div class="service-card">
-      <span class="service-icon">✍️</span>
+      <div class="service-icon-wrap"><span class="service-icon">✍️</span></div>
       <h3>تعديل وتطوير CV</h3>
       <p>مراجعة شاملة لسيرتك الحالية وإضافة الكلمات المفتاحية والإنجازات بأرقام ومؤشرات واضحة</p>
       <span class="service-badge">تحديث كامل</span>
-      <a href="https://wa.me/201126104846?text=السلام عليكم 👋 عندي CV موجود وعايز أعدّله وأطوّره، ممكن تعرفني بالتفاصيل؟" target="_blank" rel="noopener noreferrer" class="service-wa-btn">
+      <div class="service-sep"></div><a href="https://wa.me/201126104846?text=السلام عليكم 👋 عندي CV موجود وعايز أعدّله وأطوّره، ممكن تعرفني بالتفاصيل؟" target="_blank" rel="noopener noreferrer" class="service-wa-btn">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.525 5.847L.057 23.547a.75.75 0 00.92.92l5.7-1.468A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.705 9.705 0 01-4.95-1.355l-.355-.212-3.683.948.966-3.584-.232-.369A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
         اطلب الخدمة دي
       </a>
     </div>
     <div class="service-card">
-      <span class="service-icon">💼</span>
+      <div class="service-icon-wrap"><span class="service-icon">💼</span></div>
       <h3>Cover Letter احترافي</h3>
       <p>خطاب تقديم مخصص لكل فرصة عمل يجذب الانتباه ويكمل سيرتك الذاتية بشكل احترافي</p>
       <span class="service-badge">مخصص 100%</span>
-      <a href="https://wa.me/201126104846?text=السلام عليكم 👋 عايز Cover Letter احترافي مخصص لوظيفة معينة، ممكن تساعدني؟" target="_blank" rel="noopener noreferrer" class="service-wa-btn">
+      <div class="service-sep"></div><a href="https://wa.me/201126104846?text=السلام عليكم 👋 عايز Cover Letter احترافي مخصص لوظيفة معينة، ممكن تساعدني؟" target="_blank" rel="noopener noreferrer" class="service-wa-btn">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.525 5.847L.057 23.547a.75.75 0 00.92.92l5.7-1.468A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.705 9.705 0 01-4.95-1.355l-.355-.212-3.683.948.966-3.584-.232-.369A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
         اطلب الخدمة دي
       </a>
     </div>
     <div class="service-card">
-      <span class="service-icon">🔗</span>
+      <div class="service-icon-wrap"><span class="service-icon">🔗</span></div>
       <h3>LinkedIn Profile</h3>
       <p>تحسين ملفك الشخصي على LinkedIn ليظهر في نتائج البحث ويجذب الريكروترز إليك تلقائياً</p>
       <span class="service-badge">SEO Optimized</span>
-      <a href="https://wa.me/201126104846?text=السلام عليكم 👋 عايز أحسّن ملفي على LinkedIn عشان يظهر في البحث ويجذب الريكروترز، ممكن تساعدني؟" target="_blank" rel="noopener noreferrer" class="service-wa-btn">
+      <div class="service-sep"></div><a href="https://wa.me/201126104846?text=السلام عليكم 👋 عايز أحسّن ملفي على LinkedIn عشان يظهر في البحث ويجذب الريكروترز، ممكن تساعدني؟" target="_blank" rel="noopener noreferrer" class="service-wa-btn">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.525 5.847L.057 23.547a.75.75 0 00.92.92l5.7-1.468A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.705 9.705 0 01-4.95-1.355l-.355-.212-3.683.948.966-3.584-.232-.369A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
         اطلب الخدمة دي
       </a>
     </div>
     <div class="service-card">
-      <span class="service-icon">🎓</span>
+      <div class="service-icon-wrap"><span class="service-icon">🎓</span></div>
       <h3>تحضير للإنترفيو</h3>
       <p>جلسة تدريبية على أهم أسئلة المقابلة وكيفية الإجابة بثقة مع نصائح للغة الجسد والتقديم</p>
       <span class="service-badge">مع خبير</span>
-      <a href="https://wa.me/201126104846?text=السلام عليكم 👋 عندي مقابلة قريبة وعايز أتدرب على الإنترفيو مع خبير، ممكن تعرفني بالتفاصيل؟" target="_blank" rel="noopener noreferrer" class="service-wa-btn">
+      <div class="service-sep"></div><a href="https://wa.me/201126104846?text=السلام عليكم 👋 عندي مقابلة قريبة وعايز أتدرب على الإنترفيو مع خبير، ممكن تعرفني بالتفاصيل؟" target="_blank" rel="noopener noreferrer" class="service-wa-btn">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.525 5.847L.057 23.547a.75.75 0 00.92.92l5.7-1.468A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.705 9.705 0 01-4.95-1.355l-.355-.212-3.683.948.966-3.584-.232-.369A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
         اطلب الخدمة دي
       </a>
@@ -1484,7 +1521,7 @@
         <li><span class="pf-icon">✓</span> تسليم خلال 24 ساعة</li>
         <li><span class="pf-icon">✓</span> تعديل مجاني واحد</li>
       </ul>
-      <a href="https://wa.me/201126104846?text=السلام عليكم نورهان 👋 عايز أطلب Cover Letter احترافي بسعر 139 جنيه" target="_blank" rel="noopener noreferrer" class="price-btn">💬 اطلب دلوقتي</a>
+      <div class="service-sep"></div><a href="https://wa.me/201126104846?text=السلام عليكم نورهان 👋 عايز أطلب Cover Letter احترافي بسعر 139 جنيه" target="_blank" rel="noopener noreferrer" class="price-btn">💬 اطلب دلوقتي</a>
     </div>
 
     <!-- LinkedIn -->
@@ -1501,7 +1538,7 @@
         <li><span class="pf-icon">✓</span> نصائح للصورة والبانر</li>
         <li><span class="pf-icon">✓</span> تسليم خلال 48 ساعة</li>
       </ul>
-      <a href="https://wa.me/201126104846?text=السلام عليكم نورهان 👋 عايز أطلب تحسين LinkedIn بسعر 199 جنيه" target="_blank" rel="noopener noreferrer" class="price-btn">💬 اطلب دلوقتي</a>
+      <div class="service-sep"></div><a href="https://wa.me/201126104846?text=السلام عليكم نورهان 👋 عايز أطلب تحسين LinkedIn بسعر 199 جنيه" target="_blank" rel="noopener noreferrer" class="price-btn">💬 اطلب دلوقتي</a>
     </div>
 
     <!-- انترفيو -->
@@ -1518,7 +1555,7 @@
         <li><span class="pf-icon">✓</span> تقييم لغة الجسد والأسلوب</li>
         <li><span class="pf-icon">✓</span> ملاحظات مكتوبة بعد الجلسة</li>
       </ul>
-      <a href="https://wa.me/201126104846?text=السلام عليكم نورهان 👋 عايز أحجز جلسة تحضير إنترفيو بسعر 249 جنيه" target="_blank" rel="noopener noreferrer" class="price-btn">💬 احجز جلستك</a>
+      <div class="service-sep"></div><a href="https://wa.me/201126104846?text=السلام عليكم نورهان 👋 عايز أحجز جلسة تحضير إنترفيو بسعر 249 جنيه" target="_blank" rel="noopener noreferrer" class="price-btn">💬 احجز جلستك</a>
     </div>
 
   </div>
@@ -1698,7 +1735,7 @@
                 <div style="font-weight:900;color:var(--white);font-size:1rem;margin-bottom:5px;">⚡ خد الـ Shortcut</div>
                 <div style="color:var(--gray);font-size:0.85rem;line-height:1.6;">مش عايز تعمل كل ده لوحدك؟ إحنا ننفذ الـ 8 نقاط دول + كلمات مفتاحية مخصصة لوظيفتك في <strong style="color:var(--gold);">48 ساعة</strong> بضمان <strong style="color:var(--gold);">95% ATS Score</strong>.</div>
               </div>
-              <a href="https://wa.me/201126104846?text=السلام عليكم 👋 شفت الـ Checklist وعايز CV متوافق مع ATS بالكامل" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:13px 22px;border-radius:12px;text-decoration:none;font-weight:800;font-size:0.9rem;font-family:'Cairo',sans-serif;white-space:nowrap;box-shadow:0 4px 15px rgba(37,211,102,0.3);">
+              <div class="service-sep"></div><a href="https://wa.me/201126104846?text=السلام عليكم 👋 شفت الـ Checklist وعايز CV متوافق مع ATS بالكامل" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:13px 22px;border-radius:12px;text-decoration:none;font-weight:800;font-size:0.9rem;font-family:'Cairo',sans-serif;white-space:nowrap;box-shadow:0 4px 15px rgba(37,211,102,0.3);">
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.525 5.847L.057 23.547a.75.75 0 00.92.92l5.7-1.468A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.705 9.705 0 01-4.95-1.355l-.355-.212-3.683.948.966-3.584-.232-.369A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
                 اطلب CV ATS — 249 جنيه
               </a>
@@ -1778,7 +1815,7 @@
                 <div style="font-weight:900;color:var(--white);font-size:1rem;margin-bottom:5px;">🎓 خريج جديد؟ إحنا نبرز نقاط قوتك</div>
                 <div style="color:var(--gray);font-size:0.85rem;line-height:1.6;">إحنا متخصصون في CV الخريجين — بنحوّل مشاريعك وتدريباتك لـ CV احترافي يجيبلك مقابلات حقيقية في <strong style="color:var(--gold);">48 ساعة</strong>.</div>
               </div>
-              <a href="https://wa.me/201126104846?text=السلام عليكم 👋 أنا خريج جديد وعايز CV احترافي يناسب حالتي — 249 جنيه" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:13px 22px;border-radius:12px;text-decoration:none;font-weight:800;font-size:0.9rem;font-family:'Cairo',sans-serif;white-space:nowrap;box-shadow:0 4px 15px rgba(37,211,102,0.3);">
+              <div class="service-sep"></div><a href="https://wa.me/201126104846?text=السلام عليكم 👋 أنا خريج جديد وعايز CV احترافي يناسب حالتي — 249 جنيه" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:13px 22px;border-radius:12px;text-decoration:none;font-weight:800;font-size:0.9rem;font-family:'Cairo',sans-serif;white-space:nowrap;box-shadow:0 4px 15px rgba(37,211,102,0.3);">
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.525 5.847L.057 23.547a.75.75 0 00.92.92l5.7-1.468A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.705 9.705 0 01-4.95-1.355l-.355-.212-3.683.948.966-3.584-.232-.369A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
                 CV خريج — 249 جنيه
               </a>
@@ -1859,7 +1896,7 @@
                 <div style="font-weight:900;color:var(--white);font-size:1rem;margin-bottom:5px;">🌍 CV إنجليزي للشركات الأجنبية والخليج</div>
                 <div style="color:var(--gray);font-size:0.85rem;line-height:1.6;">إحنا نكتبه بالكلمات المفتاحية الصح + Action Verbs قوية + متوافق مع ATS في <strong style="color:var(--gold);">48 ساعة</strong>.</div>
               </div>
-              <a href="https://wa.me/201126104846?text=السلام عليكم 👋 عايز CV بالإنجليزي لشركة أجنبية أو فرصة برا مصر — 249 جنيه" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:13px 22px;border-radius:12px;text-decoration:none;font-weight:800;font-size:0.9rem;font-family:'Cairo',sans-serif;white-space:nowrap;box-shadow:0 4px 15px rgba(37,211,102,0.3);">
+              <div class="service-sep"></div><a href="https://wa.me/201126104846?text=السلام عليكم 👋 عايز CV بالإنجليزي لشركة أجنبية أو فرصة برا مصر — 249 جنيه" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:13px 22px;border-radius:12px;text-decoration:none;font-weight:800;font-size:0.9rem;font-family:'Cairo',sans-serif;white-space:nowrap;box-shadow:0 4px 15px rgba(37,211,102,0.3);">
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.525 5.847L.057 23.547a.75.75 0 00.92.92l5.7-1.468A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.705 9.705 0 01-4.95-1.355l-.355-.212-3.683.948.966-3.584-.232-.369A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
                 CV إنجليزي — 249 جنيه
               </a>
@@ -1949,7 +1986,7 @@
                 <div style="font-weight:900;color:var(--white);font-size:1rem;margin-bottom:5px;">💼 إحنا ننفذ الـ 5 تعديلات دول عنك</div>
                 <div style="color:var(--gray);font-size:0.85rem;line-height:1.6;">Summary مخصص + أرقام + Keywords + LinkedIn — كل ده في CV واحد بيجيبلك مقابلات أكتر في <strong style="color:var(--gold);">48 ساعة</strong>.</div>
               </div>
-              <a href="https://wa.me/201126104846?text=السلام عليكم 👋 عايز أحسّن CV بتاعي عشان أجيب مقابلات أكتر — 249 جنيه" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:13px 22px;border-radius:12px;text-decoration:none;font-weight:800;font-size:0.9rem;font-family:'Cairo',sans-serif;white-space:nowrap;box-shadow:0 4px 15px rgba(37,211,102,0.3);">
+              <div class="service-sep"></div><a href="https://wa.me/201126104846?text=السلام عليكم 👋 عايز أحسّن CV بتاعي عشان أجيب مقابلات أكتر — 249 جنيه" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:13px 22px;border-radius:12px;text-decoration:none;font-weight:800;font-size:0.9rem;font-family:'Cairo',sans-serif;white-space:nowrap;box-shadow:0 4px 15px rgba(37,211,102,0.3);">
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.525 5.847L.057 23.547a.75.75 0 00.92.92l5.7-1.468A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.705 9.705 0 01-4.95-1.355l-.355-.212-3.683.948.966-3.584-.232-.369A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
                 حسّن CV دلوقتي
               </a>
@@ -2290,7 +2327,7 @@
             <div style="display:flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--gray);"><span style="color:#4ade80;">✓</span> +300 CV في التخصصات الإدارية</div>
             <div style="display:flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--gray);"><span style="color:#4ade80;">✓</span> خبرة في CV الأطباء والمحامين</div>
           </div>
-          <a href="https://wa.me/201126104846?text=السلام عليكم نورهان 👋 عايزة أتواصل معاكي بخصوص CV" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:center;gap:7px;margin-top:20px;background:rgba(190,24,93,0.12);border:1px solid rgba(190,24,93,0.35);color:#f472b6;padding:10px;border-radius:10px;text-decoration:none;font-size:0.85rem;font-weight:700;transition:all 0.2s;" onmouseover="this.style.background='rgba(190,24,93,0.22)'" onmouseout="this.style.background='rgba(190,24,93,0.12)'">💬 تواصل مع نورهان</a>
+          <div class="service-sep"></div><a href="https://wa.me/201126104846?text=السلام عليكم نورهان 👋 عايزة أتواصل معاكي بخصوص CV" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:center;gap:7px;margin-top:20px;background:rgba(190,24,93,0.12);border:1px solid rgba(190,24,93,0.35);color:#f472b6;padding:10px;border-radius:10px;text-decoration:none;font-size:0.85rem;font-weight:700;transition:all 0.2s;" onmouseover="this.style.background='rgba(190,24,93,0.22)'" onmouseout="this.style.background='rgba(190,24,93,0.12)'">💬 تواصل مع نورهان</a>
         </div>
 
         <!-- Support team card -->
@@ -2353,7 +2390,7 @@
       <span style="color:var(--gray);font-size:0.88rem;">💡 <strong style="color:var(--gold);">ليه فيه خبيرين؟</strong> — كل خبير متخصص في مجال مختلف عشان يقدملك أحسن خدمة</span>
     </div>
     <div style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap;position:relative;">
-      <a href="https://wa.me/201126104846?text=السلام عليكم نورهان 👋 عايز أستفسر عن خدمات CV Pro وأعرف الأسعار والتفاصيل" target="_blank" rel="noopener noreferrer" class="whatsapp-btn" style="flex:1;min-width:220px;max-width:320px;flex-direction:column;gap:5px;padding:20px 30px;">
+      <div class="service-sep"></div><a href="https://wa.me/201126104846?text=السلام عليكم نورهان 👋 عايز أستفسر عن خدمات CV Pro وأعرف الأسعار والتفاصيل" target="_blank" rel="noopener noreferrer" class="whatsapp-btn" style="flex:1;min-width:220px;max-width:320px;flex-direction:column;gap:5px;padding:20px 30px;">
         <div style="display:flex;align-items:center;gap:10px;font-size:1.15rem;"><span class="wa-icon">💬</span> تواصل مع <strong>نورهان</strong></div>
         <div style="font-size:0.78rem;opacity:0.85;font-weight:500;direction:ltr;">+20 112 610 4846</div>
         <div style="font-size:0.74rem;opacity:0.65;">إدارة · طب · قانون · إبداعية · تسويق</div>
@@ -2488,7 +2525,7 @@
         🚀 ابعت الطلب على واتساب دلوقتي
       </button>
       <div id="cf-error" style="display:none;margin-top:14px;color:#ff6b6b;font-size:0.88rem;font-weight:600;text-align:center;"></div>
-      <p style="text-align:center;color:var(--gray);font-size:0.8rem;margin-top:14px;">💡 مش عارف تختار؟ <a href="https://wa.me/201126104846?text=السلام عليكم 👋 عايز استشارة مجانية عشان أعرف أنسب خدمة ليا" target="_blank" rel="noopener noreferrer" style="color:var(--gold);font-weight:700;text-decoration:none;">كلمنا واتساب مباشرة ←</a></p>
+      <p style="text-align:center;color:var(--gray);font-size:0.8rem;margin-top:14px;">💡 مش عارف تختار؟ <div class="service-sep"></div><a href="https://wa.me/201126104846?text=السلام عليكم 👋 عايز استشارة مجانية عشان أعرف أنسب خدمة ليا" target="_blank" rel="noopener noreferrer" style="color:var(--gold);font-weight:700;text-decoration:none;">كلمنا واتساب مباشرة ←</a></p>
     </div>
   </div>
 </section>
@@ -2504,7 +2541,7 @@
 <!-- FOOTER -->
 </main>
 <footer role="contentinfo">
-  <div class="logo-footer">CV Pro</div>
+  <div class="logo-footer">CV Pro <span style="color:var(--white);font-weight:700;font-size:1rem;">Egypt</span></div>
   <p>خبراء كتابة السيرة الذاتية الاحترافية — ATS · CV · Cover Letter · LinkedIn · Interview</p>
   <div style="margin-top:16px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;">
     <span style="color:#4ade80;font-size:0.82rem;font-weight:700;">🛡️ ضمان استرداد كامل</span>
@@ -2521,7 +2558,7 @@
     <a href="https://www.instagram.com/cvpr_oo/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:rgba(220,39,67,0.12);border:1px solid rgba(220,39,67,0.35);color:#e6683c;padding:10px 20px;border-radius:10px;text-decoration:none;font-size:0.9rem;font-weight:700;transition:all 0.3s;" onmouseover="this.style.background='rgba(220,39,67,0.22)'" onmouseout="this.style.background='rgba(220,39,67,0.12)'">
       انستجرام
     </a>
-    <a href="https://wa.me/201126104846?text=السلام عليكم 👋 عايز أستفسر عن خدمات CV Pro" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.35);color:#25D366;padding:10px 20px;border-radius:10px;text-decoration:none;font-size:0.9rem;font-weight:700;transition:all 0.3s;" onmouseover="this.style.background='rgba(37,211,102,0.22)'" onmouseout="this.style.background='rgba(37,211,102,0.12)'">
+    <div class="service-sep"></div><a href="https://wa.me/201126104846?text=السلام عليكم 👋 عايز أستفسر عن خدمات CV Pro" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.35);color:#25D366;padding:10px 20px;border-radius:10px;text-decoration:none;font-size:0.9rem;font-weight:700;transition:all 0.3s;" onmouseover="this.style.background='rgba(37,211,102,0.22)'" onmouseout="this.style.background='rgba(37,211,102,0.12)'">
       💬 واتساب
     </a>
     <a href="#contact-form" style="display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.35);color:var(--gold);padding:10px 20px;border-radius:10px;text-decoration:none;font-size:0.9rem;font-weight:700;transition:all 0.3s;" onmouseover="this.style.background='rgba(201,168,76,0.22)'" onmouseout="this.style.background='rgba(201,168,76,0.12)'">
@@ -2550,7 +2587,7 @@
     <p style="font-family:'Cairo',sans-serif;font-size:0.88rem;color:#F5F5F0;line-height:1.7;margin-bottom:14px;">مرحباً 👋 تحتاج مساعدة في CV أو مقابلة عمل؟ تواصل معنا دلوقتي!</p>
     <div style="display:flex;flex-direction:column;gap:8px;">
       <a href="https://wa.me/201068204700?text=السلام عليكم خالد 👋 عايز أستفسر عن خدمات CV Pro" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:8px;background:rgba(37,99,235,0.12);border:1px solid rgba(37,99,235,0.35);color:#5B9BF8;padding:10px 14px;border-radius:10px;text-decoration:none;font-size:0.82rem;font-weight:700;font-family:'Cairo',sans-serif;">👨‍💼 تكنولوجيا وهندسة — خالد</a>
-      <a href="https://wa.me/201126104846?text=السلام عليكم نورهان 👋 عايز أستفسر عن خدمات CV Pro" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:8px;background:rgba(190,24,93,0.12);border:1px solid rgba(190,24,93,0.35);color:#f472b6;padding:10px 14px;border-radius:10px;text-decoration:none;font-size:0.82rem;font-weight:700;font-family:'Cairo',sans-serif;">👩‍💼 إدارة وطب وإبداعية — نورهان</a>
+      <div class="service-sep"></div><a href="https://wa.me/201126104846?text=السلام عليكم نورهان 👋 عايز أستفسر عن خدمات CV Pro" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:8px;background:rgba(190,24,93,0.12);border:1px solid rgba(190,24,93,0.35);color:#f472b6;padding:10px 14px;border-radius:10px;text-decoration:none;font-size:0.82rem;font-weight:700;font-family:'Cairo',sans-serif;">👩‍💼 إدارة وطب وإبداعية — نورهان</a>
     </div>
   </div>
   <button onclick="toggleWaPopup()" id="waBubbleBtn" aria-label="تواصل معنا على واتساب" style="width:62px;height:62px;background:#25D366;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.8rem;box-shadow:0 8px 30px rgba(37,211,102,0.45);transition:all 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
