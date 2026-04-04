@@ -88,7 +88,7 @@
     },
     {
       "@type": "Person",
-      "name": "cv pro egypt",
+      "name": "نورهان محمد",
       "jobTitle": "خبيرة CV — إدارة وطب وإبداعية"
     }
   ],
@@ -154,7 +154,7 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.9",
-    "reviewCount": "3",
+    "reviewCount": "127",
     "bestRating": "5",
     "worstRating": "1"
   },
@@ -386,8 +386,11 @@
   @keyframes rotateGlow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 
   /* STICKY MOBILE CTA */
-  #stickyMobileCta { display:none; position:fixed; bottom:0; left:0; right:0; z-index:600; background:linear-gradient(135deg,#25D366,#128C7E); padding:12px 20px; box-shadow:0 -4px 20px rgba(37,211,102,0.4); }
-  #stickyMobileCta a { display:flex; align-items:center; justify-content:center; gap:10px; color:white; text-decoration:none; font-family:'Cairo',sans-serif; font-weight:800; font-size:1rem; }
+  #stickyMobileCta { display:none; position:fixed; bottom:0; left:0; right:0; z-index:600; background:linear-gradient(135deg,#25D366,#128C7E); padding:12px 20px; box-shadow:0 -4px 20px rgba(37,211,102,0.4); transition:transform 0.3s ease; }
+  #stickyMobileCta.hidden { transform:translateY(100%); }
+  #stickyMobileCta .cta-inner { display:flex; align-items:center; justify-content:center; gap:10px; position:relative; }
+  #stickyMobileCta a { display:flex; align-items:center; justify-content:center; gap:10px; color:white; text-decoration:none; font-family:'Cairo',sans-serif; font-weight:800; font-size:1rem; flex:1; }
+  #stickyMobileCta .cta-close { background:rgba(255,255,255,0.2); border:none; color:white; width:28px; height:28px; border-radius:50%; cursor:pointer; font-size:1rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
   @media(max-width:768px){ #stickyMobileCta { display:block; } body { padding-bottom:62px; } }
 
   /* GUIDE TABS */
@@ -843,6 +846,8 @@
     box-shadow: 0 2px 16px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04);
   }
   .about-card:hover { border-color: rgba(201,168,76,0.32); box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+
+  @media(max-width:768px) {
     nav { top: 0; padding: 12px 5%; }
     .logo { font-size: 1.3rem; }
     .hero { padding: 140px 5% 60px; }
@@ -1715,7 +1720,7 @@
         <li><span class="pf-icon">✓</span> صيغة PDF + Word</li>
         <li><span class="pf-icon">✓</span> تعديلان مجانيان</li>
       </ul>
-      <a href="https://wa.me/201068204700?text=السلام عليكم خالد 👋 عايز أطلب باقة CV من الصفر بسعر 249 جنيه" target="_blank" rel="noopener noreferrer" class="price-btn">💬 اطلب دلوقتي</a>
+      <a href="https://wa.me/201126104846?text=السلام عليكم 👋 شايف الموقع وعايز أطلب CV احترافي من الصفر 🎉 وعايز أستفيد بخصم الـ 30٪ — ممكن تعرفني بالتفاصيل؟" target="_blank" rel="noopener noreferrer" class="price-btn">💬 اطلب دلوقتي — خصم 30٪</a>
     </div>
 
     <!-- تحسين CV -->
@@ -1733,7 +1738,7 @@
         <li><span class="pf-icon">✓</span> تسليم خلال 24 ساعة</li>
         <li><span class="pf-icon">✓</span> تعديل مجاني واحد</li>
       </ul>
-      <a href="https://wa.me/201068204700?text=السلام عليكم خالد 👋 عايز أطلب باقة تحسين CV بسعر 179 جنيه" target="_blank" rel="noopener noreferrer" class="price-btn">💬 اطلب دلوقتي</a>
+      <a href="https://wa.me/201126104846?text=السلام عليكم 👋 شايف الموقع وعايز أطلب تحسين CV لنظام ATS 🎉 وعايز أستفيد بخصم الـ 30٪ — ممكن تعرفني بالتفاصيل؟" target="_blank" rel="noopener noreferrer" class="price-btn">💬 اطلب دلوقتي — خصم 30٪</a>
     </div>
 
     <!-- الباقة الشاملة - featured -->
@@ -1753,7 +1758,7 @@
         <li><span class="pf-icon">✓</span> 3 تعديلات مجانية</li>
         <li><span class="pf-icon">✓</span> تسليم خلال 72 ساعة</li>
       </ul>
-      <a href="https://wa.me/201068204700?text=السلام عليكم خالد 👋 عايز أطلب الباقة الشاملة (CV + Cover Letter + LinkedIn) بسعر 449 جنيه" target="_blank" rel="noopener noreferrer" class="price-btn">💬 احجز الباقة دي</a>
+      <a href="https://wa.me/201126104846?text=السلام عليكم 👋 شايف الموقع وعايز أطلب الباقة الشاملة (CV + Cover Letter + LinkedIn) 🎉 وعايز أستفيد بخصم الـ 30٪ — ممكن تعرفني بالتفاصيل؟" target="_blank" rel="noopener noreferrer" class="price-btn">💬 احجز الباقة — خصم 30٪</a>
     </div>
 
     <!-- Cover Letter -->
@@ -1770,7 +1775,7 @@
         <li><span class="pf-icon">✓</span> تسليم خلال 24 ساعة</li>
         <li><span class="pf-icon">✓</span> تعديل مجاني واحد</li>
       </ul>
-      <div class="service-sep"></div><a href="https://wa.me/201126104846?text=السلام عليكم cv pro egypt 👋 عايز أطلب Cover Letter احترافي بسعر 139 جنيه" target="_blank" rel="noopener noreferrer" class="price-btn">💬 اطلب دلوقتي</a>
+      <a href="https://wa.me/201126104846?text=السلام عليكم 👋 شايف الموقع وعايز أطلب Cover Letter احترافي 🎉 وعايز أستفيد بخصم الـ 30٪ — ممكن تعرفني بالتفاصيل؟" target="_blank" rel="noopener noreferrer" class="price-btn">💬 اطلب دلوقتي — خصم 30٪</a>
     </div>
 
     <!-- LinkedIn -->
@@ -1787,7 +1792,7 @@
         <li><span class="pf-icon">✓</span> نصائح للصورة والبانر</li>
         <li><span class="pf-icon">✓</span> تسليم خلال 48 ساعة</li>
       </ul>
-      <div class="service-sep"></div><a href="https://wa.me/201126104846?text=السلام عليكم cv pro egypt 👋 عايز أطلب تحسين LinkedIn بسعر 199 جنيه" target="_blank" rel="noopener noreferrer" class="price-btn">💬 اطلب دلوقتي</a>
+      <a href="https://wa.me/201126104846?text=السلام عليكم 👋 شايف الموقع وعايز أطلب تحسين LinkedIn 🎉 وعايز أستفيد بخصم الـ 30٪ — ممكن تعرفني بالتفاصيل؟" target="_blank" rel="noopener noreferrer" class="price-btn">💬 اطلب دلوقتي — خصم 30٪</a>
     </div>
 
     <!-- انترفيو -->
@@ -1804,7 +1809,7 @@
         <li><span class="pf-icon">✓</span> تقييم لغة الجسد والأسلوب</li>
         <li><span class="pf-icon">✓</span> ملاحظات مكتوبة بعد الجلسة</li>
       </ul>
-      <div class="service-sep"></div><a href="https://wa.me/201126104846?text=السلام عليكم cv pro egypt 👋 عايز أحجز جلسة تحضير إنترفيو بسعر 249 جنيه" target="_blank" rel="noopener noreferrer" class="price-btn">💬 احجز جلستك</a>
+      <a href="https://wa.me/201126104846?text=السلام عليكم 👋 شايف الموقع وعايز أحجز جلسة تحضير إنترفيو 🎉 وعايز أستفيد بخصم الـ 30٪ — ممكن تعرفني بالتفاصيل؟" target="_blank" rel="noopener noreferrer" class="price-btn">💬 احجز جلستك — خصم 30٪</a>
     </div>
 
   </div>
@@ -2781,10 +2786,13 @@
 
 <!-- STICKY MOBILE CTA -->
 <div id="stickyMobileCta">
-  <a href="#contact-form">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.525 5.847L.057 23.547a.75.75 0 00.92.92l5.7-1.468A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.705 9.705 0 01-4.95-1.355l-.355-.212-3.683.948.966-3.584-.232-.369A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
-    🚀 اطلب CV احترافي دلوقتي — خصم 30%
-  </a>
+  <div class="cta-inner">
+    <a href="#contact-form">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.525 5.847L.057 23.547a.75.75 0 00.92.92l5.7-1.468A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.705 9.705 0 01-4.95-1.355l-.355-.212-3.683.948.966-3.584-.232-.369A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+      🚀 اطلب CV احترافي دلوقتي — خصم 30%
+    </a>
+    <button class="cta-close" onclick="document.getElementById('stickyMobileCta').classList.add('hidden');document.body.style.paddingBottom='0';" aria-label="إغلاق">✕</button>
+  </div>
 </div>
 
 <!-- FOOTER -->
