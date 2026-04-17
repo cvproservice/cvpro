@@ -52,23 +52,40 @@
 <link rel="preconnect" href="https://wa.me" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Preload critical font early to avoid FOUT -->
+<link rel="preload" href="https://fonts.gstatic.com/s/cairo/v28/SLXgc1nY6HkvalIvTp0zrg.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="sitemap" type="application/xml" href="https://cvproservice.github.io/cvpro/sitemap.xml">
+<!-- Security headers via meta -->
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<!-- Mobile app smart banner -->
+<meta name="mobile-web-app-capable" content="yes">
 
 <!-- Favicon SVG inline -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230E0C06'/><rect x='1.5' y='1.5' width='97' height='97' rx='18.5' fill='none' stroke='%23C9A840' stroke-width='1.5' stroke-opacity='0.5'/><polygon points='50,12 82,50 50,88 18,50' fill='none' stroke='%23C9A840' stroke-width='3.5' stroke-linejoin='round'/><polygon points='50,22 72,50 50,78 28,50' fill='%23C9A840' fill-opacity='0.08'/><text x='50' y='62' text-anchor='middle' font-size='28' font-weight='700' fill='%23C9A840' font-family='Georgia'>C</text></svg>">
 
-<!-- Google Analytics — deferred to not block render -->
+<!-- Google Analytics — deferred after first user interaction for best Core Web Vitals -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  window.addEventListener('load', function() {
+  function loadGA() {
+    if (window._gaLoaded) return;
+    window._gaLoaded = true;
     var s = document.createElement('script');
     s.async = true;
     s.src = 'https://www.googletagmanager.com/gtag/js?id=G-KG7LM80ZZY';
     document.head.appendChild(s);
-    gtag('js', new Date());
-    gtag('config', 'G-KG7LM80ZZY', { 'send_page_view': true });
+    s.onload = function() {
+      gtag('js', new Date());
+      gtag('config', 'G-KG7LM80ZZY', { 'send_page_view': true });
+    };
+  }
+  // Load GA after first user interaction to not block LCP
+  ['mousedown','touchstart','keydown','scroll'].forEach(function(e){
+    document.addEventListener(e, loadGA, {once:true, passive:true});
   });
+  // Fallback: load after 5s anyway
+  setTimeout(loadGA, 5000);
 </script>
 
 <!-- Schema 1: LocalBusiness محسّن -->
@@ -102,7 +119,7 @@
   "logo": "https://cvproservice.github.io/cvpro/og-image.jpg",
   "image": "https://cvproservice.github.io/cvpro/og-image.jpg",
   "telephone": "+201126104846",
-  "priceRange": "139 - 449 جنيه",
+  "priceRange": "179 - 449 جنيه",
   "currenciesAccepted": "EGP",
   "paymentAccepted": "فودافون كاش، إنستاباي",
   "areaServed": [
@@ -159,7 +176,7 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.9",
-    "reviewCount": "127",
+    "reviewCount": "47",
     "bestRating": "5",
     "worstRating": "1"
   },
@@ -184,6 +201,27 @@
       "author": {"@type": "Person", "name": "كريم يوسف"},
       "reviewBody": "الخدمة سريعة ومحترمة. استلمت الـ CV في أقل من 48 ساعة والتصميم كان أنيق جداً.",
       "datePublished": "2026-02-28"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {"@type": "Rating", "ratingValue": "5"},
+      "author": {"@type": "Person", "name": "نور الهدى"},
+      "reviewBody": "كنت بدور على شغل في السعودية لفترة طويلة. بعد ما CV Pro كتب CV مخصص للسوق الخليجي، اتقبلت في شركة كبيرة في الرياض!",
+      "datePublished": "2026-03-05"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {"@type": "Rating", "ratingValue": "5"},
+      "author": {"@type": "Person", "name": "أحمد سامي"},
+      "reviewBody": "خريج جديد وكنت مش عارف أكتب CV بدون خبرة. فريق CV Pro ساعدني أبرز مشروع التخرج والتدريبات بأسلوب احترافي.",
+      "datePublished": "2026-03-15"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {"@type": "Rating", "ratingValue": "5"},
+      "author": {"@type": "Person", "name": "منى حسن"},
+      "reviewBody": "الدفع بعد الاتفاق والاطمئنان على الجودة. التعامل كان محترم جداً والتسليم في الوقت المحدد.",
+      "datePublished": "2026-03-20"
     }
   ],
   "sameAs": [
@@ -205,7 +243,7 @@
       "name": "كام سعر كتابة السيرة الذاتية الاحترافية في مصر؟",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "أسعار CV Pro تبدأ من 139 جنيه للـ Cover Letter، و249 جنيه للـ CV الاحترافي من الصفر، و449 جنيه للباقة الشاملة (CV + Cover Letter + LinkedIn). الدفع بعد الاتفاق فقط."
+        "text": "أسعار CV Pro تبدأ من 179 جنيه لتحسين CV الموجود، و249 جنيه للـ CV الاحترافي من الصفر، و449 جنيه للباقة الشاملة (CV + Cover Letter + LinkedIn). الدفع بعد الاتفاق فقط."
       }
     },
     {
@@ -312,21 +350,6 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SiteLinksSearchBox",
-  "url": "https://cvproservice.github.io/cvpro/",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": {
-      "@type": "EntryPoint",
-      "urlTemplate": "https://cvproservice.github.io/cvpro/?q={search_term_string}"
-    },
-    "query-input": "required name=search_term_string"
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "صفحات CV Pro Egypt المتخصصة",
   "itemListElement": [
@@ -334,7 +357,8 @@
     {"@type":"ListItem","position":2,"name":"CV للأطباء والمجال الطبي","url":"https://cvproservice.github.io/cvpro/cv-medical.html"},
     {"@type":"ListItem","position":3,"name":"CV خريج جديد","url":"https://cvproservice.github.io/cvpro/cv-fresh-graduate.html"},
     {"@type":"ListItem","position":4,"name":"CV السوق السعودي والخليجي","url":"https://cvproservice.github.io/cvpro/cv-saudi.html"},
-    {"@type":"ListItem","position":5,"name":"أسعار خدمات CV Pro","url":"https://cvproservice.github.io/cvpro/pricing.html"}
+    {"@type":"ListItem","position":5,"name":"أسعار خدمات CV Pro","url":"https://cvproservice.github.io/cvpro/pricing.html"},
+    {"@type":"ListItem","position":6,"name":"دليل كتابة السيرة الذاتية","url":"https://cvproservice.github.io/cvpro/guide.html"}
   ]
 }
 </script>
@@ -346,6 +370,7 @@
   "url": "https://cvproservice.github.io/cvpro/",
   "description": "أفضل خدمة كتابة سيرة ذاتية ATS في مصر والوطن العربي — CV احترافي يتجاوز الفلاتر الآلية بضمان استرداد كامل. نخدم مصر والسعودية والإمارات والكويت وجميع دول الخليج.",
   "inLanguage": "ar",
+  "dateModified": "2026-04-01",
   "potentialAction": {
     "@type": "SearchAction",
     "target": {
@@ -400,6 +425,18 @@
   /* Performance: font-display swap for system fonts fallback */
   @font-face { font-display: swap; }
 
+  /* Performance: GPU acceleration hints for animated elements */
+  .hero::before, .hero-grid, .hero-scan { will-change: transform; }
+  
+  /* Performance: reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
@@ -413,6 +450,12 @@
     content-visibility: auto;
     contain-intrinsic-size: 0 600px;
   }
+  
+  /* Performance: contain layout/paint for heavy sections */
+  #portfolio, #testimonials { contain: layout paint; }
+  
+  /* Performance: optimize SVG rendering in portfolio */
+  .portfolio-mock svg { shape-rendering: optimizeSpeed; }
 
   @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
   @keyframes goldPulse{0%,100%{opacity:1}50%{opacity:0.7}}
@@ -953,7 +996,7 @@
   <ul class="nav-links">
     <li><a href="#services">خدماتنا</a></li>
     <li><a href="#seo-hub">تخصصاتنا</a></li>
-    <li><a href="javascript:void(0)" onclick="openSeoPage()">📚 دليل CV</a></li>
+    <li><a href="guide.html">📚 دليل CV</a></li>
     <li><a href="#portfolio">نماذج أعمالنا</a></li>
     <li><a href="#pricing">الأسعار</a></li>
     <li><a href="#arab-world">الوطن العربي</a></li>
@@ -978,7 +1021,7 @@
 <div class="mobile-menu" id="mobileMenu">
   <a href="#services" onclick="closeMenu()">🎯 خدماتنا</a>
   <a href="#seo-hub" onclick="closeMenu()">🗂️ تخصصاتنا</a>
-  <a href="javascript:void(0)" onclick="closeMenu();openSeoPage()">📚 دليل CV مجاني</a>
+  <a href="guide.html" onclick="closeMenu()">📚 دليل CV مجاني</a>
   <a href="#portfolio" onclick="closeMenu()">🖼️ نماذج أعمالنا</a>
   <a href="#pricing" onclick="closeMenu()">💰 الأسعار</a>
   <a href="#arab-world" onclick="closeMenu()">🌍 الوطن العربي</a>
@@ -2884,7 +2927,7 @@
         <span style="display:inline-block;margin-top:14px;color:var(--gold);font-size:0.8rem;font-weight:800;">اعرف أكتر ←</span>
       </div>
     </a>
-    <a onclick="openSeoPage()" href="javascript:void(0)" style="text-decoration:none;">
+    <a href="guide.html" style="text-decoration:none;">
       <div class="service-card" style="text-align:center;">
         <div style="font-size:2.5rem;margin-bottom:14px;">📚</div>
         <h3 style="font-size:1.05rem;margin-bottom:8px;">دليل السيرة الذاتية</h3>
@@ -2905,25 +2948,35 @@
     <span style="color:var(--gray);font-size:0.82rem;">|</span>
     <span style="color:#4ade80;font-size:0.82rem;font-weight:700;">🔒 بياناتك سرية 100%</span>
   </div>
+  <!-- Internal links for SEO crawling -->
+  <nav aria-label="روابط الصفحات المتخصصة" style="margin-top:22px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+    <a href="cv-engineering.html" style="color:var(--gray);font-size:0.8rem;text-decoration:none;padding:4px 10px;border:1px solid rgba(201,168,76,0.12);border-radius:6px;transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray)'">👷 CV المهندسين</a>
+    <a href="cv-medical.html" style="color:var(--gray);font-size:0.8rem;text-decoration:none;padding:4px 10px;border:1px solid rgba(201,168,76,0.12);border-radius:6px;transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray)'">🩺 CV الأطباء</a>
+    <a href="cv-fresh-graduate.html" style="color:var(--gray);font-size:0.8rem;text-decoration:none;padding:4px 10px;border:1px solid rgba(201,168,76,0.12);border-radius:6px;transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray)'">🎓 CV الخريجين</a>
+    <a href="cv-saudi.html" style="color:var(--gray);font-size:0.8rem;text-decoration:none;padding:4px 10px;border:1px solid rgba(201,168,76,0.12);border-radius:6px;transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray)'">🇸🇦 CV الخليج</a>
+    <a href="pricing.html" style="color:var(--gray);font-size:0.8rem;text-decoration:none;padding:4px 10px;border:1px solid rgba(201,168,76,0.12);border-radius:6px;transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray)'">💰 الأسعار</a>
+    <a href="guide.html" style="color:var(--gray);font-size:0.8rem;text-decoration:none;padding:4px 10px;border:1px solid rgba(201,168,76,0.12);border-radius:6px;transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray)'">📚 دليل CV</a>
+  </nav>
   <div style="margin-top:20px;display:flex;justify-content:center;align-items:center;gap:15px;flex-wrap:wrap;">
     <a href="https://www.facebook.com/cvegyptats" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:rgba(24,119,242,0.12);border:1px solid rgba(24,119,242,0.35);color:#5B9BF8;padding:10px 20px;border-radius:10px;text-decoration:none;font-size:0.9rem;font-weight:700;transition:all 0.3s;" onmouseover="this.style.background='rgba(24,119,242,0.22)'" onmouseout="this.style.background='rgba(24,119,242,0.12)'">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#5B9BF8"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#5B9BF8" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
       فيسبوك
     </a>
     <a href="https://www.instagram.com/cvpr_oo/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:rgba(220,39,67,0.12);border:1px solid rgba(220,39,67,0.35);color:#e6683c;padding:10px 20px;border-radius:10px;text-decoration:none;font-size:0.9rem;font-weight:700;transition:all 0.3s;" onmouseover="this.style.background='rgba(220,39,67,0.22)'" onmouseout="this.style.background='rgba(220,39,67,0.12)'">
       انستجرام
     </a>
-    <div class="service-sep"></div><a href="https://wa.me/201126104846?text=السلام عليكم 👋 عايز أستفسر عن خدمات CV Pro" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.35);color:#25D366;padding:10px 20px;border-radius:10px;text-decoration:none;font-size:0.9rem;font-weight:700;transition:all 0.3s;" onmouseover="this.style.background='rgba(37,211,102,0.22)'" onmouseout="this.style.background='rgba(37,211,102,0.12)'">
+    <a href="https://wa.me/201126104846?text=السلام عليكم 👋 عايز أستفسر عن خدمات CV Pro" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.35);color:#25D366;padding:10px 20px;border-radius:10px;text-decoration:none;font-size:0.9rem;font-weight:700;transition:all 0.3s;" onmouseover="this.style.background='rgba(37,211,102,0.22)'" onmouseout="this.style.background='rgba(37,211,102,0.12)'">
       💬 واتساب
     </a>
     <a href="#contact-form" style="display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.35);color:var(--gold);padding:10px 20px;border-radius:10px;text-decoration:none;font-size:0.9rem;font-weight:700;transition:all 0.3s;" onmouseover="this.style.background='rgba(201,168,76,0.22)'" onmouseout="this.style.background='rgba(201,168,76,0.12)'">
       🚀 اطلب دلوقتي
     </a>
   </div>
-  <p style="margin-top:18px;font-size:0.8rem;opacity:0.5;">© 2026 CV Pro. جميع الحقوق محفوظة.</p>
+  <p style="margin-top:18px;font-size:0.8rem;opacity:0.5;">© 2026 CV Pro Egypt. جميع الحقوق محفوظة.</p>
   <p style="margin-top:8px;font-size:0.78rem;opacity:0.4;">
     <a href="#faq" style="color:var(--gray);text-decoration:none;margin:0 8px;">الأسئلة الشائعة</a> ·
-    <a href="#pricing" style="color:var(--gray);text-decoration:none;margin:0 8px;">الأسعار</a> ·
+    <a href="pricing.html" style="color:var(--gray);text-decoration:none;margin:0 8px;">الأسعار</a> ·
+    <a href="guide.html" style="color:var(--gray);text-decoration:none;margin:0 8px;">دليل CV</a> ·
     <span style="margin:0 8px;">سياسة الخصوصية: بياناتك محفوظة ومش بنشاركها مع أي طرف تالت</span>
   </p>
 </footer>
