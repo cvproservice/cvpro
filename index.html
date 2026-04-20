@@ -694,12 +694,6 @@ curriculum vitae profesional árabe, optimización LinkedIn árabe
       {"@type": "Offer", "name": "CV احترافي من الصفر", "price": "249", "priceCurrency": "EGP", "description": "سيرة ذاتية احترافية جديدة كاملة خلال 48 ساعة"},
       {"@type": "Offer", "name": "الباقة الشاملة", "price": "449", "priceCurrency": "EGP", "description": "CV + Cover Letter + تحسين LinkedIn"}
     ]
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "127",
-    "bestRating": "5"
   }
 }
 </script>
@@ -1105,8 +1099,8 @@ curriculum vitae profesional árabe, optimización LinkedIn árabe
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 32px;
+    justify-content: flex-start;
+    gap: 0;
     position: fixed;
     top: 0;
     left: 0;
@@ -1122,7 +1116,7 @@ curriculum vitae profesional árabe, optimización LinkedIn árabe
     visibility: hidden;
     transform: translateY(-10px);
     transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-    padding: 80px 20px 40px;
+    padding: 65px 20px 20px;
     box-sizing: border-box;
   }
   .mobile-menu.open {
@@ -1130,7 +1124,8 @@ curriculum vitae profesional árabe, optimización LinkedIn árabe
     visibility: visible;
     transform: translateY(0);
   }
-  .mobile-menu a { color: var(--white); text-decoration: none; font-size: 1.4rem; font-weight: 700; font-family: 'Tajawal',sans-serif; transition: color 0.3s; }
+  .mobile-menu a { color: var(--white); text-decoration: none; font-size: 1rem; font-weight: 700; font-family: 'Tajawal',sans-serif; transition: color 0.3s; padding: 11px 0; width: 100%; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.06); display: block; }
+  .mobile-menu a:last-child { border-bottom: none; }
   .mobile-menu a:hover { color: var(--gold); }
   *:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
 
