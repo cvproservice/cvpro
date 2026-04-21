@@ -1,42 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="https://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- الصفحة الرئيسية -->
   <url>
     <loc>https://cvproservice.github.io/cvpro/</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://cvproservice.github.io/cvpro/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://cvproservice.github.io/cvpro/"/>
   </url>
+
+  <!-- صفحات الخدمات -->
   <url>
     <loc>https://cvproservice.github.io/cvpro/cv-engineering.html</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://cvproservice.github.io/cvpro/cv-medical.html</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://cvproservice.github.io/cvpro/cv-fresh-graduate.html</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://cvproservice.github.io/cvpro/cv-saudi.html</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <url>
+    <loc>https://cvproservice.github.io/cvpro/cv-uae.html</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://cvproservice.github.io/cvpro/cv-australia.html</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://cvproservice.github.io/cvpro/cv-canada.html</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://cvproservice.github.io/cvpro/cv-uk.html</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://cvproservice.github.io/cvpro/cv-usa.html</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- صفحة الأسعار -->
   <url>
     <loc>https://cvproservice.github.io/cvpro/pricing.html</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <!-- دليل ATS -->
+  <url>
+    <loc>https://cvproservice.github.io/cvpro/guide.html</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>

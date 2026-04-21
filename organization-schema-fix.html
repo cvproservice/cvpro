@@ -1,0 +1,53 @@
+<!-- =====================================================
+     الصق هذا الكود في index.html
+     استبدل Schema 2-d: Organization الحالي بهذا الكود
+     ===================================================== -->
+
+<!-- Schema 2-d: Organization — كلا الرقمين مسجّلين لظهورهم في جوجل -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "CV Pro Egypt",
+  "url": "https://cvproservice.github.io/cvpro/",
+  "logo": "https://cvproservice.github.io/cvpro/og-image.jpg",
+  "foundingDate": "2024",
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "+201126104846",
+      "contactType": "customer service",
+      "name": "CV Pro Egypt — إدارة وطب وإبداعية",
+      "contactOption": "TollFree",
+      "areaServed": ["EG","SA","AE","KW","QA","BH","OM","JO","LB","IQ","MA","TN","LY","SD","DE","CA","AU","GB","US"],
+      "availableLanguage": ["Arabic","English","French"]
+    },
+    {
+      "@type": "ContactPoint",
+      "telephone": "+201068204700",
+      "contactType": "technical support",
+      "name": "خالد — تقنية وهندسة",
+      "contactOption": "TollFree",
+      "areaServed": ["EG","SA","AE","KW","QA","BH","OM","JO","LB","IQ","MA","TN","LY","SD","DE","CA","AU","GB","US"],
+      "availableLanguage": ["Arabic","English"]
+    }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/cvegyptats",
+    "https://www.instagram.com/cvpr_oo/",
+    "https://wa.me/201126104846"
+  ]
+}
+</script>
+
+
+<!-- =====================================================
+     تأكد أيضاً أن الرقمين ظاهرين في HTML بهذا الشكل:
+     (في أي مكان في الصفحة — زي قسم التواصل)
+     ===================================================== -->
+
+<!-- مثال على الطريقة الصح لعرض الأرقام في HTML -->
+<!--
+<a href="tel:+201126104846">01126104846</a>
+<a href="tel:+201068204700">01068204700</a>
+-->
