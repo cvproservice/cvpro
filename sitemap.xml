@@ -1,85 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-
-  <!-- الصفحة الرئيسية — أعلى أولوية -->
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="https://www.w3.org/1999/xhtml">
   <url>
     <loc>https://cvproservice.github.io/cvpro/</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="ar-EG" href="https://cvproservice.github.io/cvpro/"/>
-    <xhtml:link rel="alternate" hreflang="ar-SA" href="https://cvproservice.github.io/cvpro/"/>
-    <xhtml:link rel="alternate" hreflang="ar-AE" href="https://cvproservice.github.io/cvpro/"/>
-    <xhtml:link rel="alternate" hreflang="ar"    href="https://cvproservice.github.io/cvpro/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://cvproservice.github.io/cvpro/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cvproservice.github.io/cvpro/"/>
   </url>
-
-  <!-- دليل السيرة الذاتية — محتوى SEO قوي -->
-  <url>
-    <loc>https://cvproservice.github.io/cvpro/guide.html</loc>
-    <lastmod>2026-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar-EG" href="https://cvproservice.github.io/cvpro/guide.html"/>
-    <xhtml:link rel="alternate" hreflang="ar"    href="https://cvproservice.github.io/cvpro/guide.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/guide.html"/>
-  </url>
-
-  <!-- صفحة CV للمهندسين وIT -->
   <url>
     <loc>https://cvproservice.github.io/cvpro/cv-engineering.html</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-    <xhtml:link rel="alternate" hreflang="ar-EG" href="https://cvproservice.github.io/cvpro/cv-engineering.html"/>
-    <xhtml:link rel="alternate" hreflang="ar"    href="https://cvproservice.github.io/cvpro/cv-engineering.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-engineering.html"/>
+    <priority>0.8</priority>
   </url>
-
-  <!-- صفحة CV للأطباء -->
   <url>
     <loc>https://cvproservice.github.io/cvpro/cv-medical.html</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-    <xhtml:link rel="alternate" hreflang="ar-EG" href="https://cvproservice.github.io/cvpro/cv-medical.html"/>
-    <xhtml:link rel="alternate" hreflang="ar"    href="https://cvproservice.github.io/cvpro/cv-medical.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-medical.html"/>
+    <priority>0.8</priority>
   </url>
-
-  <!-- صفحة CV الخريجين الجدد -->
   <url>
     <loc>https://cvproservice.github.io/cvpro/cv-fresh-graduate.html</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-    <xhtml:link rel="alternate" hreflang="ar-EG" href="https://cvproservice.github.io/cvpro/cv-fresh-graduate.html"/>
-    <xhtml:link rel="alternate" hreflang="ar"    href="https://cvproservice.github.io/cvpro/cv-fresh-graduate.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-fresh-graduate.html"/>
+    <priority>0.8</priority>
   </url>
-
-  <!-- صفحة CV السوق الخليجي -->
   <url>
     <loc>https://cvproservice.github.io/cvpro/cv-saudi.html</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-    <xhtml:link rel="alternate" hreflang="ar-SA" href="https://cvproservice.github.io/cvpro/cv-saudi.html"/>
-    <xhtml:link rel="alternate" hreflang="ar-AE" href="https://cvproservice.github.io/cvpro/cv-saudi.html"/>
-    <xhtml:link rel="alternate" hreflang="ar"    href="https://cvproservice.github.io/cvpro/cv-saudi.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-saudi.html"/>
+    <priority>0.8</priority>
   </url>
-
-  <!-- صفحة الأسعار -->
   <url>
     <loc>https://cvproservice.github.io/cvpro/pricing.html</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar-EG" href="https://cvproservice.github.io/cvpro/pricing.html"/>
-    <xhtml:link rel="alternate" hreflang="ar"    href="https://cvproservice.github.io/cvpro/pricing.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/pricing.html"/>
+    <priority>0.7</priority>
   </url>
-
 </urlset>

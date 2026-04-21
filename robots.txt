@@ -1,24 +1,8 @@
-# robots.txt — CV Pro Egypt
-# https://cvproservice.github.io/cvpro/
-
 User-agent: *
 Allow: /
 
-# Allow all major bots explicitly
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: WhatsApp
-Allow: /
-
-# Sitemap location
+# Sitemaps
 Sitemap: https://cvproservice.github.io/cvpro/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
