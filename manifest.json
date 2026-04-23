@@ -1,0 +1,35 @@
+{
+  "name": "CV Pro Egypt — كتابة سيرة ذاتية ATS احترافية",
+  "short_name": "CV Pro Egypt",
+  "description": "رقم ١ في كتابة سيرة ذاتية ATS احترافية في مصر والوطن العربي",
+  "start_url": "/cvpro/",
+  "scope": "/cvpro/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#07070D",
+  "theme_color": "#C9A84C",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "screenshots": [
+    {
+      "src": "og-image.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg"
+    }
+  ]
+}
