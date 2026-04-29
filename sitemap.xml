@@ -147,4 +147,26 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/pricing.html"/>
   </url>
 
+  <!-- CV تحسين LinkedIn -->
+  <url>
+    <loc>https://cvproservice.github.io/cvpro/cv-linkedin.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar"    href="https://cvproservice.github.io/cvpro/cv-linkedin.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-EG" href="https://cvproservice.github.io/cvpro/cv-linkedin.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-linkedin.html"/>
+  </url>
+
+  <!-- CV تغيير المسار الوظيفي -->
+  <url>
+    <loc>https://cvproservice.github.io/cvpro/cv-career-change.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar"    href="https://cvproservice.github.io/cvpro/cv-career-change.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-EG" href="https://cvproservice.github.io/cvpro/cv-career-change.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-career-change.html"/>
+  </url>
+
 </urlset>
