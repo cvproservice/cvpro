@@ -169,4 +169,17 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-career-change.html"/>
   </url>
 
+  <!-- خدمة البحث عن وظيفة + CV مخصص -->
+  <url>
+    <loc>https://cvproservice.github.io/cvpro/job-hunt.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="ar"    href="https://cvproservice.github.io/cvpro/job-hunt.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-EG" href="https://cvproservice.github.io/cvpro/job-hunt.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-SA" href="https://cvproservice.github.io/cvpro/job-hunt.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-AE" href="https://cvproservice.github.io/cvpro/job-hunt.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/job-hunt.html"/>
+  </url>
+
 </urlset>
