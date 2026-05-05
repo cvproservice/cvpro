@@ -804,11 +804,11 @@ curriculum vitae profesional árabe, optimización LinkedIn árabe
   nav {
     position: fixed; top: 0; width: 100%; z-index: 100;
     padding: 14px 5%;
-    background: rgba(7,7,13,0.88);
+    background: rgba(238,244,255,0.92);
     backdrop-filter: blur(32px) saturate(200%);
     -webkit-backdrop-filter: blur(32px) saturate(200%);
-    border-bottom: 1px solid rgba(201,168,76,0.15);
-    box-shadow: 0 0 0 1px rgba(201,168,76,0.04) inset, 0 8px 32px rgba(0,0,0,0.5);
+    border-bottom: 1px solid rgba(26,59,140,0.12);
+    box-shadow: 0 2px 24px rgba(26,59,140,0.08);
     display: flex; align-items: center; justify-content: space-between;
     transition: top 0.3s, background 0.3s;
   }
@@ -820,32 +820,35 @@ curriculum vitae profesional árabe, optimización LinkedIn árabe
   }
   .logo-words { display: flex; flex-direction: column; justify-content: center; }
   .logo:hover { opacity: 0.88; }
-  .logo span { color: var(--white); }
+  .logo span { color: #1A3B8C; }
   .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
-  .nav-links a { color: var(--gray); text-decoration: none; font-size: 0.88rem; font-weight: 600; transition: color 0.25s; letter-spacing: 0.3px; }
-  .nav-links a:hover { color: var(--white); }
+  .nav-links a { color: #3A5A9C; text-decoration: none; font-size: 0.88rem; font-weight: 600; transition: color 0.25s; letter-spacing: 0.3px; }
+  .nav-links a:hover { color: #0D2560; }
   .nav-cta {
-    background: linear-gradient(135deg,#C9A84C,#A07830) !important;
-    color: #07070D !important; padding: 9px 20px; border-radius: 8px;
+    background: linear-gradient(135deg,#1A3B8C,#0D47A1) !important;
+    color: white !important; padding: 9px 20px; border-radius: 8px;
     font-weight: 800 !important; transition: all 0.3s !important;
-    box-shadow: 0 2px 12px rgba(201,168,76,0.3);
+    box-shadow: 0 2px 12px rgba(26,59,140,0.3);
     font-size: 0.85rem !important;
   }
-  .nav-cta:hover { box-shadow: 0 4px 20px rgba(201,168,76,0.5) !important; transform: translateY(-1px); filter: brightness(1.1); }
+  .nav-cta:hover { box-shadow: 0 4px 20px rgba(26,59,140,0.45) !important; transform: translateY(-1px); }
 
-  /* HERO */
-  .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 148px 5% 80px; position: relative; overflow: hidden; }
+  /* Hero — light brand theme */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 148px 5% 80px; position: relative; overflow: hidden;
+    background: linear-gradient(160deg, #EEF4FF 0%, #DAE8FF 35%, #C8DCFF 60%, #EEF4FF 100%);
+  }
+  /* radial glow */
   .hero::before {
-    content: ''; position: absolute; inset: 0; pointer-events: none;
+    content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1;
     background:
-      radial-gradient(ellipse 70% 55% at 50% 30%, rgba(201,168,76,0.10) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 50%),
-      radial-gradient(ellipse 40% 40% at 80% 80%, rgba(74,222,128,0.03) 0%, transparent 50%);
+      radial-gradient(ellipse 75% 55% at 50% 10%, rgba(255,255,255,0.85) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 35% at 80% 80%, rgba(13,71,161,0.08) 0%, transparent 55%),
+      radial-gradient(ellipse 40% 30% at 20% 80%, rgba(13,71,161,0.06) 0%, transparent 50%);
   }
-  .hero::after {
-    content: ''; position: absolute; inset: 0; pointer-events: none;
-    background: linear-gradient(180deg, transparent 60%, var(--dark) 100%);
-  }
+  .hero::after { display: none; }
+  .hero > * { position: relative; z-index: 2; }
   /* Optimized: hero-grid uses SVG data URI instead of CSS gradients to reduce paint cost */
   .hero-grid { position: absolute; inset: 0; opacity: 0.06; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M40 0H0v40' fill='none' stroke='%23C9A84C' stroke-width='0.4'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect x='98' y='98' width='4' height='4' rx='1' fill='%23C9A84C' opacity='0.6'/%3E%3C/svg%3E"); background-size: 40px 40px, 200px 200px; pointer-events: none; }
   .badge {
@@ -896,7 +899,7 @@ curriculum vitae profesional árabe, optimización LinkedIn árabe
     padding: 0 5%;
     border-top: 1px solid rgba(201,168,76,0.08);
     border-bottom: 1px solid rgba(201,168,76,0.08);
-    background: linear-gradient(180deg, rgba(201,168,76,0.02), transparent);
+    background: var(--dark2);
     animation: fadeUp 0.8s ease 0.6s both;
   }
   .stat-item {
@@ -1082,7 +1085,7 @@ curriculum vitae profesional árabe, optimización LinkedIn árabe
 
   /* HAMBURGER */
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; background: none; border: none; z-index: 101; }
-  .hamburger span { display: block; width: 26px; height: 2px; background: var(--gold); border-radius: 2px; transition: all 0.3s; }
+  .hamburger span { display: block; width: 26px; height: 2px; background: #1A3B8C; border-radius: 2px; transition: all 0.3s; }
   .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .hamburger.open span:nth-child(2) { opacity: 0; }
   .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -1099,7 +1102,7 @@ curriculum vitae profesional árabe, optimización LinkedIn árabe
     bottom: 0;
     width: 100%;
     height: 100%;
-    background: rgba(10,10,15,0.98);
+    background: rgba(238,244,255,0.98);
     z-index: 99;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -1115,10 +1118,10 @@ curriculum vitae profesional árabe, optimización LinkedIn árabe
     visibility: visible;
     transform: translateY(0);
   }
-  .mobile-menu a { color: var(--white); text-decoration: none; font-size: 1rem; font-weight: 700; font-family: 'Tajawal',sans-serif; transition: color 0.3s; padding: 11px 0; width: 100%; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.06); display: block; }
+  .mobile-menu a { color: #1A3B8C; text-decoration: none; font-size: 1rem; font-weight: 700; font-family: 'Tajawal',sans-serif; transition: color 0.3s; padding: 11px 0; width: 100%; text-align: center; border-bottom: 1px solid rgba(26,59,140,0.1); display: block; }
   .mobile-menu a:last-child { border-bottom: none; }
-  .mobile-menu a:hover { color: var(--gold); }
-  *:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+  .mobile-menu a:hover { color: #0D47A1; }
+  *:focus-visible { outline: 2px solid #1A3B8C; outline-offset: 3px; border-radius: 4px; }
 
   /* PRICING */
   .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; margin-top: 60px; max-width: 1200px; margin-left: auto; margin-right: auto; }
@@ -1257,37 +1260,16 @@ curriculum vitae profesional árabe, optimización LinkedIn árabe
   <div>
     <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'});setTimeout(()=>location.reload(),400);" title="الرجوع للبداية">
 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;margin-left:10px;flex-shrink:0;">
-  <defs>
-    <linearGradient id="lgDiamond" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#F0D878"/>
-      <stop offset="55%" stop-color="#C9A840"/>
-      <stop offset="100%" stop-color="#8A6010"/>
-    </linearGradient>
-    <linearGradient id="lgDiamond2" x1="0" y1="0" x2="48" y2="0" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#C9A840"/>
-      <stop offset="100%" stop-color="#F0D878"/>
-    </linearGradient>
-  </defs>
-  <!-- Dark background -->
-  <rect width="48" height="48" rx="11" fill="#0E0C06"/>
-  <!-- Subtle gold border -->
-  <rect x="0.75" y="0.75" width="46.5" height="46.5" rx="10.5" fill="none" stroke="#C9A840" stroke-width="0.8" stroke-opacity="0.5"/>
-  <!-- Diamond outline -->
-  <polygon points="24,8  38,24  24,40  10,24" fill="none" stroke="url(#lgDiamond)" stroke-width="1.8" stroke-linejoin="round"/>
-  <!-- Diamond inner fill -->
-  <polygon points="24,12  34,24  24,36  14,24" fill="#C9A840" fill-opacity="0.07"/>
-  <!-- C letter centered -->
-  <text x="24" y="29" text-anchor="middle" font-size="14" font-weight="700" fill="url(#lgDiamond)" font-family="Georgia, 'Times New Roman', serif" letter-spacing="0">C</text>
-  <!-- Corner dots -->
-  <circle cx="4" cy="4" r="1.2" fill="#C9A840" fill-opacity="0.5"/>
-  <circle cx="44" cy="4" r="1.2" fill="#C9A840" fill-opacity="0.5"/>
-  <circle cx="4" cy="44" r="1.2" fill="#C9A840" fill-opacity="0.5"/>
-  <circle cx="44" cy="44" r="1.2" fill="#C9A840" fill-opacity="0.5"/>
+  <rect width="48" height="48" rx="11" fill="#1A3B8C"/>
+  <rect x="0.75" y="0.75" width="46.5" height="46.5" rx="10.5" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+  <polygon points="24,8  38,24  24,40  10,24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.8" stroke-linejoin="round"/>
+  <polygon points="24,13  33,24  24,35  15,24" fill="rgba(255,255,255,0.08)"/>
+  <text x="24" y="29" text-anchor="middle" font-size="14" font-weight="700" fill="white" font-family="Georgia,'Times New Roman',serif">C</text>
 </svg>
       <div class="logo-words">
-        <span style="font-family:'Tajawal',Georgia,serif;font-size:1.1rem;font-weight:900;letter-spacing:3px;background:linear-gradient(135deg,#F0D878 0%,#C9A840 55%,#A07828 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1;text-transform:uppercase;">CV PRO</span>
-        <span style="font-family:'Tajawal',sans-serif;font-size:0.6rem;font-weight:600;color:#C9A840;opacity:0.5;letter-spacing:5px;line-height:1.4;display:block;"> EGYPT</span>
-        <span style="font-family:'Tajawal',sans-serif;font-size:0.65rem;font-weight:600;color:#C9A840;opacity:0.85;letter-spacing:1px;line-height:1.5;display:block;margin-top:3px;white-space:nowrap;">كل حلم يستحق CV يليق بيه</span>
+        <span style="font-family:'Tajawal',Georgia,serif;font-size:1.1rem;font-weight:900;letter-spacing:3px;color:#1A3B8C;line-height:1.1;text-transform:uppercase;">CV PRO</span>
+        <span style="font-family:'Tajawal',sans-serif;font-size:0.65rem;font-weight:700;color:#1A3B8C;letter-spacing:4px;line-height:1.4;display:block;">EGYPT</span>
+        <span style="font-family:'Tajawal',sans-serif;font-size:0.62rem;font-weight:600;color:#4A6BA8;letter-spacing:0.5px;line-height:1.5;display:block;margin-top:2px;white-space:nowrap;">نصنع سيرتك .. لنصنع مستقبلك</span>
       </div>
     </div>
   </div>
@@ -1348,31 +1330,141 @@ curriculum vitae profesional árabe, optimización LinkedIn árabe
 <!-- HERO -->
 <main id="main-content">
 <section class="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-scan"></div>
-  <!-- Premium orbs -->
-  <div style="position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.06) 0%,transparent 70%);top:-100px;right:-100px;pointer-events:none;animation:floatY 8s ease-in-out infinite;"></div>
-  <div style="position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(74,222,128,0.04) 0%,transparent 70%);bottom:-80px;left:-80px;pointer-events:none;animation:floatY 10s ease-in-out infinite reverse;"></div>
-  <div class="tech-corner tc-tl"></div>
-  <div class="tech-corner tc-br"></div>
-  <div>
-    <div class="badge">✦ +500 عميل — 95% منهم عدّوا نظام ATS</div>
-    <h1><span class="gold">كتابة سيرة ذاتية احترافية</span><br>متوافقة مع ATS تضمن وصولك للوظيفة</h1>
-    <p>أكتر من <strong style="color:var(--white);">75% من الـ CVs بتتصفّى آلياً</strong> قبل ما يشوفها أي إنسان — نكتبلك <strong style="color:var(--white);">سيرة ذاتية احترافية متوافقة مع ATS</strong> بالعربي أو الإنجليزي في 48 ساعة، أو هنرجعلك فلوسك.</p>
-    <div class="hero-btns">
-      <a href="#cv-checker" class="btn-primary" style="font-size:1.1rem;padding:18px 36px;">
-        <span>🔍</span> قيّم CV بتاعك مجاناً
-      </a>
-      <a href="#contact-form" class="btn-secondary">اطلب CV احترافي ↓</a>
+  <!-- Decorative city skyline bottom - light blue like brand image -->
+  <div style="position:absolute;bottom:0;left:0;right:0;height:220px;z-index:1;pointer-events:none;">
+    <svg viewBox="0 0 1400 220" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;opacity:0.12;">
+      <rect x="50" y="120" width="40" height="100" fill="#1A3B8C"/>
+      <rect x="60" y="108" width="20" height="14" fill="#1A3B8C"/>
+      <rect x="110" y="95" width="55" height="125" fill="#1A3B8C"/>
+      <rect x="125" y="82" width="25" height="15" fill="#1A3B8C"/>
+      <rect x="180" y="130" width="35" height="90" fill="#1A3B8C"/>
+      <rect x="230" y="75" width="65" height="145" fill="#1A3B8C"/>
+      <rect x="248" y="60" width="30" height="17" fill="#1A3B8C"/>
+      <rect x="310" y="108" width="45" height="112" fill="#1A3B8C"/>
+      <rect x="370" y="88" width="50" height="132" fill="#1A3B8C"/>
+      <rect x="435" y="138" width="30" height="82" fill="#1A3B8C"/>
+      <rect x="480" y="55" width="70" height="165" fill="#1A3B8C"/>
+      <rect x="500" y="40" width="32" height="17" fill="#1A3B8C"/>
+      <rect x="565" y="110" width="40" height="110" fill="#1A3B8C"/>
+      <rect x="620" y="90" width="55" height="130" fill="#1A3B8C"/>
+      <rect x="690" y="128" width="35" height="92" fill="#1A3B8C"/>
+      <rect x="740" y="70" width="60" height="150" fill="#1A3B8C"/>
+      <rect x="815" y="100" width="45" height="120" fill="#1A3B8C"/>
+      <rect x="875" y="80" width="55" height="140" fill="#1A3B8C"/>
+      <rect x="945" y="122" width="40" height="98" fill="#1A3B8C"/>
+      <rect x="1000" y="65" width="65" height="155" fill="#1A3B8C"/>
+      <rect x="1080" y="105" width="42" height="115" fill="#1A3B8C"/>
+      <rect x="1135" y="86" width="50" height="134" fill="#1A3B8C"/>
+      <rect x="1200" y="132" width="35" height="88" fill="#1A3B8C"/>
+      <rect x="1248" y="98" width="45" height="122" fill="#1A3B8C"/>
+      <rect x="1310" y="112" width="40" height="108" fill="#1A3B8C"/>
+      <rect x="1360" y="128" width="30" height="92" fill="#1A3B8C"/>
+    </svg>
+  </div>
+  <!-- Floating orbs - light blue -->
+  <div style="position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(26,59,140,0.08) 0%,transparent 70%);top:-80px;right:-100px;pointer-events:none;animation:floatY 8s ease-in-out infinite;z-index:1;"></div>
+  <div style="position:absolute;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(26,59,140,0.06) 0%,transparent 70%);bottom:20px;left:-60px;pointer-events:none;animation:floatY 11s ease-in-out infinite reverse;z-index:1;"></div>
+
+  <div style="max-width:860px;position:relative;z-index:2;">
+
+    <!-- Logo badge -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:26px;">
+      <div style="background:rgba(255,255,255,0.75);backdrop-filter:blur(12px);border:1.5px solid rgba(26,59,140,0.15);border-radius:14px;padding:10px 22px;display:flex;align-items:center;gap:12px;box-shadow:0 4px 20px rgba(26,59,140,0.1);">
+        <!-- CV Logo SVG matching brand -->
+        <svg width="32" height="32" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <rect width="48" height="48" rx="10" fill="#1A3B8C"/>
+          <text x="24" y="33" text-anchor="middle" font-size="20" font-weight="900" fill="white" font-family="Georgia,serif">C</text>
+          <path d="M36,8 L40,24 L36,40 L32,24 Z" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+        </svg>
+        <div style="text-align:right;">
+          <div style="font-family:'Tajawal',sans-serif;font-size:1.15rem;font-weight:900;color:#1A3B8C;letter-spacing:2px;line-height:1.1;">CV PRO EGYPT</div>
+          <div style="font-family:'Cairo',sans-serif;font-size:0.72rem;font-weight:600;color:#4A6BA8;line-height:1.3;">نصنع سيرتك .. لنصنع مستقبلك</div>
+        </div>
+      </div>
     </div>
-    <div style="margin-top:25px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
-      <span style="color:var(--gray);font-size:0.85rem;display:flex;align-items:center;gap:6px;"><span style="color:#4ade80;">✓</span> تقييم مجاني فوري</span>
-      <span style="color:var(--gray);font-size:0.85rem;display:flex;align-items:center;gap:6px;"><span style="color:#4ade80;">✓</span> تسليم خلال 48 ساعة</span>
-      <span style="color:var(--gray);font-size:0.85rem;display:flex;align-items:center;gap:6px;"><span style="color:#4ade80;">✓</span> ضمان استرداد كامل</span>
-      <span style="color:var(--gray);font-size:0.85rem;display:flex;align-items:center;gap:6px;"><span style="color:#4ade80;">✓</span> دفع بعد الاتفاق</span>
+
+    <!-- Badge -->
+    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(26,59,140,0.08);border:1.5px solid rgba(26,59,140,0.2);color:#1A3B8C;padding:8px 22px;border-radius:50px;font-size:0.8rem;font-weight:800;margin-bottom:28px;letter-spacing:1.5px;">
+      ✦ +500 عميل راضي — 95% نسبة تجاوز ATS
+    </div>
+
+    <h1 style="color:#0D2560;font-size:clamp(2.4rem,6vw,5rem);font-family:'Tajawal',sans-serif;font-weight:900;line-height:1.12;margin-bottom:10px;">
+      <span style="color:#1A3B8C;">سيرتك الذاتية</span><br>
+      <span style="color:#1565C0;">تصنع مستقبلك</span>
+    </h1>
+    <p style="color:#2A2A2A;font-size:clamp(0.95rem,2vw,1.15rem);max-width:640px;margin:0 auto 14px;line-height:1.9;font-weight:600;">
+      تصميم <strong style="color:#1A3B8C;">احترافي</strong> — فرص أكتر — مستقبل أفضل
+    </p>
+    <p style="color:#444;font-size:clamp(0.88rem,1.6vw,1rem);max-width:580px;margin:0 auto 36px;line-height:1.85;">
+      نكتبلك <strong style="color:#1A3B8C;">سيرة ذاتية متوافقة مع ATS</strong> تتجاوز الفلاتر الآلية وتوصلك لصاحب القرار<br>في <strong style="color:#1A3B8C;">48 ساعة</strong> — أو هنرجعلك فلوسك
+    </p>
+
+    <!-- MAIN HERO CTA BUTTONS -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:14px;">
+
+      <!-- PRIMARY BIG CTA — Blue like brand -->
+      <a href="https://wa.me/201126104846?text=السلام عليكم 👋 شايف الموقع وعايز أطلب سيرتي الذاتية دلوقتي — ممكن تعرفني بالتفاصيل؟" target="_blank" rel="noopener noreferrer"
+        style="display:inline-flex;align-items:center;justify-content:center;gap:14px;
+               background:linear-gradient(135deg,#1A3B8C,#0D47A1);
+               color:white;padding:20px 52px;border-radius:50px;
+               text-decoration:none;font-family:'Tajawal',sans-serif;
+               font-size:clamp(1.1rem,2.5vw,1.4rem);font-weight:900;
+               box-shadow:0 8px 35px rgba(13,59,140,0.4);
+               transition:all 0.3s;letter-spacing:0.5px;"
+        onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 50px rgba(13,59,140,0.55)';"
+        onmouseout="this.style.transform='';this.style.boxShadow='0 8px 35px rgba(13,59,140,0.4)';">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.525 5.847L.057 23.547a.75.75 0 00.92.92l5.7-1.468A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.705 9.705 0 01-4.95-1.355l-.355-.212-3.683.948.966-3.584-.232-.369A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+        اطلب سيرتك الآن →
+      </a>
+
+      <!-- SECONDARY CTA -->
+      <a href="https://wa.me/201126104846?text=السلام عليكم 👋 عايز أبدأ وأحصل على CV احترافي — ممكن تعرفني بالخطوات؟" target="_blank" rel="noopener noreferrer"
+        style="display:inline-flex;align-items:center;justify-content:center;gap:10px;
+               background:white;color:#1A3B8C;padding:16px 40px;border-radius:50px;
+               text-decoration:none;font-family:'Tajawal',sans-serif;
+               font-size:clamp(0.95rem,2vw,1.1rem);font-weight:800;
+               border:2px solid rgba(26,59,140,0.25);
+               box-shadow:0 4px 18px rgba(26,59,140,0.15);
+               transition:all 0.3s;"
+        onmouseover="this.style.borderColor='#1A3B8C';this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 25px rgba(26,59,140,0.25)';"
+        onmouseout="this.style.borderColor='rgba(26,59,140,0.25)';this.style.transform='';this.style.boxShadow='0 4px 18px rgba(26,59,140,0.15)';">
+        ✨ ابدأ الآن واحصل على CV احترافي
+      </a>
+
+      <!-- Free eval link -->
+      <a href="#cv-checker"
+        style="color:#1A3B8C;font-size:0.88rem;font-family:'Cairo',sans-serif;
+               text-decoration:none;display:flex;align-items:center;gap:6px;
+               opacity:0.7;transition:opacity 0.2s;margin-top:4px;"
+        onmouseover="this.style.opacity='1';" onmouseout="this.style.opacity='0.7';">
+        🔍 أو قيّم CV بتاعك مجاناً أولاً ↓
+      </a>
+    </div>
+
+    <!-- Trust badges - light style -->
+    <div style="margin-top:34px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+      <span style="background:rgba(255,255,255,0.75);border:1.5px solid rgba(26,59,140,0.15);color:#1A3B8C;font-size:0.8rem;font-weight:700;padding:7px 16px;border-radius:50px;display:flex;align-items:center;gap:6px;box-shadow:0 2px 8px rgba(26,59,140,0.08);">
+        <span style="color:#1A8C3B;font-size:1rem;">✓</span> دفع بعد الاتفاق
+      </span>
+      <span style="background:rgba(255,255,255,0.75);border:1.5px solid rgba(26,59,140,0.15);color:#1A3B8C;font-size:0.8rem;font-weight:700;padding:7px 16px;border-radius:50px;display:flex;align-items:center;gap:6px;box-shadow:0 2px 8px rgba(26,59,140,0.08);">
+        <span style="color:#1A8C3B;font-size:1rem;">✓</span> تسليم 48 ساعة
+      </span>
+      <span style="background:rgba(255,255,255,0.75);border:1.5px solid rgba(26,59,140,0.15);color:#1A3B8C;font-size:0.8rem;font-weight:700;padding:7px 16px;border-radius:50px;display:flex;align-items:center;gap:6px;box-shadow:0 2px 8px rgba(26,59,140,0.08);">
+        <span style="color:#1A8C3B;font-size:1rem;">✓</span> ضمان استرداد كامل
+      </span>
+      <span style="background:rgba(255,255,255,0.75);border:1.5px solid rgba(26,59,140,0.15);color:#1A3B8C;font-size:0.8rem;font-weight:700;padding:7px 16px;border-radius:50px;display:flex;align-items:center;gap:6px;box-shadow:0 2px 8px rgba(26,59,140,0.08);">
+        <span style="color:#1A8C3B;font-size:1rem;">✓</span> متوافق مع ATS 100%
+      </span>
     </div>
   </div>
 </section>
+
+<!-- WAVE DIVIDER: light hero → dark body -->
+<div style="background:#EEF4FF;margin-bottom:-2px;line-height:0;">
+  <svg viewBox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;height:70px;">
+    <path d="M0,0 C240,70 480,70 720,35 C960,0 1200,0 1440,35 L1440,70 L0,70 Z" fill="#0E0E18"/>
+  </svg>
+</div>
 
 <!-- STATS -->
 <div class="stats">
