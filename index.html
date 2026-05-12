@@ -93,7 +93,10 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
+  "@type": [
+    "ProfessionalService",
+    "LocalBusiness"
+  ],
   "name": "CV Pro Egypt — كتابة سيرة ذاتية احترافية | CV Writing Service Egypt",
   "alternateName": [
     "CV Pro",
@@ -130,12 +133,27 @@
   ],
   "description": "أفضل خدمة كتابة سيرة ذاتية احترافية متوافقة مع ATS في مصر والسعودية والإمارات والخليج. نكتب CV من الصفر أو نحسن الموجود. Cover Letter، تحسين LinkedIn، استشارة مهنية. تسليم 48 ساعة. ضمان استرداد كامل.",
   "url": "https://cvproservice.github.io/cvpro/",
-  "logo": "https://cvproservice.github.io/cvpro/og-image.jpg",
-  "image": "https://cvproservice.github.io/cvpro/og-image.jpg",
-  "telephone": "+201126104846",
-  "priceRange": "179 - 449 جنيه",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://cvproservice.github.io/cvpro/og-image.jpg",
+    "width": 512,
+    "height": 512
+  },
+  "image": [
+    {
+      "@type": "ImageObject",
+      "url": "https://cvproservice.github.io/cvpro/og-image.jpg",
+      "width": 1200,
+      "height": 630
+    }
+  ],
+  "telephone": [
+    "+201126104846",
+    "+201068204700"
+  ],
+  "priceRange": "EGP 179–449",
   "currenciesAccepted": "EGP",
-  "paymentAccepted": "فودافون كاش، إنستاباي",
+  "paymentAccepted": "Vodafone Cash, InstaPay, Bank Transfer",
   "areaServed": [
     {
       "@type": "Country",
@@ -217,20 +235,6 @@
     "@type": "GeoCoordinates",
     "latitude": 30.0444,
     "longitude": 31.2357
-  },
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday"
-    ],
-    "opens": "09:00",
-    "closes": "23:00"
   },
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
@@ -324,10 +328,6 @@
         "@type": "ProfessionalService",
         "name": "CV Pro Egypt",
         "url": "https://cvproservice.github.io/cvpro/"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "CV Pro Egypt"
       }
     },
     {
@@ -348,10 +348,6 @@
         "@type": "ProfessionalService",
         "name": "CV Pro Egypt",
         "url": "https://cvproservice.github.io/cvpro/"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "CV Pro Egypt"
       }
     },
     {
@@ -372,10 +368,6 @@
         "@type": "ProfessionalService",
         "name": "CV Pro Egypt",
         "url": "https://cvproservice.github.io/cvpro/"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "CV Pro Egypt"
       }
     },
     {
@@ -396,10 +388,6 @@
         "@type": "ProfessionalService",
         "name": "CV Pro Egypt",
         "url": "https://cvproservice.github.io/cvpro/"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "CV Pro Egypt"
       }
     },
     {
@@ -420,10 +408,6 @@
         "@type": "ProfessionalService",
         "name": "CV Pro Egypt",
         "url": "https://cvproservice.github.io/cvpro/"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "CV Pro Egypt"
       }
     },
     {
@@ -444,10 +428,6 @@
         "@type": "ProfessionalService",
         "name": "CV Pro Egypt",
         "url": "https://cvproservice.github.io/cvpro/"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "CV Pro Egypt"
       }
     }
   ],
@@ -462,7 +442,9 @@
   "numberOfEmployees": {
     "@type": "QuantitativeValue",
     "value": 2
-  }
+  },
+  "openingHours": "Mo-Su 09:00-23:00",
+  "email": "cvproegypt@gmail.com"
 }
 </script>
 
@@ -509,26 +491,74 @@
   "@type": "Organization",
   "name": "CV Pro Egypt",
   "url": "https://cvproservice.github.io/cvpro/",
-  "logo": "https://cvproservice.github.io/cvpro/og-image.jpg",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://cvproservice.github.io/cvpro/og-image.jpg",
+    "width": 512,
+    "height": 512
+  },
   "foundingDate": "2024",
   "contactPoint": [
     {
       "@type": "ContactPoint",
       "telephone": "+201126104846",
       "contactType": "customer service",
-      "name": "رودينا محمد — إدارة وطب وإبداعية",
-      "contactOption": "TollFree",
-      "areaServed": ["EG","SA","AE","KW","QA","BH","OM","JO","LB","IQ","MA","TN","LY","SD","DE","CA","AU","GB","US"],
-      "availableLanguage": ["Arabic","English","French"]
+      "areaServed": [
+        "EG",
+        "SA",
+        "AE",
+        "KW",
+        "QA",
+        "BH",
+        "OM",
+        "JO",
+        "LB",
+        "IQ",
+        "MA",
+        "TN",
+        "LY",
+        "SD",
+        "DE",
+        "CA",
+        "AU",
+        "GB",
+        "US"
+      ],
+      "availableLanguage": [
+        "Arabic",
+        "English",
+        "French"
+      ]
     },
     {
       "@type": "ContactPoint",
       "telephone": "+201068204700",
       "contactType": "technical support",
-      "name": "خالد — تقنية وهندسة",
-      "contactOption": "TollFree",
-      "areaServed": ["EG","SA","AE","KW","QA","BH","OM","JO","LB","IQ","MA","TN","LY","SD","DE","CA","AU","GB","US"],
-      "availableLanguage": ["Arabic","English"]
+      "areaServed": [
+        "EG",
+        "SA",
+        "AE",
+        "KW",
+        "QA",
+        "BH",
+        "OM",
+        "JO",
+        "LB",
+        "IQ",
+        "MA",
+        "TN",
+        "LY",
+        "SD",
+        "DE",
+        "CA",
+        "AU",
+        "GB",
+        "US"
+      ],
+      "availableLanguage": [
+        "Arabic",
+        "English"
+      ]
     }
   ],
   "sameAs": [
@@ -536,7 +566,8 @@
     "https://www.instagram.com/cvpro.egypt",
     "https://www.tiktok.com/@cvproegypt",
     "https://wa.me/201126104846"
-  ]
+  ],
+  "legalName": "CV Pro Egypt"
 }
 </script>
 
