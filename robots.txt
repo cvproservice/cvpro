@@ -1,28 +1,38 @@
 # robots.txt — CV Pro Egypt
 # https://cvproservice.github.io/cvpro/
+# آخر تحديث: 2026-05-16
 
 User-agent: *
 Allow: /
+Crawl-delay: 1
 
-# السماح لكل بوتات محركات البحث بالـ crawl الكامل
+# السماح لجميع بوتات البحث
 User-agent: Googlebot
 Allow: /
-
+User-agent: Googlebot-Image
+Allow: /
 User-agent: Bingbot
 Allow: /
-
 User-agent: Yandex
 Allow: /
-
 User-agent: Applebot
 Allow: /
+User-agent: DuckDuckBot
+Allow: /
+User-agent: facebookexternalhit
+Allow: /
+User-agent: Twitterbot
+Allow: /
+User-agent: LinkedInBot
+Allow: /
+User-agent: WhatsApp
+Allow: /
 
-# منع الـ crawl للملفات غير الضرورية (لو موجودة مستقبلاً)
+# منع الـ crawl للملفات المؤقتة
 Disallow: /assets/drafts/
 Disallow: /*.tmp$
 Disallow: /*.bak$
+Disallow: /organization-schema-fix.html
 
-# Sitemap
+# Sitemap الرئيسي
 Sitemap: https://cvproservice.github.io/cvpro/sitemap.xml
-
-# Crawl-delay: 1
