@@ -1,6 +1,6 @@
 # robots.txt — CV Pro Egypt
 # https://cvproservice.github.io/cvpro/
-# آخر تحديث: 2026-05-16
+# آخر تحديث: 2026-05-22
 
 User-agent: *
 Allow: /
