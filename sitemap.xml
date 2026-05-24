@@ -24,13 +24,13 @@
   </url>
 
   <!-- ══════════════════════════════════════════
-       صفحة الخدمات — جديدة — Priority 0.98
+       صفحة الخدمات — Priority 0.85
   ══════════════════════════════════════════ -->
   <url>
     <loc>https://cvproservice.github.io/cvpro/cv-services-egypt.html</loc>
     <lastmod>2026-05-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.98</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/cv-services-egypt.html"/>
     <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/cv-services-egypt.html"/>
     <xhtml:link rel="alternate" hreflang="ar-SA"     href="https://cvproservice.github.io/cvpro/cv-services-egypt.html"/>
