@@ -2,12 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <!-- ══════════════════════════════════════════
-       الرئيسية — Priority 1.0
-  ══════════════════════════════════════════ -->
+  <!-- الرئيسية -->
   <url>
     <loc>https://cvproservice.github.io/cvpro/</loc>
-    <lastmod>2026-05-26</lastmod>
+    <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/"/>
@@ -23,33 +21,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/"/>
   </url>
 
-  <!-- ══════════════════════════════════════════
-       صفحة الخدمات — Priority 0.85
-  ══════════════════════════════════════════ -->
-  <url>
-    <loc>https://cvproservice.github.io/cvpro/cv-services-egypt.html</loc>
-    <lastmod>2026-05-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-    <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/cv-services-egypt.html"/>
-    <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/cv-services-egypt.html"/>
-    <xhtml:link rel="alternate" hreflang="ar-SA"     href="https://cvproservice.github.io/cvpro/cv-services-egypt.html"/>
-    <xhtml:link rel="alternate" hreflang="ar-AE"     href="https://cvproservice.github.io/cvpro/cv-services-egypt.html"/>
-    <xhtml:link rel="alternate" hreflang="ar-KW"     href="https://cvproservice.github.io/cvpro/cv-services-egypt.html"/>
-    <xhtml:link rel="alternate" hreflang="ar-QA"     href="https://cvproservice.github.io/cvpro/cv-services-egypt.html"/>
-    <xhtml:link rel="alternate" hreflang="ar-BH"     href="https://cvproservice.github.io/cvpro/cv-services-egypt.html"/>
-    <xhtml:link rel="alternate" hreflang="ar-OM"     href="https://cvproservice.github.io/cvpro/cv-services-egypt.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-services-egypt.html"/>
-  </url>
-
-  <!-- ══════════════════════════════════════════
-       دليل CV — Priority 0.97
-  ══════════════════════════════════════════ -->
+  <!-- دليل CV — Hub -->
   <url>
     <loc>https://cvproservice.github.io/cvpro/guide.html</loc>
-    <lastmod>2026-05-26</lastmod>
+    <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.87</priority>
+    <priority>0.90</priority>
     <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/guide.html"/>
     <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/guide.html"/>
     <xhtml:link rel="alternate" hreflang="ar-SA"     href="https://cvproservice.github.io/cvpro/guide.html"/>
@@ -57,9 +34,16 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/guide.html"/>
   </url>
 
-  <!-- ══════════════════════════════════════════
-       الأسعار — Priority 0.95
-  ══════════════════════════════════════════ -->
+  <!-- صفحات الخدمات الموجودة -->
+  <url>
+    <loc>https://cvproservice.github.io/cvpro/cv-services-egypt.html</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/cv-services-egypt.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/cv-services-egypt.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-services-egypt.html"/>
+  </url>
   <url>
     <loc>https://cvproservice.github.io/cvpro/pricing.html</loc>
     <lastmod>2026-05-26</lastmod>
@@ -67,14 +51,8 @@
     <priority>0.95</priority>
     <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/pricing.html"/>
     <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/pricing.html"/>
-    <xhtml:link rel="alternate" hreflang="ar-SA"     href="https://cvproservice.github.io/cvpro/pricing.html"/>
-    <xhtml:link rel="alternate" hreflang="ar-AE"     href="https://cvproservice.github.io/cvpro/pricing.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/pricing.html"/>
   </url>
-
-  <!-- ══════════════════════════════════════════
-       Job Hunt — Priority 0.95
-  ══════════════════════════════════════════ -->
   <url>
     <loc>https://cvproservice.github.io/cvpro/job-hunt.html</loc>
     <lastmod>2026-05-26</lastmod>
@@ -82,14 +60,73 @@
     <priority>0.95</priority>
     <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/job-hunt.html"/>
     <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/job-hunt.html"/>
-    <xhtml:link rel="alternate" hreflang="ar-SA"     href="https://cvproservice.github.io/cvpro/job-hunt.html"/>
-    <xhtml:link rel="alternate" hreflang="ar-AE"     href="https://cvproservice.github.io/cvpro/job-hunt.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/job-hunt.html"/>
   </url>
 
-  <!-- ══════════════════════════════════════════
-       CV السعودية والخليج — Priority 0.93
-  ══════════════════════════════════════════ -->
+  <!-- ══ مقالات الدليل الجديدة ══ -->
+
+  <!-- ما هو نظام ATS — كلمة مفتاحية عالية جداً -->
+  <url>
+    <loc>https://cvproservice.github.io/cvpro/cv-ats.html</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.92</priority>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/cv-ats.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/cv-ats.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-SA"     href="https://cvproservice.github.io/cvpro/cv-ats.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-AE"     href="https://cvproservice.github.io/cvpro/cv-ats.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-ats.html"/>
+  </url>
+
+  <!-- CV في مصر 2026 -->
+  <url>
+    <loc>https://cvproservice.github.io/cvpro/cv-egypt.html</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.93</priority>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/cv-egypt.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/cv-egypt.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-egypt.html"/>
+  </url>
+
+  <!-- CV السوق الخليجي -->
+  <url>
+    <loc>https://cvproservice.github.io/cvpro/cv-gulf.html</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.92</priority>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/cv-gulf.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-SA"     href="https://cvproservice.github.io/cvpro/cv-gulf.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-AE"     href="https://cvproservice.github.io/cvpro/cv-gulf.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-KW"     href="https://cvproservice.github.io/cvpro/cv-gulf.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-gulf.html"/>
+  </url>
+
+  <!-- CV خريج جديد -->
+  <url>
+    <loc>https://cvproservice.github.io/cvpro/cv-fresh-graduate.html</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.92</priority>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/cv-fresh-graduate.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/cv-fresh-graduate.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-SA"     href="https://cvproservice.github.io/cvpro/cv-fresh-graduate.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-fresh-graduate.html"/>
+  </url>
+
+  <!-- CV بالأرقام والإنجازات -->
+  <url>
+    <loc>https://cvproservice.github.io/cvpro/cv-numbers.html</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.88</priority>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/cv-numbers.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/cv-numbers.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-SA"     href="https://cvproservice.github.io/cvpro/cv-numbers.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-numbers.html"/>
+  </url>
+
+  <!-- الصفحات الموجودة مسبقاً -->
   <url>
     <loc>https://cvproservice.github.io/cvpro/cv-saudi.html</loc>
     <lastmod>2026-05-26</lastmod>
@@ -103,10 +140,6 @@
     <xhtml:link rel="alternate" hreflang="ar-OM"     href="https://cvproservice.github.io/cvpro/cv-saudi.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-saudi.html"/>
   </url>
-
-  <!-- ══════════════════════════════════════════
-       CV الإمارات ودبي — Priority 0.93
-  ══════════════════════════════════════════ -->
   <url>
     <loc>https://cvproservice.github.io/cvpro/cv-uae.html</loc>
     <lastmod>2026-05-26</lastmod>
@@ -116,10 +149,6 @@
     <xhtml:link rel="alternate" hreflang="ar-AE"     href="https://cvproservice.github.io/cvpro/cv-uae.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-uae.html"/>
   </url>
-
-  <!-- ══════════════════════════════════════════
-       CV المهندسين وIT — Priority 0.92
-  ══════════════════════════════════════════ -->
   <url>
     <loc>https://cvproservice.github.io/cvpro/cv-engineering.html</loc>
     <lastmod>2026-05-26</lastmod>
@@ -127,14 +156,8 @@
     <priority>0.92</priority>
     <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/cv-engineering.html"/>
     <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/cv-engineering.html"/>
-    <xhtml:link rel="alternate" hreflang="ar-SA"     href="https://cvproservice.github.io/cvpro/cv-engineering.html"/>
-    <xhtml:link rel="alternate" hreflang="ar-AE"     href="https://cvproservice.github.io/cvpro/cv-engineering.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-engineering.html"/>
   </url>
-
-  <!-- ══════════════════════════════════════════
-       CV الأطباء والقطاع الطبي — Priority 0.92
-  ══════════════════════════════════════════ -->
   <url>
     <loc>https://cvproservice.github.io/cvpro/cv-medical.html</loc>
     <lastmod>2026-05-26</lastmod>
@@ -142,28 +165,8 @@
     <priority>0.92</priority>
     <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/cv-medical.html"/>
     <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/cv-medical.html"/>
-    <xhtml:link rel="alternate" hreflang="ar-SA"     href="https://cvproservice.github.io/cvpro/cv-medical.html"/>
-    <xhtml:link rel="alternate" hreflang="ar-AE"     href="https://cvproservice.github.io/cvpro/cv-medical.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-medical.html"/>
   </url>
-
-  <!-- ══════════════════════════════════════════
-       CV الخريجين الجدد — Priority 0.92
-  ══════════════════════════════════════════ -->
-  <url>
-    <loc>https://cvproservice.github.io/cvpro/cv-fresh-graduate.html</loc>
-    <lastmod>2026-05-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.92</priority>
-    <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/cv-fresh-graduate.html"/>
-    <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/cv-fresh-graduate.html"/>
-    <xhtml:link rel="alternate" hreflang="ar-SA"     href="https://cvproservice.github.io/cvpro/cv-fresh-graduate.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-fresh-graduate.html"/>
-  </url>
-
-  <!-- ══════════════════════════════════════════
-       CV LinkedIn — Priority 0.90
-  ══════════════════════════════════════════ -->
   <url>
     <loc>https://cvproservice.github.io/cvpro/cv-linkedin.html</loc>
     <lastmod>2026-05-26</lastmod>
@@ -171,14 +174,8 @@
     <priority>0.90</priority>
     <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/cv-linkedin.html"/>
     <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/cv-linkedin.html"/>
-    <xhtml:link rel="alternate" hreflang="ar-SA"     href="https://cvproservice.github.io/cvpro/cv-linkedin.html"/>
-    <xhtml:link rel="alternate" hreflang="ar-AE"     href="https://cvproservice.github.io/cvpro/cv-linkedin.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-linkedin.html"/>
   </url>
-
-  <!-- ══════════════════════════════════════════
-       CV تغيير المسار المهني — Priority 0.90
-  ══════════════════════════════════════════ -->
   <url>
     <loc>https://cvproservice.github.io/cvpro/cv-career-change.html</loc>
     <lastmod>2026-05-26</lastmod>
@@ -188,10 +185,6 @@
     <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/cv-career-change.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-career-change.html"/>
   </url>
-
-  <!-- ══════════════════════════════════════════
-       CV كندا — Priority 0.80
-  ══════════════════════════════════════════ -->
   <url>
     <loc>https://cvproservice.github.io/cvpro/cv-canada.html</loc>
     <lastmod>2026-05-26</lastmod>
@@ -201,10 +194,6 @@
     <xhtml:link rel="alternate" hreflang="en-CA"     href="https://cvproservice.github.io/cvpro/cv-canada.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-canada.html"/>
   </url>
-
-  <!-- ══════════════════════════════════════════
-       CV أستراليا — Priority 0.78
-  ══════════════════════════════════════════ -->
   <url>
     <loc>https://cvproservice.github.io/cvpro/cv-australia.html</loc>
     <lastmod>2026-05-26</lastmod>
@@ -214,10 +203,6 @@
     <xhtml:link rel="alternate" hreflang="en-AU"     href="https://cvproservice.github.io/cvpro/cv-australia.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-australia.html"/>
   </url>
-
-  <!-- ══════════════════════════════════════════
-       CV ألمانيا — Priority 0.78
-  ══════════════════════════════════════════ -->
   <url>
     <loc>https://cvproservice.github.io/cvpro/cv-germany.html</loc>
     <lastmod>2026-05-26</lastmod>
@@ -227,10 +212,6 @@
     <xhtml:link rel="alternate" hreflang="de"        href="https://cvproservice.github.io/cvpro/cv-germany.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-germany.html"/>
   </url>
-
-  <!-- ══════════════════════════════════════════
-       CV بريطانيا — Priority 0.78
-  ══════════════════════════════════════════ -->
   <url>
     <loc>https://cvproservice.github.io/cvpro/cv-uk.html</loc>
     <lastmod>2026-05-26</lastmod>
@@ -240,10 +221,6 @@
     <xhtml:link rel="alternate" hreflang="en-GB"     href="https://cvproservice.github.io/cvpro/cv-uk.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-uk.html"/>
   </url>
-
-  <!-- ══════════════════════════════════════════
-       CV أمريكا — Priority 0.78
-  ══════════════════════════════════════════ -->
   <url>
     <loc>https://cvproservice.github.io/cvpro/cv-usa.html</loc>
     <lastmod>2026-05-26</lastmod>
