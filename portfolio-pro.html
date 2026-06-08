@@ -260,14 +260,12 @@ a { color: inherit; text-decoration: none; }
 .breadcrumb { padding: 12px 4%; font-size: 0.8rem; color: var(--gray); background: var(--dark2); border-bottom: 1px solid rgba(201,168,76,0.06); }
 .breadcrumb a { color: var(--gold); }
 
-/* URGENCY BANNER */
-.urgency-bar { background: linear-gradient(90deg, rgba(201,168,76,0.12), rgba(201,168,76,0.06), rgba(201,168,76,0.12)); border-bottom: 1px solid rgba(201,168,76,0.2); padding: 9px 4%; text-align: center; font-size: 0.82rem; font-weight: 700; color: var(--gold); display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
-.urgency-bar .timer { background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); border-radius: 6px; padding: 2px 10px; font-weight: 900; letter-spacing: .05em; }
 
 /* HERO */
-.hero { padding: 64px 4% 52px; text-align: center; position: relative; overflow: hidden; background: var(--dark2); border-bottom: 1px solid rgba(201,168,76,0.1); }
-.hero::before { content: ''; position: absolute; top: -180px; left: 50%; transform: translateX(-50%); width: 600px; height: 500px; background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%); pointer-events: none; }
-.badge-top { display: inline-flex; align-items: center; gap: 6px; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3); color: var(--gold); font-size: 0.78rem; font-weight: 700; padding: 5px 14px; border-radius: 50px; margin-bottom: 18px; }
+.hero { padding: 0; text-align: center; position: relative; overflow: hidden; background: var(--dark2); border-bottom: 1px solid rgba(201,168,76,0.1); min-height: 520px; display: flex; align-items: center; justify-content: center; }
+#heroCanvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.hero-content { position: relative; z-index: 2; padding: 72px 4% 56px; width: 100%; }
+.badge-top { display: inline-flex; align-items: center; gap: 6px; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.35); color: var(--gold); font-size: 0.78rem; font-weight: 700; padding: 5px 14px; border-radius: 50px; margin-bottom: 18px; backdrop-filter: blur(4px); }
 .hero h1 { font-size: clamp(1.65rem, 4vw, 2.7rem); font-weight: 900; line-height: 1.3; margin-bottom: 14px; }
 .hero h1 .gold { color: var(--gold); }
 .hero p.sub { font-size: clamp(0.92rem, 2vw, 1.05rem); color: var(--gray); max-width: 580px; margin: 0 auto 30px; }
@@ -421,7 +419,7 @@ footer { background: var(--dark2); border-top: 1px solid rgba(201,168,76,0.1); p
   .nav-links { display: none; }
   .section, .cta-section { padding: 38px 14px; }
   .hero { padding: 44px 14px 38px; }
-  .breadcrumb, .urgency-bar, .services-nav { padding: 10px 14px; }
+  .breadcrumb, .services-nav { padding: 10px 14px; }
   footer { padding: 18px 14px; }
   .price-compare-row { gap: 10px; }
 }
@@ -441,10 +439,6 @@ footer { background: var(--dark2); border-top: 1px solid rgba(201,168,76,0.1); p
   </div>
 </nav>
 
-<!-- URGENCY BANNER -->
-<div class="urgency-bar" role="banner" aria-label="عرض محدود">
-  🔥 عرض خصم محدود — Portfolio PDF بـ <strong>349ج</strong> بدل 449ج &nbsp;|&nbsp; Portfolio 3D بـ <strong>699ج</strong> بدل 799ج &nbsp;|&nbsp; ينتهي خلال: <span class="timer" id="countdownTimer">23:59:59</span>
-</div>
 
 <!-- BREADCRUMB -->
 <nav class="breadcrumb" aria-label="مسار التنقل">
@@ -455,38 +449,24 @@ footer { background: var(--dark2); border-top: 1px solid rgba(201,168,76,0.1); p
 
 <!-- HERO -->
 <section class="hero" aria-labelledby="hero-title">
-  <div class="badge-top">✦ خدمة جديدة — عرض إطلاق خاص</div>
-  <h1 id="hero-title">
-    <span class="gold">Portfolio PDF</span> احترافي<br>
-    أو <span class="gold">Portfolio 3D</span> تفاعلي مبهر
-  </h1>
-  <p class="sub">اعرض أعمالك بطريقة تبهر أصحاب العمل والعملاء — Portfolio قوي يثبت كفاءتك أحسن من 100 CV</p>
-
-  <!-- PRICE PILLS -->
-  <div class="price-compare-row">
-    <div class="price-pill">
-      <div class="type-label">📄 Portfolio PDF</div>
-      <div class="old-price">كان 449 جنيه</div>
-      <div class="new-price">349 <span>جنيه</span></div>
-      <div class="discount-tag">✦ وفّر 100ج</div>
+  <canvas id="heroCanvas"></canvas>
+  <div class="hero-content">
+    <div class="badge-top">✦ خدمة جديدة — عرض إطلاق خاص</div>
+    <h1 id="hero-title">
+      <span class="gold">Portfolio PDF</span> احترافي<br>
+      أو <span class="gold">Portfolio 3D</span> تفاعلي مبهر
+    </h1>
+    <p class="sub">اعرض أعمالك بطريقة تبهر أصحاب العمل والعملاء — Portfolio قوي يثبت كفاءتك أحسن من 100 CV</p>
+    <div class="hero-ctas">
+      <a href="https://wa.me/201126104846?text=السلام عليكم 👋 عايز Portfolio PDF بسعر 349 جنيه من CV Pro Egypt" class="btn-primary" target="_blank" rel="noopener noreferrer">📄 اطلب Portfolio PDF — 349ج</a>
+      <a href="https://wa.me/201126104846?text=السلام عليكم 👋 عايز Portfolio 3D بسعر 699 جنيه من CV Pro Egypt" class="btn-secondary" target="_blank" rel="noopener noreferrer">🌐 اطلب Portfolio 3D — 699ج</a>
     </div>
-    <div class="price-pill" style="border-color:rgba(201,168,76,0.35);">
-      <div class="type-label">🌐 Portfolio 3D</div>
-      <div class="old-price">كان 799 جنيه</div>
-      <div class="new-price">699 <span>جنيه</span></div>
-      <div class="discount-tag">✦ وفّر 100ج</div>
+    <div class="hero-trust">
+      <span class="trust-item"><span class="dot">●</span> تسليم 24–72 ساعة</span>
+      <span class="trust-item"><span class="dot">●</span> ضمان استرداد كامل</span>
+      <span class="trust-item"><span class="dot">●</span> +500 عميل راضي</span>
+      <span class="trust-item"><span class="dot">●</span> ⭐ 4.9/5</span>
     </div>
-  </div>
-
-  <div class="hero-ctas">
-    <a href="https://wa.me/201126104846?text=السلام عليكم 👋 عايز Portfolio PDF بسعر 349 جنيه من CV Pro Egypt" class="btn-primary" target="_blank" rel="noopener noreferrer">📄 اطلب Portfolio PDF — 349ج</a>
-    <a href="https://wa.me/201126104846?text=السلام عليكم 👋 عايز Portfolio 3D بسعر 699 جنيه من CV Pro Egypt" class="btn-secondary" target="_blank" rel="noopener noreferrer">🌐 اطلب Portfolio 3D — 699ج</a>
-  </div>
-  <div class="hero-trust">
-    <span class="trust-item"><span class="dot">●</span> تسليم 24–72 ساعة</span>
-    <span class="trust-item"><span class="dot">●</span> ضمان استرداد كامل</span>
-    <span class="trust-item"><span class="dot">●</span> +500 عميل راضي</span>
-    <span class="trust-item"><span class="dot">●</span> ⭐ 4.9/5</span>
   </div>
 </section>
 
@@ -800,19 +780,225 @@ window.addEventListener('scroll',function onSD(){
   },{passive:true});
 })();
 
-// Countdown Timer (24h rolling)
+// Countdown Timer REMOVED
+
+// 3D Hero Canvas
 (function(){
-  var KEY='cvpro_portfolio_timer_v1',now=Math.floor(Date.now()/1000),endTime=0;
-  try{endTime=parseInt(localStorage.getItem(KEY)||'0');}catch(e){}
-  if(!endTime||endTime<=now){endTime=now+86400;try{localStorage.setItem(KEY,String(endTime));}catch(e){}}
-  function tick(){
-    var rem=Math.max(0,endTime-Math.floor(Date.now()/1000));
-    var h=Math.floor(rem/3600),m=Math.floor((rem%3600)/60),s=rem%60;
-    var el=document.getElementById('countdownTimer');
-    if(el)el.textContent=String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+  var canvas = document.getElementById('heroCanvas');
+  if(!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var mouse = {x: canvas.offsetWidth/2, y: canvas.offsetHeight/2};
+  var W, H;
+
+  function resize(){
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
   }
-  tick();setInterval(tick,1000);
+  resize();
+  window.addEventListener('resize', resize, {passive:true});
+
+  // Track mouse / touch
+  canvas.parentElement.addEventListener('mousemove', function(e){
+    var r = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - r.left;
+    mouse.y = e.clientY - r.top;
+  }, {passive:true});
+  canvas.parentElement.addEventListener('touchmove', function(e){
+    var r = canvas.getBoundingClientRect();
+    mouse.x = e.touches[0].clientX - r.left;
+    mouse.y = e.touches[0].clientY - r.top;
+  }, {passive:true});
+
+  // Particles
+  var GOLD = 'rgba(201,168,76,';
+  var PURPLE = 'rgba(120,60,220,';
+  var particles = [];
+  var PCOUNT = 90;
+
+  function Particle(){
+    this.reset();
+  }
+  Particle.prototype.reset = function(){
+    this.x = Math.random() * 1400;
+    this.y = Math.random() * 800;
+    this.z = Math.random() * 1.2 + 0.2;
+    this.r = Math.random() * 2.2 + 0.4;
+    this.speedX = (Math.random() - 0.5) * 0.5;
+    this.speedY = (Math.random() - 0.5) * 0.5;
+    this.color = Math.random() > 0.5 ? GOLD : PURPLE;
+    this.alpha = Math.random() * 0.6 + 0.15;
+    this.pulse = Math.random() * Math.PI * 2;
+    this.pulseSpeed = Math.random() * 0.03 + 0.01;
+  };
+
+  for(var i=0;i<PCOUNT;i++){ var p=new Particle(); particles.push(p); }
+
+  // Grid lines (3D perspective)
+  var gridLines = [];
+  for(var g=0;g<8;g++){
+    gridLines.push({
+      x1: g/7, y1:0, x2: g/7, y2:1, // vertical
+      type:'v', alpha: 0.04 + (g===0||g===7 ? 0.04:0)
+    });
+    gridLines.push({
+      x1:0, y1:g/7, x2:1, y2:g/7,
+      type:'h', alpha: 0.04 + (g===0||g===7 ? 0.04:0)
+    });
+  }
+
+  // Floating cubes
+  var cubes = [];
+  for(var c=0;c<5;c++){
+    cubes.push({
+      x: Math.random(),
+      y: Math.random(),
+      size: 12 + Math.random()*18,
+      rot: Math.random()*Math.PI*2,
+      rotSpeed: (Math.random()-0.5)*0.018,
+      alpha: 0.06 + Math.random()*0.09,
+      speedY: (Math.random()-0.5)*0.0003,
+      color: Math.random()>0.5?'201,168,76':'120,60,220'
+    });
+  }
+
+  var t = 0;
+
+  function drawCube(cx,cy,size,rot,alpha,color){
+    ctx.save();
+    ctx.translate(cx,cy);
+    ctx.rotate(rot);
+    // front face
+    ctx.beginPath();
+    ctx.rect(-size/2,-size/2,size,size);
+    ctx.strokeStyle = 'rgba('+color+','+alpha+')';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    // offset back face
+    var off = size*0.28;
+    ctx.beginPath();
+    ctx.rect(-size/2+off,-size/2-off,size,size);
+    ctx.stroke();
+    // connecting lines
+    ctx.beginPath();
+    ctx.moveTo(-size/2,-size/2); ctx.lineTo(-size/2+off,-size/2-off);
+    ctx.moveTo(size/2,-size/2);  ctx.lineTo(size/2+off,-size/2-off);
+    ctx.moveTo(size/2,size/2);   ctx.lineTo(size/2+off,size/2-off);
+    ctx.moveTo(-size/2,size/2);  ctx.lineTo(-size/2+off,size/2-off);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function frame(){
+    t += 0.012;
+    ctx.clearRect(0,0,W,H);
+
+    // Background gradient
+    var grd = ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,W*0.7);
+    grd.addColorStop(0,'rgba(20,10,40,1)');
+    grd.addColorStop(0.5,'rgba(10,5,20,1)');
+    grd.addColorStop(1,'rgba(7,7,13,1)');
+    ctx.fillStyle = grd;
+    ctx.fillRect(0,0,W,H);
+
+    // Mouse-reactive glow
+    var mx = mouse.x/W, my = mouse.y/H;
+    var mg = ctx.createRadialGradient(mouse.x,mouse.y,0,mouse.x,mouse.y,W*0.45);
+    mg.addColorStop(0,'rgba(120,60,220,0.07)');
+    mg.addColorStop(0.4,'rgba(201,168,76,0.04)');
+    mg.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle = mg;
+    ctx.fillRect(0,0,W,H);
+
+    // Perspective grid with mouse tilt
+    var tiltX = (mouse.x/W - 0.5)*30;
+    var tiltY = (mouse.y/H - 0.5)*20;
+    var vp = {x: W/2 + tiltX*2, y: H*0.4 + tiltY};
+    var horizon = H*0.5 + tiltY*0.5;
+
+    // Draw perspective grid floor
+    ctx.save();
+    for(var col=-10;col<=10;col++){
+      var x0 = W/2 + col*(W/12);
+      ctx.beginPath();
+      ctx.moveTo(vp.x, horizon);
+      ctx.lineTo(x0, H+20);
+      ctx.strokeStyle = 'rgba(201,168,76,0.06)';
+      ctx.lineWidth = 0.7;
+      ctx.stroke();
+    }
+    for(var row=0;row<7;row++){
+      var progress = row/6;
+      var easedP = progress*progress;
+      var y0 = horizon + (H - horizon + 20)*easedP;
+      var spread = W * (0.05 + easedP*0.55);
+      ctx.beginPath();
+      ctx.moveTo(vp.x - spread, y0);
+      ctx.lineTo(vp.x + spread, y0);
+      ctx.strokeStyle = 'rgba(120,60,220,'+(0.03+easedP*0.04)+')';
+      ctx.lineWidth = 0.7;
+      ctx.stroke();
+    }
+    ctx.restore();
+
+    // Floating cubes
+    for(var ci=0;ci<cubes.length;ci++){
+      var cb = cubes[ci];
+      cb.rot += cb.rotSpeed;
+      cb.y += cb.speedY + Math.sin(t+ci)*0.0002;
+      if(cb.y>1.1) cb.y=-.1;
+      if(cb.y<-.1) cb.y=1.1;
+      // Mouse parallax
+      var depthFactor = 0.4 + ci*0.15;
+      var px = cb.x*W + (mx-0.5)*60*depthFactor;
+      var py = cb.y*H + (my-0.5)*40*depthFactor;
+      drawCube(px, py, cb.size, cb.rot, cb.alpha, cb.color);
+    }
+
+    // Particles
+    for(var pi=0;pi<particles.length;pi++){
+      var pt = particles[pi];
+      pt.pulse += pt.pulseSpeed;
+      pt.x += pt.speedX + (mx-0.5)*0.4*pt.z;
+      pt.y += pt.speedY + (my-0.5)*0.3*pt.z;
+      if(pt.x<-10) pt.x=W+10;
+      if(pt.x>W+10) pt.x=-10;
+      if(pt.y<-10) pt.y=H+10;
+      if(pt.y>H+10) pt.y=-10;
+      var pAlpha = pt.alpha * (0.7 + 0.3*Math.sin(pt.pulse));
+      ctx.beginPath();
+      ctx.arc(pt.x, pt.y, pt.r*pt.z, 0, Math.PI*2);
+      ctx.fillStyle = pt.color + pAlpha + ')';
+      ctx.fill();
+    }
+
+    // Connection lines between nearby particles
+    for(var a=0;a<particles.length;a++){
+      for(var b=a+1;b<particles.length;b++){
+        var dx=particles[a].x-particles[b].x, dy=particles[a].y-particles[b].y;
+        var dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<100){
+          ctx.beginPath();
+          ctx.moveTo(particles[a].x,particles[a].y);
+          ctx.lineTo(particles[b].x,particles[b].y);
+          ctx.strokeStyle='rgba(201,168,76,'+(0.07*(1-dist/100))+')';
+          ctx.lineWidth=0.5;
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Gold center glow
+    var cg = ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,W*0.3);
+    cg.addColorStop(0,'rgba(201,168,76,0.06)');
+    cg.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=cg;
+    ctx.fillRect(0,0,W,H);
+
+    requestAnimationFrame(frame);
+  }
+  frame();
 })();
+
 
 // Reveal
 var revObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');revObs.unobserve(e.target);}});},{threshold:0.1});
