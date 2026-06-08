@@ -36,13 +36,13 @@
 
   <!-- صفحات الخدمات الموجودة -->
   <url>
-    <loc>https://cvproservice.github.io/cvpro/cv-services-egypt.html</loc>
+    <loc>https://cvproservice.github.io/cvpro/cv-writing-pro.html</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
-    <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/cv-services-egypt.html"/>
-    <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/cv-services-egypt.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-services-egypt.html"/>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/cv-writing-pro.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/cv-writing-pro.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-writing-pro.html"/>
   </url>
   <url>
     <loc>https://cvproservice.github.io/cvpro/pricing.html</loc>
