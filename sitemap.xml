@@ -231,4 +231,17 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-usa.html"/>
   </url>
 
+  <!-- Portfolio احترافي و 3D -->
+  <url>
+    <loc>https://cvproservice.github.io/cvpro/portfolio-service.html</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/portfolio-service.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/portfolio-service.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-SA"     href="https://cvproservice.github.io/cvpro/portfolio-service.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-AE"     href="https://cvproservice.github.io/cvpro/portfolio-service.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/portfolio-service.html"/>
+  </url>
+
 </urlset>
