@@ -262,4 +262,57 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/portfolio-pro.html"/>
   </url>
 
+
+  <!-- أسئلة المقابلة الشخصية -->
+  <url>
+    <loc>https://cvproservice.github.io/cvpro/job-interview-questions.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/job-interview-questions.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/job-interview-questions.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-SA"     href="https://cvproservice.github.io/cvpro/job-interview-questions.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-AE"     href="https://cvproservice.github.io/cvpro/job-interview-questions.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/job-interview-questions.html"/>
+  </url>
+
+  <!-- خطاب التقديم Cover Letter -->
+  <url>
+    <loc>https://cvproservice.github.io/cvpro/cover-letter-guide.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/cover-letter-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/cover-letter-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-SA"     href="https://cvproservice.github.io/cvpro/cover-letter-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-AE"     href="https://cvproservice.github.io/cvpro/cover-letter-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cover-letter-guide.html"/>
+  </url>
+
+  <!-- أخطاء السيرة الذاتية الشائعة -->
+  <url>
+    <loc>https://cvproservice.github.io/cvpro/cv-mistakes.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/cv-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/cv-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-SA"     href="https://cvproservice.github.io/cvpro/cv-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-AE"     href="https://cvproservice.github.io/cvpro/cv-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-mistakes.html"/>
+  </url>
+
+  <!-- CV للمحاسبين -->
+  <url>
+    <loc>https://cvproservice.github.io/cvpro/cv-accounting.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/cv-accounting.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/cv-accounting.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-SA"     href="https://cvproservice.github.io/cvpro/cv-accounting.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-AE"     href="https://cvproservice.github.io/cvpro/cv-accounting.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-accounting.html"/>
+  </url>
+
 </urlset>
