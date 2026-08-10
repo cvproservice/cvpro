@@ -538,7 +538,31 @@
   <p>© 2026 CV Pro Egypt — جميع الحقوق محفوظة</p>
 </footer>
 
-<a class="wa-bubble" href="https://wa.me/201126104846?text=السلام عليكم 👋 قرأت مقال ATS وعايز أستفسر" target="_blank" rel="noopener" aria-label="تواصل على واتساب">💬</a>
+<a class="wa-bubble" id="waBubble" href="https://wa.me/201126104846?text=السلام عليكم 👋 قرأت مقال ATS وعايز أستفسر" target="_blank" rel="noopener" aria-label="تواصل على واتساب">💬</a>
+
+
+<script>
+  (function() {
+    var bubble = document.getElementById('waBubble');
+    var target = document.querySelector('.related-section') || document.querySelector('footer');
+    if (!bubble || !target || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          bubble.style.opacity = '0';
+          bubble.style.transform = 'scale(.6)';
+          bubble.style.pointerEvents = 'none';
+        } else {
+          bubble.style.opacity = '1';
+          bubble.style.transform = 'scale(1)';
+          bubble.style.pointerEvents = 'auto';
+        }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0 });
+    io.observe(target);
+    bubble.style.transition = 'opacity .25s ease, transform .25s ease';
+  })();
+</script>
 
 </body>
 </html>
