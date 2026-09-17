@@ -315,4 +315,38 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-accounting.html"/>
   </url>
 
+  <!-- محلل الوظائف الذكي — خدمة جديدة -->
+  <url>
+    <loc>https://cvproservice.github.io/cvpro/job-matcher.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.92</priority>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/job-matcher.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/job-matcher.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/job-matcher.html"/>
+  </url>
+
+  <!-- كتابة CV احترافي ATS — صفحة خدمة مخصصة -->
+  <url>
+    <loc>https://cvproservice.github.io/cvpro/cv-writing-service.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.93</priority>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/cv-writing-service.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/cv-writing-service.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/cv-writing-service.html"/>
+  </url>
+
+  <!-- استشارة مهنية Career Consultation — خدمة جديدة -->
+  <url>
+    <loc>https://cvproservice.github.io/cvpro/career-consulting.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/career-consulting.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/career-consulting.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/career-consulting.html"/>
+  </url>
+
 </urlset>
+
