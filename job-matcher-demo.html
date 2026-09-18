@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محلل الوظائف المتقدم - CV Pro Egypt</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --green-dark: #1f3d2e;
+            --green: #2f5d44;
+            --green-light: #e8f0ea;
+            --gray: #55605a;
+            --gray-light: #f4f5f4;
+            --accent-blue: #1a5db3;
+            --success: #27ae60;
+            --warning: #e67e22;
+        }
+        
+        body {
+            font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #f5f7f6 0%, #e8f0ea 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(31, 61, 46, 0.2);
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            margin-bottom: 5px;
+        }
+        
+        .cv-profile {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .cv-profile h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        
+        .cv-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            font-size: 0.95em;
+        }
+        
+        .cv-detail-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px;
+            border-radius: 6px;
+            border-right: 3px solid #fff;
+        }
+        
+        .cv-detail-label {
+            opacity: 0.8;
+            font-size: 0.9em;
+            margin-bottom: 4px;
+        }
+        
+        .cv-detail-value {
+            font-weight: 600;
+            font-size: 1em;
+        }
+        
+        .search-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .search-section h2 {
+            color: var(--green-dark);
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 3px solid var(--green);
+            padding-bottom: 12px;
+        }
+        
+        .search-filters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .filter-group label {
+            color: var(--green-dark);
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+        
+        .filter-group input,
+        .filter-group select {
+            padding: 12px;
+            border: 2px solid var(--green-light);
+            border-radius: 6px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-group input:focus,
+        .filter-group select:focus {
+            outline: none;
+            border-color: var(--green);
+            box-shadow: 0 0 10px rgba(47, 93, 68, 0.2);
+        }
+        
+        .search-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 6px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+            color: white;
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(47, 93, 68, 0.3);
+        }
+        
+        .btn-secondary {
+            background: var(--gray-light);
+            color: var(--gray);
+            border: 2px solid var(--green);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--green-light);
+            color: var(--green-dark);
+        }
+        
+        .results-section {
+            display: none;
+        }
+        
+        .results-section.active {
+            display: block;
+        }
+        
+        .results-header {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .results-header h2 {
+            color: var(--green-dark);
+            margin-bottom: 15px;
+            font-size: 1.6em;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        
+        .stat-box {
+            background: linear-gradient(135deg, var(--green-light) 0%, #d4e8dd 100%);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 4px solid var(--green);
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--green-dark);
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            color: var(--gray);
+            margin-top: 5px;
+        }
+        
+        .jobs-grid {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .job-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border-right: 5px solid var(--green);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .job-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--green-dark);
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .match-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--green-light);
+            color: var(--green-dark);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+        
+        .match-percentage {
+            font-size: 1.3em;
+            font-weight: 700;
+        }
+        
+        .job-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: var(--gray-light);
+            border-radius: 8px;
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .meta-label {
+            font-size: 0.85em;
+            color: var(--gray);
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        
+        .meta-value {
+            font-size: 1em;
+            color: var(--green-dark);
+            font-weight: 600;
+        }
+        
+        .job-description {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .job-requirements {
+            margin-bottom: 15px;
+        }
+        
+        .requirements-label {
+            font-weight: 600;
+            color: var(--green-dark);
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+        
+        .requirement-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .requirement-tag {
+            background: var(--green-light);
+            color: var(--green-dark);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+        
+        .requirement-tag.match {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .match-details {
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-blue);
+            margin-top: 15px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        
+        .match-details h4 {
+            color: var(--accent-blue);
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-small {
+            padding: 10px 20px;
+            font-size: 0.9em;
+            flex: 1;
+            min-width: 120px;
+        }
+        
+        .btn-apply {
+            background: var(--success);
+            color: white;
+        }
+        
+        .btn-apply:hover {
+            background: #229954;
+        }
+        
+        .btn-info {
+            background: var(--accent-blue);
+            color: white;
+        }
+        
+        .btn-info:hover {
+            background: #0d47a1;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .no-results h3 {
+            color: var(--gray);
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .step {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .step-number {
+            background: var(--green);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2em;
+            margin: 0 auto 12px;
+        }
+        
+        .step h4 {
+            color: var(--green-dark);
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+        
+        .step p {
+            color: var(--gray);
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--gray);
+            margin-top: 40px;
+            font-size: 0.9em;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            justify-content: center;
+        }
+        
+        .logo-text {
+            font-size: 1.2em;
+            font-weight: 700;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .job-header {
+                flex-direction: column;
+            }
+            
+            .search-filters {
+                grid-template-columns: 1fr;
+            }
+            
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 30px;
+            display: none;
+        }
+        
+        .loading.active {
+            display: block;
+        }
+        
+        .spinner {
+            border: 4px solid var(--green-light);
+            border-top: 4px solid var(--green);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <span style="font-size: 2em;">📋</span>
+                <span class="logo-text">CV Pro Egypt</span>
+            </div>
+            <h1>محلل الوظائف المتقدم</h1>
+            <p>تطابق ذكي بين مهاراتك والوظائف المثالية</p>
+            
+            <div class="cv-profile">
+                <h3>ملف المرشح: المستشار هيثم القط</h3>
+                <div class="cv-details">
+                    <div class="cv-detail-item">
+                        <div class="cv-detail-label">التخصص الرئيسي</div>
+                        <div class="cv-detail-value">قانون الأعمال والتقاضي</div>
+                    </div>
+                    <div class="cv-detail-item">
+                        <div class="cv-detail-label">سنوات الخبرة</div>
+                        <div class="cv-detail-value">+20 سنة</div>
+                    </div>
+                    <div class="cv-detail-item">
+                        <div class="cv-detail-label">أعلى منصب</div>
+                        <div class="cv-detail-value">قاضي ورئيس محكمة</div>
+                    </div>
+                    <div class="cv-detail-item">
+                        <div class="cv-detail-label">مستوى التعليم</div>
+                        <div class="cv-detail-value">ماجستير (قيد الدراسة)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="search-section">
+            <h2>🔍 ابحث عن الوظائف المثالية</h2>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>حدد المعايير</h4>
+                    <p>اختر الصناعة والموقع ومستوى الراتب</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>البحث الذكي</h4>
+                    <p>نظام تطابق متقدم يحلل ملفك</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>النتائج المفصلة</h4>
+                    <p>عرض الوظائف مرتبة بنسبة التطابق</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>التقديم المباشر</h4>
+                    <p>تقديم طلبات على الوظائف المفضلة</p>
+                </div>
+            </div>
+            
+            <div class="search-filters">
+                <div class="filter-group">
+                    <label for="industry">المجال/الصناعة:</label>
+                    <select id="industry">
+                        <option value="">جميع المجالات</option>
+                        <option value="قانون">قطاع قانوني</option>
+                        <option value="استثمار">البنوك والاستثمارات</option>
+                        <option value="حكومي">القطاع الحكومي</option>
+                        <option value="دولي">المنظمات الدولية</option>
+                        <option value="استشارات">شركات الاستشارات</option>
+                        <option value="أكاديمي">التعليم العالي</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="location">الموقع الجغرافي:</label>
+                    <select id="location">
+                        <option value="">جميع المواقع</option>
+                        <option value="القاهرة">القاهرة</option>
+                        <option value="الإسكندرية">الإسكندرية</option>
+                        <option value="جيزة">الجيزة</option>
+                        <option value="إقليمي">خارج مصر - إقليمي</option>
+                        <option value="دولي">دولي</option>
+                        <option value="هجين">هجين/عن بعد</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="salary">نطاق الراتب الشهري:</label>
+                    <select id="salary">
+                        <option value="">جميع الرواتب</option>
+                        <option value="15000">15,000 - 25,000</option>
+                        <option value="25000">25,000 - 40,000</option>
+                        <option value="40000">40,000 - 60,000</option>
+                        <option value="60000">60,000 - 100,000</option>
+                        <option value="100000">أكثر من 100,000</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="jobType">نوع الوظيفة:</label>
+                    <select id="jobType">
+                        <option value="">جميع الأنواع</option>
+                        <option value="دوام">دوام كامل</option>
+                        <option value="استشارة">استشارة/عقد</option>
+                        <option value="جزئي">عمل جزئي</option>
+                        <option value="مشروع">مشروع قصير الأمد</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="search-buttons">
+                <button class="btn btn-primary" onclick="searchJobs()">🔍 ابحث عن الوظائف</button>
+                <button class="btn btn-secondary" onclick="resetFilters()">🔄 إعادة تعيين</button>
+            </div>
+        </div>
+        
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>جاري البحث عن الوظائف المثالية...</p>
+        </div>
+        
+        <div class="results-section" id="resultsSection">
+            <div class="results-header">
+                <h2>📊 نتائج البحث</h2>
+                <div class="stats">
+                    <div class="stat-box">
+                        <div class="stat-number" id="totalJobs">0</div>
+                        <div class="stat-label">وظائف متاحة</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number" id="topMatch">0%</div>
+                        <div class="stat-label">أعلى تطابق</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number" id="avgMatch">0%</div>
+                        <div class="stat-label">متوسط التطابق</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number" id="excellentMatches">0</div>
+                        <div class="stat-label">تطابق ممتاز (90%+)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="jobs-grid" id="jobsGrid">
+                <!-- Jobs will be inserted here -->
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2024 CV Pro Egypt - محرك البحث الذكي عن الوظائف</p>
+            <p>نحن نساعدك في العثور على الفرصة المثالية التي تناسب مؤهلاتك وطموحاتك</p>
+        </div>
+    </div>
+    
+    <script>
+        const jobsDatabase = [
+            {
+                id: 1,
+                title: "محام متخصص في النقض والمحاكم الدستورية",
+                company: "مكتب قانوني رائد - القاهرة",
+                location: "القاهرة",
+                industry: "قانون",
+                type: "دوام",
+                salary: "60000",
+                description: "نبحث عن محام متخصص بخبرة طويلة في التقاضي أمام النقض والمحاكم الدستورية. يتطلب الدور مهارات عالية في الصياغة القانونية والبحث الفقهي.",
+                requirements: ["محام متمرس", "خبرة بالمحاكم العليا", "بحث قانوني", "صياغة قانونية", "إدارة قضايا", "استشارات قانونية"],
+                matchScore: 98
+            },
+            {
+                id: 2,
+                title: "مستشار قانوني أول",
+                company: "بنك استثمار كبير",
+                location: "القاهرة",
+                industry: "استثمار",
+                type: "دوام",
+                salary: "80000",
+                description: "منصب استراتيجي كمستشار قانوني لفريق العمليات القانونية. يشمل الدور مراجعة العقود والإشراف على القضايا وتقديم الاستشارات.",
+                requirements: ["استشارات قانونية", "مراجعة عقود", "قانون الأعمال", "إدارة مخاطر", "تحليل قانوني", "قيادة فريق"],
+                matchScore: 94
+            },
+            {
+                id: 3,
+                title: "محكم تجاري دولي",
+                company: "مركز التحكيم الدولي",
+                location: "دولي",
+                industry: "قانون",
+                type: "استشارة",
+                salary: "100000",
+                description: "متطلب محكم متخصص في التحكيم التجاري الدولي مع خبرة قوية في حل النزاعات والقانون الدولي.",
+                requirements: ["تحكيم تجاري", "قانون دولي", "حل نزاعات", "تحليل قانوني", "اللغة الإنجليزية", "خبرة دولية"],
+                matchScore: 89
+            },
+            {
+                id: 4,
+                title: "مدير القطاع القانوني",
+                company: "شركة استثمارية عملاقة",
+                location: "القاهرة",
+                industry: "استثمار",
+                type: "دوام",
+                salary: "100000",
+                description: "قيادة الفريق القانوني وإدارة جميع الأمور القانونية والامتثال التنظيمي للشركة.",
+                requirements: ["إدارة فريق", "استشارات قانونية", "امتثال تنظيمي", "إدارة مخاطر", "قانون الأعمال", "الإشراف على القضايا"],
+                matchScore: 87
+            },
+            {
+                id: 5,
+                title: "أستاذ محاضر بالجامعات المصرية",
+                company: "جامعة قاهرة للدراسات العليا",
+                location: "القاهرة",
+                industry: "أكاديمي",
+                type: "دوام",
+                salary: "40000",
+                description: "تدريس المقررات القانونية المتقدمة وإشراف على الأبحاث. يتطلب خبرة عملية قوية في المجال.",
+                requirements: ["تدريس", "بحث قانوني", "إشراف أكاديمي", "صياغة", "التحليل القانوني", "نشر أبحاث"],
+                matchScore: 85
+            },
+            {
+                id: 6,
+                title: "مستشار أول للمؤسسات الحكومية",
+                company: "وزارة العدل",
+                location: "القاهرة",
+                industry: "حكومي",
+                type: "دوام",
+                salary: "60000",
+                description: "تقديم استشارات قانونية عالية المستوى للوزارة والقطاعات الحكومية الأخرى.",
+                requirements: ["استشارات حكومية", "قانون إداري", "صياغة تشريعية", "بحث قانوني", "تحليل سياسات", "الشفافية القانونية"],
+                matchScore: 88
+            },
+            {
+                id: 7,
+                title: "رئيس قسم المراجعة القانونية",
+                company: "مكتب محاسبة ومراجعة دولي",
+                location: "القاهرة",
+                industry: "استشارات",
+                type: "دوام",
+                salary: "75000",
+                description: "قيادة فريق المراجعة القانونية والامتثال. يتطلب فهم عميق للمتطلبات القانونية والتنظيمية.",
+                requirements: ["قيادة فريق", "مراجعة قانونية", "امتثال", "تحليل مخاطر", "صياغة تقارير", "الاستشارات"],
+                matchScore: 83
+            },
+            {
+                id: 8,
+                title: "خبير قانوني - الشؤون الدولية",
+                company: "منظمة دولية",
+                location: "دولي",
+                industry: "دولي",
+                type: "دوام",
+                salary: "90000",
+                description: "متطلب خبير قانوني للعمل على القضايا الدولية والمعاهدات والاتفاقيات.",
+                requirements: ["قانون دولي", "اتفاقيات دولية", "تحليل قانوني", "اللغة الإنجليزية", "التفاوض", "التوثيق القانوني"],
+                matchScore: 81
+            },
+            {
+                id: 9,
+                title: "محام متخصص في قانون الاستثمار",
+                company: "مكتب قانوني دولي",
+                location: "القاهرة",
+                industry: "قانون",
+                type: "دوام",
+                salary: "70000",
+                description: "تمثيل العملاء في قضايا الاستثمار وقانون الأعمال الدولي.",
+                requirements: ["قانون استثمار", "قانون أعمال دولي", "صياغة عقود", "استشارات", "تحليل قانوني", "التفاوض"],
+                matchScore: 84
+            },
+            {
+                id: 10,
+                title: "مسؤول الامتثال والمخاطر القانونية",
+                company: "شركة متعددة الجنسيات",
+                location: "القاهرة",
+                industry: "استثمار",
+                type: "دوام",
+                salary: "55000",
+                description: "إدارة الامتثال القانوني والمخاطر المرتبطة به في جميع عمليات الشركة.",
+                requirements: ["امتثال قانوني", "إدارة مخاطر", "تحليل قانوني", "صياغة سياسات", "تدقيق", "التوثيق"],
+                matchScore: 79
+            }
+        ];
+        
+        function searchJobs() {
+            const industry = document.getElementById('industry').value;
+            const location = document.getElementById('location').value;
+            const salary = document.getElementById('salary').value;
+            const jobType = document.getElementById('jobType').value;
+            
+            // Show loading
+            document.getElementById('loading').classList.add('active');
+            
+            // Simulate search delay
+            setTimeout(() => {
+                let filtered = jobsDatabase.filter(job => {
+                    let match = true;
+                    
+                    if (industry && job.industry !== industry) match = false;
+                    if (location && job.location !== location) match = false;
+                    if (jobType && job.type !== jobType) match = false;
+                    
+                    if (salary) {
+                        const userSalary = parseInt(salary);
+                        const jobSalary = parseInt(job.salary);
+                        if (jobSalary < userSalary) match = false;
+                    }
+                    
+                    return match;
+                });
+                
+                // Sort by match score
+                filtered.sort((a, b) => b.matchScore - a.matchScore);
+                
+                displayResults(filtered);
+                
+                document.getElementById('loading').classList.remove('active');
+            }, 1500);
+        }
+        
+        function displayResults(jobs) {
+            const resultsSection = document.getElementById('resultsSection');
+            const jobsGrid = document.getElementById('jobsGrid');
+            
+            if (jobs.length === 0) {
+                jobsGrid.innerHTML = `
+                    <div class="no-results">
+                        <h3>😔 لم يتم العثور على وظائف</h3>
+                        <p>حاول تعديل معايير البحث للحصول على نتائج أفضل</p>
+                    </div>
+                `;
+            } else {
+                const topMatch = Math.max(...jobs.map(j => j.matchScore));
+                const avgMatch = Math.round(jobs.reduce((sum, j) => sum + j.matchScore, 0) / jobs.length);
+                const excellentMatches = jobs.filter(j => j.matchScore >= 90).length;
+                
+                document.getElementById('totalJobs').textContent = jobs.length;
+                document.getElementById('topMatch').textContent = topMatch + '%';
+                document.getElementById('avgMatch').textContent = avgMatch + '%';
+                document.getElementById('excellentMatches').textContent = excellentMatches;
+                
+                jobsGrid.innerHTML = jobs.map(job => `
+                    <div class="job-card">
+                        <div class="job-header">
+                            <div class="job-title">${job.title}</div>
+                            <div class="match-badge">
+                                <span class="match-percentage">${job.matchScore}%</span>
+                                <span>تطابق</span>
+                            </div>
+                        </div>
+                        
+                        <div class="job-meta">
+                            <div class="meta-item">
+                                <div class="meta-label">🏢 الشركة</div>
+                                <div class="meta-value">${job.company}</div>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-label">📍 الموقع</div>
+                                <div class="meta-value">${job.location}</div>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-label">💰 الراتب الشهري</div>
+                                <div class="meta-value">${parseInt(job.salary).toLocaleString()} جنيه</div>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-label">⏰ نوع الوظيفة</div>
+                                <div class="meta-value">${job.type}</div>
+                            </div>
+                        </div>
+                        
+                        <div class="job-description">
+                            <strong>نبذة عن الوظيفة:</strong><br>
+                            ${job.description}
+                        </div>
+                        
+                        <div class="job-requirements">
+                            <div class="requirements-label">📋 المتطلبات الأساسية:</div>
+                            <div class="requirement-tags">
+                                ${job.requirements.map(req => `
+                                    <span class="requirement-tag ${isSkillMatched(req) ? 'match' : ''}">${req}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+                        
+                        <div class="match-details">
+                            <h4>✨ لماذا تناسب هذه الوظيفة ملفك؟</h4>
+                            <p>${getMatchExplanation(job.matchScore, job.title)}</p>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <button class="btn btn-small btn-apply" onclick="applyJob(${job.id})">
+                                📨 تقديم طلب
+                            </button>
+                            <button class="btn btn-small btn-info" onclick="showJobDetails(${job.id})">
+                                ℹ️ تفاصيل أكثر
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            resultsSection.classList.add('active');
+            resultsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function isSkillMatched(skill) {
+            const mySkills = [
+                "محام متمرس", "خبرة بالمحاكم العليا", "بحث قانوني", "صياغة قانونية",
+                "إدارة قضايا", "استشارات قانونية", "استشارات قانونية", "مراجعة عقود",
+                "قانون الأعمال", "إدارة مخاطر", "تحليل قانوني", "قيادة فريق",
+                "تحكيم تجاري", "قانون دولي", "حل نزاعات", "اللغة الإنجليزية",
+                "خبرة دولية", "إدارة فريق", "امتثال تنظيمي", "الإشراف على القضايا",
+                "تدريس", "إشراف أكاديمي", "نشر أبحاث"
+            ];
+            return mySkills.includes(skill);
+        }
+        
+        function getMatchExplanation(score, title) {
+            if (score >= 95) {
+                return `ملفك يطابق هذه الوظيفة بشكل استثنائي. خبرتك الواسعة في المجال القانوني والمحاكم العليا تجعلك المرشح الأمثل لهذا المنصب.`;
+            } else if (score >= 85) {
+                return `تتمتع بمعظم المهارات والخبرات المطلوبة. يمكنك التقديم بثقة وإظهار كيف يمكن لخبرتك أن تضيف قيمة للشركة.`;
+            } else if (score >= 75) {
+                return `لديك الأساس القوي المطلوب، مع بعض الفجوات البسيطة. يمكنك تعزيز طلبك بإبراز الخبرات ذات الصلة.`;
+            } else {
+                return `هذه الوظيفة تتطلب مهارات إضافية. قد تكون فرصة جيدة للتطور المهني والتعلم.`;
+            }
+        }
+        
+        function applyJob(jobId) {
+            const job = jobsDatabase.find(j => j.id === jobId);
+            alert(`✅ تم التقديم بنجاح!\n\nالوظيفة: ${job.title}\nالشركة: ${job.company}\n\nسيتم التواصل معك قريباً. شكراً لاختيارك CV Pro Egypt!`);
+        }
+        
+        function showJobDetails(jobId) {
+            const job = jobsDatabase.find(j => j.id === jobId);
+            alert(`📋 تفاصيل الوظيفة\n\n🏢 ${job.company}\n📍 ${job.location}\n💼 ${job.title}\n⏰ ${job.type}\n💰 ${parseInt(job.salary).toLocaleString()} جنيه\n\nنسبة التطابق: ${job.matchScore}%\n\nللمزيد من المعلومات والتقديم، يرجى التواصل مع فريق CV Pro Egypt.`);
+        }
+        
+        function resetFilters() {
+            document.getElementById('industry').value = '';
+            document.getElementById('location').value = '';
+            document.getElementById('salary').value = '';
+            document.getElementById('jobType').value = '';
+            document.getElementById('resultsSection').classList.remove('active');
+        }
+        
+        // Show all jobs on page load
+        window.addEventListener('load', () => {
+            displayResults(jobsDatabase);
+        });
+    </script>
+</body>
+</html>
