@@ -348,5 +348,17 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/career-consulting.html"/>
   </url>
 
+  <!-- عرض تفاعلي حي لمحلل الوظائف الذكي -->
+  <url>
+    <loc>https://cvproservice.github.io/cvpro/job-matcher-demo.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+    <xhtml:link rel="alternate" hreflang="ar"        href="https://cvproservice.github.io/cvpro/job-matcher-demo.html"/>
+    <xhtml:link rel="alternate" hreflang="ar-EG"     href="https://cvproservice.github.io/cvpro/job-matcher-demo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cvproservice.github.io/cvpro/job-matcher-demo.html"/>
+  </url>
+
 </urlset>
+
 
