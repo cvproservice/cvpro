@@ -1,6 +1,6 @@
 # robots.txt — CV Pro Egypt
 # https://cvproservice.github.io/cvpro/
-# آخر تحديث: 2026-05-22
+# آخر تحديث: 2026-09-24
 
 User-agent: *
 Allow: /
@@ -26,6 +26,26 @@ Allow: /
 User-agent: LinkedInBot
 Allow: /
 User-agent: WhatsApp
+Allow: /
+
+# زواحف محركات الإجابة والذكاء الاصطناعي
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: GPTBot
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: Claude-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Applebot-Extended
 Allow: /
 
 # منع الـ crawl للملفات المؤقتة
